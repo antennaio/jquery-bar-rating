@@ -28,6 +28,6 @@ npm install
 License
 -------
 
-Dual licensed under the MIT and GPL licenses:
-[http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
+Dual licensed under the MIT and GPL licenses:<br />
+[http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)<br />
 [http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)
