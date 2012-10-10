@@ -1,0 +1,12 @@
+{
+  "name": "jquery-bar-rating",
+  "description": "Minimal, light-weight jQuery ratings.",
+  "version": "0.1.0",
+  "main": "./jquery.barrating",
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "jsdom": "*",
+    "jquery": "*"
+  }
+}
