@@ -29,7 +29,8 @@
 
                 $this.data('barrating', {
                     initialized:true,
-                    currentRating:$this.val() // initial rating based on the OPTION value
+                    currentRatingValue:$this.val(), // initial rating based on the OPTION value
+                    currentRatingText:$('option:selected',$this).text() //$('option[value='+$this.val()+']', this).text()
                 });
 
                 // run only once
@@ -40,9 +41,10 @@
                     $(this.elem).find('option').each(function () {
                         var val, aText, $a, $span;
 
-                        val = $(this).text();
-                        aText = (userOptions.showValues) ? val : '';
-                        $a = $('<a />', { href:'#', 'data-rating':val });
+                        val = $(this).val();
+                        text = $(this).text();
+                        aText = (userOptions.showValues) ? text : '';
+                        $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
                         $span = $('<span />', { text:aText });
 
                         $widget.append($a.append($span));
@@ -55,17 +57,16 @@
                         // update text on rating change
                         $widget.find('.current-rating').on('ratingchange',
                             function () {
-                                $(this).text($this.data('barrating').currentRating);
+                                $(this).text($this.data('barrating').currentRatingText);
                             }).trigger('ratingchange');
 
                     }
 
                     // will be reused later
                     updateRating = function () {
-
                         // some rating was already selected?
-                        if ($this.data('barrating').currentRating !== undefined) {
-                            $widget.find('a[data-rating="' + $this.data('barrating').currentRating + '"]')
+                        if ($this.data('barrating').currentRatingValue !== undefined) {
+                            $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
                                 .addClass('selected current')
                                 .prevAll().addClass('selected');
                         }
@@ -92,10 +93,11 @@
                             .prevAll().addClass('selected');
 
                         // remember selected rating
-                        $this.data('barrating').currentRating = $a.attr('data-rating');
+                        $this.data('barrating').currentRatingValue = $a.attr('data-rating-value');
+                        $this.data('barrating').currentRatingText = $a.attr('data-rating-text');
 
                         // change selected OPTION in the select box (now hidden)
-                        $this.val($a.attr('data-rating'));
+                        $this.val($a.attr('data-rating-value'));
 
                         $widget.find('.current-rating').trigger('ratingchange');
 
