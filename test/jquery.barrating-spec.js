@@ -12,11 +12,11 @@ var $ = global.jQuery = jQuery.create(window);
 $('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
 
 for (var i = 1; i <= 10; i++) {
-    var option = (i == 5) ?
-        option = '<option selected="selected" />' :
-        option = '<option />';
+    var attributes = (i == 5) ?
+        attributes = { 'value':i, 'selected':'selected' } :
+        attributes = { 'value':i };
 
-    $(option, { 'value':i }).appendTo('#rating').html(i);
+    $('<option />', attributes).appendTo('#rating').html('rating-text-'+i);
 }
 
 require("../jquery.barrating");
@@ -43,12 +43,15 @@ describe('bar rating plugin on show', function () {
     });
 
     it('should store rating values in data attributes', function () {
-        expect($('.bar-rating a:first').attr('data-rating')).to.equal('1');
-        expect($('.bar-rating a:nth-child(8)').attr('data-rating')).to.equal('8');
+        expect($('.bar-rating a:first').attr('data-rating-value')).to.equal('1');
+        expect($('.bar-rating a:nth-child(8)').attr('data-rating-value')).to.equal('8');
+        expect($('.bar-rating a:first').attr('data-rating-text')).to.equal('rating-text-1');
+        expect($('.bar-rating a:nth-child(8)').attr('data-rating-text')).to.equal('rating-text-8');
     });
 
     it('should read the selected rating from the select field', function () {
-        expect($('#rating').data('barrating').currentRating).to.equal('5');
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('5');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-5');
     });
 
     it('should set a correct class', function () {
@@ -81,7 +84,7 @@ describe('bar rating plugin on show with custom options', function () {
     it('should append a rating value', function () {
         expect($('div.current-rating')).to.have.length(1);
         expect($('div.current-rating').html()).to.equal(
-            $('#rating').data('barrating').currentRating
+            $('#rating').data('barrating').currentRatingText
         );
     });
 
