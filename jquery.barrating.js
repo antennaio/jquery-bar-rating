@@ -30,7 +30,7 @@
                 $this.data('barrating', {
                     initialized:true,
                     currentRatingValue:$this.val(), // initial rating based on the OPTION value
-                    currentRatingText:$('option:selected',$this).text() //$('option[value='+$this.val()+']', this).text()
+                    currentRatingText:$('option:selected',$this).text()
                 });
 
                 // run only once
@@ -39,7 +39,7 @@
 
                     // create A elements that will replace OPTIONs
                     $(this.elem).find('option').each(function () {
-                        var val, aText, $a, $span;
+                        var val, text, aText, $a, $span;
 
                         val = $(this).val();
                         text = $(this).text();
