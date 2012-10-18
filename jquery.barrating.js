@@ -18,34 +18,31 @@
 
         function BarRating() {
             this.show = function () {
-
                 var $this = $(this.elem),
                     userOptions = this.options,
-                    data = $this.data('barrating'),
                     $widget,
                     $all,
                     updateRating,
                     clickEvent = hasTouch ? 'touchstart' : 'click';
 
-                $this.data('barrating', {
-                    initialized:true,
-                    currentRatingValue:$this.val(), // initial rating based on the OPTION value
-                    currentRatingText:$('option:selected',$this).text()
-                });
-
                 // run only once
-                if (!data || data.initialized === false) {
+                if (!$this.data('barrating')) {
+
+                    $this.data('barrating', {
+                        currentRatingValue:$this.val(), // initial rating based on the OPTION value
+                        currentRatingText:$('option:selected',$this).text()
+                    });
+
                     $widget = $('<div />', { 'class':'bar-rating' }).insertAfter(this.elem);
 
                     // create A elements that will replace OPTIONs
                     $(this.elem).find('option').each(function () {
-                        var val, text, aText, $a, $span;
+                        var val, text, $a, $span;
 
                         val = $(this).val();
                         text = $(this).text();
-                        aText = (userOptions.showValues) ? text : '';
                         $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
-                        $span = $('<span />', { text:aText });
+                        $span = $('<span />', { text: (userOptions.showValues) ? text : '' });
 
                         $widget.append($a.append($span));
 

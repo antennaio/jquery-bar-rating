@@ -31,7 +31,6 @@ describe('bar rating plugin on show', function () {
 
     it('should be initialized', function () {
         expect($('#rating').data('barrating')).to.be.a('object');
-        expect($('#rating').data('barrating').initialized).to.equal(true);
     });
 
     it('should hide the select field', function () {
