@@ -5,7 +5,7 @@
     <title>jQuery Bar Rating Plugin Demo</title>
     <meta name="viewport" content="width=device-width">
     <link href="css/examples.css" rel="stylesheet" type="text/css"/>
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet"
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
           type="text/css"/>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="../jquery.barrating.min.js"></script>
@@ -17,6 +17,7 @@
                     showValues:true,
                     showSelectedRating:false
                 });
+                $('#example-f').barrating({ showSelectedRating:false });
                 $(this).addClass('deactivated');
                 $('.rating-disable').removeClass('deactivated');
             });
@@ -138,7 +139,18 @@
             </select>
         </div>
 
-        <br/>
+        <div class="input select rating-f">
+            <label for="example-f">Star rating... why not:</label>
+            <select id="example-f" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <br/><br/>
 
         <h2>Configuration</h2>
 
