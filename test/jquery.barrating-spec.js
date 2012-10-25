@@ -9,6 +9,7 @@ var window = jsdom.jsdom("<html><body></body></html>").createWindow(),
 
 var $ = global.jQuery = jQuery.create(window);
 
+
 $('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
 
 for (var i = 1; i <= 10; i++) {
@@ -22,14 +23,33 @@ for (var i = 1; i <= 10; i++) {
 require("../jquery.barrating");
 
 
-describe('bar rating plugin on show', function () {
+describe('bar rating plugin on init with custom options', function () {
 
-    beforeEach(function (done) {
-        $('#rating').barrating('show');
-        done();
+    it('should update defaults', function () {
+        var BarRating;
+        BarRating = new root.BarRating();
+        BarRating.init({
+            showValues: false
+        });
+        expect(BarRating.options).to.be.a('object');
+        expect(BarRating.options.showValues).to.equal(false);
+        expect(BarRating.options.showSelectedRating).to.equal(true);
     });
 
-    it('should be initialized', function () {
+});
+
+
+describe('bar rating plugin on show', function () {
+
+    before(function () {
+        $('#rating').barrating('show');
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+    });
+
+    it('should have data', function () {
         expect($('#rating').data('barrating')).to.be.a('object');
     });
 
@@ -37,7 +57,7 @@ describe('bar rating plugin on show', function () {
         expect($('#rating').is(":visible")).to.equal(false);
     });
 
-    it('should transform a select field into a rating widget', function () {
+    it('should transform the select field into a rating widget', function () {
         expect($('.bar-rating a')).to.have.length(10);
     });
 
@@ -57,31 +77,11 @@ describe('bar rating plugin on show', function () {
         expect($('.bar-rating a:nth-child(5)').attr('class')).to.equal('selected current');
     });
 
-});
-
-describe('bar rating plugin on show with custom options', function () {
-
-    beforeEach(function (done) {
-        $('#rating').barrating({
-            showValues:true
-        });
-        done();
-    });
-
-    it('should update defaults', function () {
-        var BarRating;
-        BarRating = new root.BarRating();
-        BarRating.init({
-            showValues: true,
-            showSelectedRating: true
-        });
-        expect(BarRating.options).to.be.a('object');
-        expect(BarRating.options.showValues).to.equal(true);
-        expect(BarRating.options.showSelectedRating).to.equal(true);
-    });
-
-    it('should append a rating value', function () {
+    it('should append a rating div', function () {
         expect($('div.current-rating')).to.have.length(1);
+    });
+
+    it('should display a correct rating', function () {
         expect($('div.current-rating').html()).to.equal(
             $('#rating').data('barrating').currentRatingText
         );
@@ -89,14 +89,11 @@ describe('bar rating plugin on show with custom options', function () {
 
 });
 
+
 describe('bar rating plugin on destroy', function () {
 
-    beforeEach(function (done) {
-        $('#rating').barrating('destroy');
-        done();
-    });
-
     it('should show the select field back again', function () {
+        $('#rating').barrating().barrating('destroy');
         expect($('#rating').is(":visible")).to.equal(true);
     });
 

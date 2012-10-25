@@ -17,11 +17,28 @@ How to run tests
 git clone https://github.com/netboy/jquery-bar-rating
 cd jquery-bar-rating
 npm install
-./node_modules/mocha/bin/mocha
+./node_modules/mocha/bin/mocha -R spec
 
-  ․․․․․․․․․
+  bar rating plugin on show
+    ✓ should have data
+    ✓ should hide the select field
+    ✓ should transform a select field into a rating widget
+    ✓ should store rating values in data attributes
+    ✓ should read the selected rating from the select field
+    ✓ should set a correct class
 
-  ✔ 9 tests complete (108 ms)
+  bar rating plugin on init with custom options
+    ✓ should update defaults
+
+  bar rating plugin on show with showValues set to true
+    ✓ should append a rating value div
+    ✓ should display a correct rating value
+
+  bar rating plugin on destroy
+    ✓ should show the select field back again
+
+
+  ✔ 10 tests complete (205 ms)
 
 ```
 
