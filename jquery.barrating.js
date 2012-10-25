@@ -30,7 +30,7 @@
 
                     $this.data('barrating', {
                         currentRatingValue:$this.val(), // initial rating based on the OPTION value
-                        currentRatingText:$('option:selected',$this).text()
+                        currentRatingText:$('option:selected', $this).text()
                     });
 
                     $widget = $('<div />', { 'class':'bar-rating' }).insertAfter(this.elem);
@@ -42,7 +42,7 @@
                         val = $(this).val();
                         text = $(this).text();
                         $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
-                        $span = $('<span />', { text: (userOptions.showValues) ? text : '' });
+                        $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
                         $widget.append($a.append($span));
 
@@ -97,6 +97,10 @@
                         $this.val($a.attr('data-rating-value'));
 
                         $widget.find('.current-rating').trigger('ratingchange');
+
+                        // onSelect callback
+                        userOptions.onSelect.call(this, $this.data('barrating').currentRatingValue,
+                            $this.data('barrating').currentRatingText);
 
                         return false;
 
@@ -170,7 +174,9 @@
         });
     };
     return $.fn.barrating.defaults = {
-        showValues:false,
-        showSelectedRating:true
+        showValues:false, // display rating values on the bars?
+        showSelectedRating:true, // append a div with a rating to the widget?
+        onSelect:function (value, text) {
+        } // callback fired when a rating is selected
     };
 })(jQuery);

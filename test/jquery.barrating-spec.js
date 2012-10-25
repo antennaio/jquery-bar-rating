@@ -53,10 +53,6 @@ describe('bar rating plugin on show', function () {
         expect($('#rating').data('barrating')).to.be.a('object');
     });
 
-    it('should hide the select field', function () {
-        expect($('#rating').is(":visible")).to.equal(false);
-    });
-
     it('should transform the select field into a rating widget', function () {
         expect($('.bar-rating a')).to.have.length(10);
     });
@@ -85,6 +81,51 @@ describe('bar rating plugin on show', function () {
         expect($('div.current-rating').html()).to.equal(
             $('#rating').data('barrating').currentRatingText
         );
+    });
+
+    it('should hide the select field', function () {
+        expect($('#rating').is(":visible")).to.equal(false);
+    });
+
+});
+
+
+describe('bar rating plugin on show and rating selected', function () {
+
+    var valuesFromCallback = [];
+
+    before(function () {
+        $('#rating').barrating('show', {
+            onSelect:function (value, text) {
+                valuesFromCallback.push(value, text);
+            }
+        });
+
+        $('.bar-rating a:nth-child(2)').trigger('click');
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+    });
+
+    it('should update data', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('2');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-2');
+    });
+
+    it('should set a correct class', function () {
+        expect($('.bar-rating a:nth-child(2)').attr('class')).to.equal('selected current');
+    });
+
+    it('should display a correct rating', function () {
+        expect($('div.current-rating').html()).to.equal(
+            $('#rating').data('barrating').currentRatingText
+        );
+    });
+
+    it('should pass correct values to a callback', function () {
+        expect(valuesFromCallback[0]).to.equal('2');
+        expect(valuesFromCallback[1]).to.equal('rating-text-2');
     });
 
 });
