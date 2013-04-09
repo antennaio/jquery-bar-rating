@@ -40,12 +40,15 @@
                         var val, text, $a, $span;
 
                         val = $(this).val();
-                        text = $(this).text();
-                        $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
-                        $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
-                        $widget.append($a.append($span));
+                        // For only select inputs - remove force selecting first element
+                        if (($this.is('select') && val > 0) || !$this.is('select')) {
+                            text = $(this).text();
+                            $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
+                            $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
+                            $widget.append($a.append($span));
+                        }
                     });
 
                     if (userOptions.showSelectedRating) {
@@ -85,16 +88,26 @@
 
                         event.preventDefault();
 
-                        $all.removeClass('active selected current');
-                        $a.addClass('selected current')
+                        $all.removeClass('active selected');
+                        $a.addClass('selected')
                             .prevAll().addClass('selected');
+                        value = $a.attr('data-rating-value');
+
+                        if ($a.hasClass('current')) {
+                            $a.removeClass('selected current').prevAll().removeClass('selected current');
+                            value = 0;
+                        }
+                        else {
+                            $all.removeClass('current');
+                            $a.addClass('current')
+                        }
 
                         // remember selected rating
-                        $this.data('barrating').currentRatingValue = $a.attr('data-rating-value');
+                        $this.data('barrating').currentRatingValue = value;
                         $this.data('barrating').currentRatingText = $a.attr('data-rating-text');
 
                         // change selected OPTION in the select box (now hidden)
-                        $this.val($a.attr('data-rating-value'));
+                        $this.find('option:selected').val(value);
 
                         $widget.find('.current-rating').trigger('ratingchange');
 
