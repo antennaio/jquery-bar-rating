@@ -40,12 +40,15 @@
                         var val, text, $a, $span;
 
                         val = $(this).val();
-                        text = $(this).text();
-                        $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
-                        $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
-                        $widget.append($a.append($span));
+                        // For only select inputs - remove force selecting first element
+                        if (($this.is('select') && val > 0) || !$this.is('select')) {
+                            text = $(this).text();
+                            $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
+                            $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
+                            $widget.append($a.append($span));
+                        }
                     });
 
                     if (userOptions.showSelectedRating) {
