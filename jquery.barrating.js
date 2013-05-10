@@ -95,12 +95,14 @@
                         $all.removeClass('active selected');
                         $a.addClass('selected')
                             .prevAll().addClass('selected');
+
                         value = $a.attr('data-rating-value');
+                        text = $a.attr('data-rating-text');
 
                         // is current and deselectable?
                         if ($a.hasClass('current') && $this.data('barrating').deselectable) { 
                             $a.removeClass('selected current').prevAll().removeClass('selected current');
-                            value = '';
+                            value = '', text = '';
                         } else {
                             $all.removeClass('current');
                             $a.addClass('current')
@@ -108,16 +110,20 @@
 
                         // remember selected rating
                         $this.data('barrating').currentRatingValue = value;
-                        $this.data('barrating').currentRatingText = $a.attr('data-rating-text');
+                        $this.data('barrating').currentRatingText = text;
 
                         // change selected OPTION in the select box (now hidden)
-                        $this.find('option:selected').val(value);
+                        $this.find('option').attr('selected', false);
+                        $this.find('option[value="' + value + '"]').attr('selected', true);
 
                         $widget.find('.current-rating').trigger('ratingchange');
 
                         // onSelect callback
-                        userOptions.onSelect.call(this, $this.data('barrating').currentRatingValue,
-                            $this.data('barrating').currentRatingText);
+                        userOptions.onSelect.call(
+                            this,
+                            $this.data('barrating').currentRatingValue,
+                            $this.data('barrating').currentRatingText
+                        );
 
                         return false;
 
