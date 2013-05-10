@@ -20,29 +20,34 @@ npm install
 ./node_modules/mocha/bin/mocha -R spec
 
   bar rating plugin on init with custom options
-    ✓ should update defaults
+    ✓ should update defaults 
 
   bar rating plugin on show
-    ✓ should have data
-    ✓ should transform the select field into a rating widget
-    ✓ should store rating values in data attributes
-    ✓ should read the selected rating from the select field
-    ✓ should set a correct class
-    ✓ should append a rating div
-    ✓ should display a correct rating
-    ✓ should hide the select field
+    ✓ should have data 
+    ✓ should transform the select field into a rating widget 
+    ✓ should store rating values in data attributes 
+    ✓ should read the selected rating from the select field 
+    ✓ should set a correct class 
+    ✓ should append a rating div 
+    ✓ should display a correct rating 
+    ✓ should hide the select field 
 
   bar rating plugin on show and rating selected
-    ✓ should update data
-    ✓ should set a correct class
-    ✓ should display a correct rating
-    ✓ should pass correct values to a callback
+    ✓ should update data 
+    ✓ should set a correct class 
+    ✓ should display a correct rating 
+    ✓ should pass correct values to a callback 
+
+  bar rating plugin on deselect
+    ✓ should update data 
+    ✓ should successfully deselect rating 
 
   bar rating plugin on destroy
-    ✓ should show the select field back again
+    ✓ should show the select field back again 
 
 
-  ✔ 14 tests complete (235 ms)
+  ✔ 16 tests complete (271 ms)
+
 
 ```
 

@@ -10,15 +10,22 @@ var window = jsdom.jsdom("<html><body></body></html>").createWindow(),
 var $ = global.jQuery = jQuery.create(window);
 
 
-$('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
+function createSelect() {
+    $('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
 
-for (var i = 1; i <= 10; i++) {
-    var attributes = (i == 5) ?
-        attributes = { 'value':i, 'selected':'selected' } :
-        attributes = { 'value':i };
+    for (var i = 1; i <= 10; i++) {
+        var attributes = (i == 5) ?
+            attributes = { 'value':i, 'selected':'selected' } :
+            attributes = { 'value':i };
 
-    $('<option />', attributes).appendTo('#rating').html('rating-text-'+i);
+        $('<option />', attributes).appendTo('#rating').html('rating-text-'+i);
+    }
 }
+
+function destroySelect() {
+    $('#rating').remove();
+}
+
 
 require("../jquery.barrating");
 
@@ -42,11 +49,13 @@ describe('bar rating plugin on init with custom options', function () {
 describe('bar rating plugin on show', function () {
 
     before(function () {
+        createSelect();
         $('#rating').barrating('show');
     });
 
     after(function () {
         $('#rating').barrating('destroy');
+        destroySelect();
     });
 
     it('should have data', function () {
@@ -95,6 +104,8 @@ describe('bar rating plugin on show and rating selected', function () {
     var valuesFromCallback = [];
 
     before(function () {
+        createSelect();
+
         $('#rating').barrating('show', {
             onSelect:function (value, text) {
                 valuesFromCallback.push(value, text);
@@ -106,6 +117,7 @@ describe('bar rating plugin on show and rating selected', function () {
 
     after(function () {
         $('#rating').barrating('destroy');
+        destroySelect();
     });
 
     it('should update data', function () {
@@ -131,7 +143,45 @@ describe('bar rating plugin on show and rating selected', function () {
 });
 
 
+describe('bar rating plugin on deselect', function () {
+
+    before(function () {
+        createSelect();
+
+        // prepend empty OPTION to test deselectable ratings
+        $('#rating').prepend($('<option />', { 'value':'' }));
+        $('#rating').barrating('show');
+
+        // deselect rating
+        $('.bar-rating a:nth-child(5)').trigger('click');
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should update data', function () {
+        expect($('#rating').data('barrating').deselectable).to.equal(true);
+    });
+
+    it('should successfully deselect rating', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('');
+    });
+
+});
+
+
 describe('bar rating plugin on destroy', function () {
+
+    before(function () {
+        createSelect();
+    });
+
+    after(function () {
+        destroySelect();
+    });
 
     it('should show the select field back again', function () {
         $('#rating').barrating().barrating('destroy');
