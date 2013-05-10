@@ -8,7 +8,7 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
           type="text/css"/>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script src="../jquery.barrating.min.js"></script>
+    <script src="../jquery.barrating.js"></script>
     <script type="text/javascript">
         $(function () {
             $('.rating-enable').click(function () {
@@ -100,9 +100,10 @@
         <div class="input select rating-c">
             <label for="example-c">Rating (example C):</label>
             <select id="example-c" name="rating">
+                <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option value="3" selected="selected">3</option>
+                <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>

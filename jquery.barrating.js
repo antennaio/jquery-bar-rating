@@ -35,20 +35,24 @@
 
                     $widget = $('<div />', { 'class':'bar-rating' }).insertAfter(this.elem);
 
+                    // first OPTION empty - allow deselecting of ratings
+                    $this.data('barrating').deselectable = (!$this.find('option:first').val()) ? true : false;
+
                     // create A elements that will replace OPTIONs
-                    $(this.elem).find('option').each(function () {
+                    $this.find('option').each(function () {
                         var val, text, $a, $span;
 
                         val = $(this).val();
 
-                        // For only select inputs - remove force selecting first element
-                        if (($this.is('select') && val > 0) || !$this.is('select')) {
+                        // create ratings - but only if val is defined
+                        if (val) {
                             text = $(this).text();
                             $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
                             $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
 
                             $widget.append($a.append($span));
                         }
+
                     });
 
                     if (userOptions.showSelectedRating) {
@@ -93,11 +97,11 @@
                             .prevAll().addClass('selected');
                         value = $a.attr('data-rating-value');
 
-                        if ($a.hasClass('current')) {
+                        // is current and deselectable?
+                        if ($a.hasClass('current') && $this.data('barrating').deselectable) { 
                             $a.removeClass('selected current').prevAll().removeClass('selected current');
-                            value = 0;
-                        }
-                        else {
+                            value = '';
+                        } else {
                             $all.removeClass('current');
                             $a.addClass('current')
                         }
@@ -169,12 +173,17 @@
         return this.each(function () {
             var plugin = new BarRating();
 
+            // plugin works with select fields
+            if (!$(this).is('select')) {
+                $.error('Sorry, this plugin only works with select fields.');
+            }
+
             // method supplied
             if (plugin.hasOwnProperty(method)) {
                 plugin.init(options, this);
                 return plugin[method]();
 
-                // no method supplied or only options supplied
+            // no method supplied or only options supplied
             } else if (typeof method === 'object' || !method) {
                 options = method;
                 plugin.init(options, this);
