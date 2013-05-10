@@ -88,7 +88,9 @@
                     }
 
                     $all.on(clickEvent, function (event) {
-                        var $a = $(this);
+                        var $a = $(this),
+                            value,
+                            text;
 
                         event.preventDefault();
 
