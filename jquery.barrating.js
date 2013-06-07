@@ -1,5 +1,5 @@
 /**
- * jQuery Bar Rating Plugin
+ * jQuery Bar Rating Plugin v1.0.1
  *
  * http://github.com/netboy/jquery-bar-rating
  *
