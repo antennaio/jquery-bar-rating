@@ -60,8 +60,13 @@
 
                         // update text on rating change
                         $widget.find('.current-rating').on('ratingchange',
-                            function () {
-                                $(this).text($this.data('barrating').currentRatingText);
+                            function (event, $rating) {
+
+                                // rating value undefined?
+                                $rating = $rating ? $rating : $this.data('barrating').currentRatingText;
+
+                                $(this).text($rating);
+
                             }).trigger('ratingchange');
 
                     }
@@ -139,12 +144,23 @@
                                 var $a = $(this);
                                 $all.removeClass('active').removeClass('selected');
                                 $a.addClass('active').prevAll().addClass('active');
+
+                                if (userOptions.showSelectedRating) {
+                                    $widget.find('.current-rating')
+                                        .trigger('ratingchange', [$a.attr('data-rating-text')]);
+                                }
                             }
                         });
 
                         $widget.on({
                             mouseleave:function () {
                                 $all.removeClass('active');
+
+                                if (userOptions.showSelectedRating) {
+                                    $widget.find('.current-rating')
+                                        .trigger('ratingchange');
+                                }
+
                                 updateRating();
                             }
                         });
