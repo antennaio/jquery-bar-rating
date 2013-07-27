@@ -75,9 +75,16 @@
                     updateRating = function () {
                         // some rating was already selected?
                         if ($this.data('barrating').currentRatingValue !== undefined) {
-                            $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
-                                .addClass('selected current')
-                                .prevAll().addClass('selected');
+                            if (userOptions.reverse) {
+                                $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                                    .addClass('selected current')
+                                    .nextAll().addClass('selected');
+                            }
+                            else {
+                                $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                                    .addClass('selected current')
+                                    .prevAll().addClass('selected');
+                            }
                         }
                     };
 
@@ -100,15 +107,26 @@
                         event.preventDefault();
 
                         $all.removeClass('active selected');
-                        $a.addClass('selected')
-                            .prevAll().addClass('selected');
+                        if (userOptions.reverse) {
+                            $a.addClass('selected')
+                                .nextAll().addClass('selected');
+                        }
+                        else {
+                            $a.addClass('selected')
+                                .prevAll().addClass('selected');
+                        }
 
                         value = $a.attr('data-rating-value');
                         text = $a.attr('data-rating-text');
 
                         // is current and deselectable?
-                        if ($a.hasClass('current') && $this.data('barrating').deselectable) { 
-                            $a.removeClass('selected current').prevAll().removeClass('selected current');
+                        if ($a.hasClass('current') && $this.data('barrating').deselectable) {                            
+                            if (userOptions.reverse) {
+                                $a.removeClass('selected current').prevAll().removeClass('selected current');
+                            }
+                            else {
+                                $a.removeClass('selected current').nextAll().removeClass('selected current');
+                            }
                             value = '', text = '';
                         } else {
                             $all.removeClass('current');
@@ -143,7 +161,12 @@
                             mouseenter:function () {
                                 var $a = $(this);
                                 $all.removeClass('active').removeClass('selected');
-                                $a.addClass('active').prevAll().addClass('active');
+                                if (userOptions.reverse) {
+                                    $a.addClass('active').nextAll().addClass('active');
+                                }
+                                else {
+                                    $a.addClass('active').prevAll().addClass('active');
+                                }
 
                                 if (userOptions.showSelectedRating) {
                                     $widget.find('.current-rating')
@@ -222,6 +245,7 @@
     return $.fn.barrating.defaults = {
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
+        reverse:false,
         onSelect:function (value, text) {
         } // callback fired when a rating is selected
     };
