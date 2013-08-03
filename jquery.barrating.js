@@ -192,6 +192,13 @@
                     $widget
                         .trigger('ratingchange')
                         .trigger('updaterating');
+
+                    // onClear callback
+                    this.options.onClear.call(
+                        this,
+                        $this.data('barrating').currentRatingValue,
+                        $this.data('barrating').currentRatingText
+                    );
                 }
             }            
             this.destroy = function () {
@@ -206,6 +213,13 @@
 
                     // show the select box
                     $this.show();
+
+                    // onDestroy callback
+                    this.options.onDestroy.call(
+                        this,
+                        $this.data('barrating').currentRatingValue,
+                        $this.data('barrating').currentRatingText
+                    );
                 }
             }
         }
@@ -252,6 +266,10 @@
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
         onSelect:function (value, text) {
-        } // callback fired when a rating is selected
+        }, // callback fired when a rating is selected
+        onClear:function (value, text) {
+        }, // callback fired when a rating is cleared      
+        onDestroy:function (value, text) {
+        } // callback fired when a widget is destroyed
     };
 })(jQuery);
