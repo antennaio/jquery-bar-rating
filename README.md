@@ -27,14 +27,14 @@ npm install
     ✓ should transform the select field into a rating widget 
     ✓ should store rating values in data attributes 
     ✓ should read the selected rating from the select field 
-    ✓ should set a correct class 
+    ✓ should set correct class 
     ✓ should append a rating div 
     ✓ should display a correct rating 
     ✓ should hide the select field 
 
   bar rating plugin on show and rating selected
     ✓ should update data 
-    ✓ should set a correct class 
+    ✓ should set correct class 
     ✓ should display a correct rating 
     ✓ should pass correct values to a callback 
 
@@ -42,11 +42,16 @@ npm install
     ✓ should update data 
     ✓ should successfully deselect rating 
 
+  bar rating plugin on clear
+    ✓ should restore original rating 
+    ✓ should set correct class 
+
   bar rating plugin on destroy
+    ✓ should remove data 
     ✓ should show the select field back again 
 
 
-  ✔ 16 tests complete (271 ms)
+  ✔ 19 tests complete (515 ms)
 
 
 ```

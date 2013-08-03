@@ -78,8 +78,10 @@ describe('bar rating plugin on show', function () {
         expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-5');
     });
 
-    it('should set a correct class', function () {
-        expect($('.bar-rating a:nth-child(5)').attr('class')).to.equal('selected current');
+    it('should set correct class', function () {
+        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
+        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
+        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
     });
 
     it('should append a rating div', function () {
@@ -125,8 +127,10 @@ describe('bar rating plugin on show and rating selected', function () {
         expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-2');
     });
 
-    it('should set a correct class', function () {
-        expect($('.bar-rating a:nth-child(2)').attr('class')).to.equal('selected current');
+    it('should set correct class', function () {
+        expect($('.bar-rating a:nth-child(1)').hasClass('selected')).to.equal(true);
+        expect($('.bar-rating a:nth-child(2)').hasClass('selected current')).to.equal(true);
+        expect($('.bar-rating a:nth-child(3)').hasClass('selected')).to.equal(false);
     });
 
     it('should display a correct rating', function () {
@@ -173,18 +177,52 @@ describe('bar rating plugin on deselect', function () {
 });
 
 
+describe('bar rating plugin on clear', function () {
+
+    before(function () {
+        createSelect();
+
+        $('#rating').barrating('show');
+        $('.bar-rating a:nth-child(6)').trigger('click');
+        $('#rating').barrating('clear');        
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should restore original rating', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('5');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-5');
+    });
+
+    it('should set correct class', function () {
+        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
+        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
+        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
+    });
+});
+
+
 describe('bar rating plugin on destroy', function () {
 
     before(function () {
         createSelect();
+        $('#rating')
+            .barrating()
+            .barrating('destroy');
     });
 
     after(function () {
         destroySelect();
     });
 
+    it('should remove data', function () {
+        expect($('#rating').data('barrating')).to.equal('');    
+    });    
+
     it('should show the select field back again', function () {
-        $('#rating').barrating().barrating('destroy');
         expect($('#rating').is(":visible")).to.equal(true);
     });
 
