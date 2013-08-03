@@ -1,5 +1,5 @@
-HEAD
-----
+1.0.3
+-----
 - `destroy` method will destroy a single instance of the plugin
 - `clear` method added
 - `onClear` and `onDestroy` callbacks added
