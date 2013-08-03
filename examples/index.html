@@ -169,18 +169,32 @@
         <h2>Configuration</h2>
 
         <strong>showValues:false</strong>
-
         <p>If set to true, rating values will be displayed on the bars.</p>
 
         <strong>showSelectedRating:true</strong>
-
         <p>If set to true, user selected rating will be displayed next to the widget.</p>
+
+        <h2>Methods</h2>
+
+        <strong>$('select').barrating('show');</strong>
+        <p>Shows the rating widget.</p>
+
+        <strong>$('select').barrating('clear');</strong>
+        <p>Clears the rating.</p>
+
+        <strong>$('select').barrating('destroy');</strong>
+        <p>Destroys the rating widget.</p>
 
         <h2>Callbacks</h2>
 
         <strong>onSelect:function(value, text)</strong>
-
         <p>Fired when a rating is selected.</p>
+
+        <strong>onClear:function(value, text)</strong>
+        <p>Fired when a rating is cleared.</p>
+
+        <strong>onDestroy:function(value, text)</strong>
+        <p>Fired when a rating is destroyed.</p>        
 
         <h2>License</h2>
 
