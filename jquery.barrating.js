@@ -207,6 +207,9 @@
 
                 // attempt to destroy the widget
                 if ($widget && $this.data('barrating')) {
+                    var value = $this.data('barrating').currentRatingValue;
+                    var text = $this.data('barrating').currentRatingText;
+
                     $this.removeData('barrating');
 
                     $widget.off().remove();
@@ -217,8 +220,8 @@
                     // onDestroy callback
                     this.options.onDestroy.call(
                         this,
-                        $this.data('barrating').currentRatingValue,
-                        $this.data('barrating').currentRatingText
+                        value,
+                        text
                     );
                 }
             }
