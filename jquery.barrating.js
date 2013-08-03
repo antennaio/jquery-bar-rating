@@ -172,9 +172,10 @@
             }
             this.destroy = function () {
                 var $this = $(this.elem);
+                var $widget = $this.next('.bar-rating');
 
                 $this.removeData('barrating');
-                $('.bar-rating, .bar-rating a').off().remove();
+                $widget.off().remove();
 
                 // show the select box
                 $this.show();
