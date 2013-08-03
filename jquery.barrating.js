@@ -19,21 +19,27 @@
         function BarRating() {
             this.show = function () {
                 var $this = $(this.elem),
-                    userOptions = this.options,
                     $widget,
                     $all,
-                    updateRating,
+                    userOptions = this.options,
                     clickEvent = hasTouch ? 'touchstart' : 'click';
 
                 // run only once
                 if (!$this.data('barrating')) {
 
                     $this.data('barrating', {
-                        currentRatingValue:$this.val(), // initial rating based on the OPTION value
-                        currentRatingText:$('option:selected', $this).text()
+
+                        // initial rating based on the OPTION value
+                        currentRatingValue:$this.val(),
+                        currentRatingText:$('option:selected', $this).text(),
+
+                        // rating will be restored by calling destroy method
+                        originalRatingValue:$this.val(),
+                        originalRatingText:$('option:selected', $this).text()
+
                     });
 
-                    $widget = $('<div />', { 'class':'bar-rating' }).insertAfter(this.elem);
+                    $widget = $('<div />', { 'class':'bar-rating' }).insertAfter($this);
 
                     // first OPTION empty - allow deselecting of ratings
                     $this.data('barrating').deselectable = (!$this.find('option:first').val()) ? true : false;
@@ -55,35 +61,42 @@
 
                     });
 
+                    // append .current-rating div to the widget
                     if (userOptions.showSelectedRating) {
                         $widget.append($('<div />', { text:'', 'class':'current-rating' }));
-
-                        // update text on rating change
-                        $widget.find('.current-rating').on('ratingchange',
-                            function (event, $rating) {
-
-                                // rating value undefined?
-                                $rating = $rating ? $rating : $this.data('barrating').currentRatingText;
-
-                                $(this).text($rating);
-
-                            }).trigger('ratingchange');
-
                     }
 
-                    // will be reused later
-                    updateRating = function () {
-                        // some rating was already selected?
-                        if ($this.data('barrating').currentRatingValue !== undefined) {
-                            $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                    $all = $widget.find('a');
+
+                    // rating change event
+                    $widget.on('ratingchange',
+                        function (event, value, text) {
+
+                            // value or text undefined?
+                            value = value ? value : $this.data('barrating').currentRatingValue;
+                            text = text ? text : $this.data('barrating').currentRatingText;
+
+                            // change selected OPTION in the select box (now hidden)
+                            $this.find('option').attr('selected', false);
+                            $this.find('option[value="' + value + '"]').attr('selected', true);
+
+                            // update .current-rating div
+                            if (userOptions.showSelectedRating) { 
+                                $(this).find('.current-rating').text(text);
+                            }
+
+                        }).trigger('ratingchange');
+
+                    // update rating event
+                    $widget.on('updaterating',
+                        function (event) {
+
+                            // add .selected class
+                            $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
                                 .addClass('selected current')
                                 .prevAll().addClass('selected');
-                        }
-                    };
 
-                    updateRating();
-
-                    $all = $widget.find('a');
+                        }).trigger('updaterating');
 
                     // make sure click event doesn't cause trouble on touch devices
                     if (hasTouch) {
@@ -119,11 +132,7 @@
                         $this.data('barrating').currentRatingValue = value;
                         $this.data('barrating').currentRatingText = text;
 
-                        // change selected OPTION in the select box (now hidden)
-                        $this.find('option').attr('selected', false);
-                        $this.find('option[value="' + value + '"]').attr('selected', true);
-
-                        $widget.find('.current-rating').trigger('ratingchange');
+                        $widget.trigger('ratingchange');
 
                         // onSelect callback
                         userOptions.onSelect.call(
@@ -142,26 +151,23 @@
                         $all.on({
                             mouseenter:function () {
                                 var $a = $(this);
-                                $all.removeClass('active').removeClass('selected');
-                                $a.addClass('active').prevAll().addClass('active');
 
-                                if (userOptions.showSelectedRating) {
-                                    $widget.find('.current-rating')
-                                        .trigger('ratingchange', [$a.attr('data-rating-text')]);
-                                }
+                                $all.removeClass('active selected');
+                                $a.addClass('active')
+                                    .prevAll().addClass('active');
+
+                                $widget.trigger('ratingchange',
+                                    [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
+                                );
                             }
                         });
 
                         $widget.on({
                             mouseleave:function () {
                                 $all.removeClass('active');
-
-                                if (userOptions.showSelectedRating) {
-                                    $widget.find('.current-rating')
-                                        .trigger('ratingchange');
-                                }
-
-                                updateRating();
+                                $widget
+                                    .trigger('ratingchange')
+                                    .trigger('updaterating');
                             }
                         });
                     }
@@ -170,15 +176,37 @@
                     $this.hide();
                 }
             }
+            this.clear = function () {
+                var $this = $(this.elem);
+                var $widget = $this.next('.bar-rating');
+
+                // attempt to clear the rating
+                if ($widget && $this.data('barrating')) {
+
+                    $widget.find('a').removeClass('selected current');
+
+                    // restore original data
+                    $this.data('barrating').currentRatingValue = $this.data('barrating').originalRatingValue;
+                    $this.data('barrating').currentRatingText = $this.data('barrating').originalRatingText;
+
+                    $widget
+                        .trigger('ratingchange')
+                        .trigger('updaterating');
+                }
+            }            
             this.destroy = function () {
                 var $this = $(this.elem);
                 var $widget = $this.next('.bar-rating');
 
-                $this.removeData('barrating');
-                $widget.off().remove();
+                // attempt to destroy the widget
+                if ($widget && $this.data('barrating')) {
+                    $this.removeData('barrating');
 
-                // show the select box
-                $this.show();
+                    $widget.off().remove();
+
+                    // show the select box
+                    $this.show();
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 HEAD
 ----
 - `destroy` method will destroy a single instance of the plugin
+- `clear` method added
 
 1.0.2
 -----
