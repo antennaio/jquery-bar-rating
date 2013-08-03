@@ -1,9 +1,9 @@
 /**
- * jQuery Bar Rating Plugin v1.0.2
+ * jQuery Bar Rating Plugin v1.0.3
  *
  * http://github.com/netboy/jquery-bar-rating
  *
- * Copyright (c) 2012 Kazik Pietruszewski
+ * Copyright (c) 2012-2013 Kazik Pietruszewski
  *
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
