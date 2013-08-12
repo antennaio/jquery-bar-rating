@@ -1,3 +1,8 @@
+HEAD
+____
+
+- `reverse` setting added
+
 1.0.3
 -----
 - `destroy` method will destroy a single instance of the plugin
