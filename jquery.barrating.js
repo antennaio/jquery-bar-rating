@@ -22,6 +22,7 @@
                     $widget,
                     $all,
                     userOptions = this.options,
+                    nextAllorPreviousAll,
                     clickEvent = hasTouch ? 'touchstart' : 'click';
 
                 // run only once
@@ -43,6 +44,13 @@
 
                     // first OPTION empty - allow deselecting of ratings
                     $this.data('barrating').deselectable = (!$this.find('option:first').val()) ? true : false;
+
+                    // use different jQuery function depending on the 'reverse' setting
+                    if (userOptions.reverse) {
+                        nextAllorPreviousAll = 'nextAll';
+                    } else {
+                        nextAllorPreviousAll = 'prevAll';
+                    }
 
                     // create A elements that will replace OPTIONs
                     $this.find('option').each(function () {
@@ -90,18 +98,11 @@
                     // update rating event
                     $widget.on('updaterating',
                         function (event) {
-                            var $a;
 
                             // add classes
-                            $a = $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]');
-
-                            if (userOptions.reverse) {
-                                $a.addClass('selected current')
-                                    .nextAll().addClass('selected');
-                            } else {
-                                $a.addClass('selected current')
-                                    .prevAll().addClass('selected');
-                            }
+                            $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                                .addClass('selected current')[nextAllorPreviousAll]()
+                                .addClass('selected');
 
                         }).trigger('updaterating');
 
@@ -120,26 +121,16 @@
                         event.preventDefault();
 
                         $all.removeClass('active selected');
-                        if (userOptions.reverse) {
-                            $a.addClass('selected')
-                                .nextAll().addClass('selected');
-                        } else {
-                            $a.addClass('selected')
-                                .prevAll().addClass('selected');
-                        }
+                        $a.addClass('selected')[nextAllorPreviousAll]()
+                            .addClass('selected');
 
                         value = $a.attr('data-rating-value');
                         text = $a.attr('data-rating-text');
 
                         // is current and deselectable?
                         if ($a.hasClass('current') && $this.data('barrating').deselectable) {
-                            if (userOptions.reverse) {
-                                $a.removeClass('selected current')
-                                    .nextAll().removeClass('selected current');
-                            } else {
-                                $a.removeClass('selected current')
-                                    .prevAll().removeClass('selected current');
-                            }
+                            $a.removeClass('selected current')[nextAllorPreviousAll]()
+                                .removeClass('selected current');
                             value = '', text = '';
                         } else {
                             $all.removeClass('current');
@@ -171,12 +162,8 @@
                                 var $a = $(this);
 
                                 $all.removeClass('active').removeClass('selected');
-
-                                if (userOptions.reverse) {
-                                    $a.addClass('active').nextAll().addClass('active');
-                                } else {
-                                    $a.addClass('active').prevAll().addClass('active');
-                                }
+                                $a.addClass('active')[nextAllorPreviousAll]()
+                                    .addClass('active');
 
                                 $widget.trigger('ratingchange',
                                     [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
