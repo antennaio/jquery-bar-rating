@@ -41,6 +41,7 @@ describe('bar rating plugin on init with custom options', function () {
         expect(BarRating.options).to.be.a('object');
         expect(BarRating.options.showValues).to.equal(false);
         expect(BarRating.options.showSelectedRating).to.equal(true);
+        expect(BarRating.options.reverse).to.equal(false);
     });
 
 });

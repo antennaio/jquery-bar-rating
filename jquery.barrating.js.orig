@@ -87,6 +87,7 @@
 
                         }).trigger('ratingchange');
 
+<<<<<<< HEAD
                     // update rating event
                     $widget.on('updaterating',
                         function (event) {
@@ -95,6 +96,24 @@
                             $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
                                 .addClass('selected current')
                                 .prevAll().addClass('selected');
+=======
+                    // will be reused later
+                    updateRating = function () {
+                        // some rating was already selected?
+                        if ($this.data('barrating').currentRatingValue !== undefined) {
+                            if (userOptions.reverse) {
+                                $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                                    .addClass('selected current')
+                                    .nextAll().addClass('selected');
+                            }
+                            else {
+                                $widget.find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                                    .addClass('selected current')
+                                    .prevAll().addClass('selected');
+                            }
+                        }
+                    };
+>>>>>>> 119a738f990dae6b47ad38b4608aa7fd9af00326
 
                         }).trigger('updaterating');
 
@@ -129,7 +148,8 @@
                         if ($a.hasClass('current') && $this.data('barrating').deselectable) {                            
                             if (userOptions.reverse) {
                                 $a.removeClass('selected current').prevAll().removeClass('selected current');
-                            } else {
+                            }
+                            else {
                                 $a.removeClass('selected current').nextAll().removeClass('selected current');
                             }
                             value = '', text = '';
@@ -161,14 +181,20 @@
                         $all.on({
                             mouseenter:function () {
                                 var $a = $(this);
-
+<<<<<<< HEAD
+=======
                                 $all.removeClass('active').removeClass('selected');
-
                                 if (userOptions.reverse) {
                                     $a.addClass('active').nextAll().addClass('active');
-                                } else {
+                                }
+                                else {
                                     $a.addClass('active').prevAll().addClass('active');
                                 }
+>>>>>>> 119a738f990dae6b47ad38b4608aa7fd9af00326
+
+                                $all.removeClass('active selected');
+                                $a.addClass('active')
+                                    .prevAll().addClass('active');
 
                                 $widget.trigger('ratingchange',
                                     [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
@@ -282,7 +308,7 @@
     return $.fn.barrating.defaults = {
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
-        reverse:false, // reverse the ratings?
+        reverse:false,
         onSelect:function (value, text) {
         }, // callback fired when a rating is selected
         onClear:function (value, text) {
