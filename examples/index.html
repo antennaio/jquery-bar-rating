@@ -29,6 +29,11 @@
 
                 $('#example-f').barrating({ showSelectedRating:false });
 
+                $('#example-g').barrating('show', {
+                    showSelectedRating:true,
+                    reverse:true
+                });
+
                 $(this).addClass('deactivated');
                 $('.rating-disable').removeClass('deactivated');
             });
@@ -161,6 +166,17 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="input select rating-g">
+            <label for="example-g">Reversed ratings:</label>
+            <select id="example-g" name="rating">
+                <option value="Strongly Agree">Strongly Agree</option>
+                <option value="Agree">Agree</option>
+                <option value="Neither Agree or Disagree">Neither Agree or Disagree</option>
+                <option value="Disagree">Disagree</option>
+                <option value="Strongly Disagree">Strongly Disagree</option>
             </select>
         </div>
 

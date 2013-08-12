@@ -90,11 +90,18 @@
                     // update rating event
                     $widget.on('updaterating',
                         function (event) {
+                            var $a;
 
-                            // add .selected class
-                            $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
-                                .addClass('selected current')
-                                .prevAll().addClass('selected');
+                            // add classes
+                            $a = $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]');
+
+                            if (userOptions.reverse) {
+                                $a.addClass('selected current')
+                                    .nextAll().addClass('selected');
+                            } else {
+                                $a.addClass('selected current')
+                                    .prevAll().addClass('selected');
+                            }
 
                         }).trigger('updaterating');
 
@@ -116,8 +123,7 @@
                         if (userOptions.reverse) {
                             $a.addClass('selected')
                                 .nextAll().addClass('selected');
-                        }
-                        else {
+                        } else {
                             $a.addClass('selected')
                                 .prevAll().addClass('selected');
                         }
@@ -126,11 +132,13 @@
                         text = $a.attr('data-rating-text');
 
                         // is current and deselectable?
-                        if ($a.hasClass('current') && $this.data('barrating').deselectable) {                            
+                        if ($a.hasClass('current') && $this.data('barrating').deselectable) {
                             if (userOptions.reverse) {
-                                $a.removeClass('selected current').prevAll().removeClass('selected current');
+                                $a.removeClass('selected current')
+                                    .nextAll().removeClass('selected current');
                             } else {
-                                $a.removeClass('selected current').nextAll().removeClass('selected current');
+                                $a.removeClass('selected current')
+                                    .prevAll().removeClass('selected current');
                             }
                             value = '', text = '';
                         } else {

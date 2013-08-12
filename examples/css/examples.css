@@ -311,6 +311,10 @@ button.blue-pill.deactivated:hover {
 
 /******* EXAMPLE F *******/
 
+.rating-f .bar-rating {
+    height: 24px;
+}
+
 .rating-f .bar-rating a {
     background: url('../img/star.png');
     width: 24px;
@@ -323,6 +327,33 @@ button.blue-pill.deactivated:hover {
 .rating-f .bar-rating a.active,
 .rating-f .bar-rating a.selected {
     background-position: 0 24px;
+}
+
+/******* EXAMPLE G *******/
+
+.rating-g .bar-rating {
+    height: 25px;
+}
+
+.rating-g .bar-rating a {
+    display: block;
+    width: 50px;
+    height: 16px;
+    float: left;
+    background-color: #e3e3e3;
+    margin: 1px;
+}
+
+.rating-g .bar-rating a.active,
+.rating-g .bar-rating a.selected {
+    background-color: #59a6d6;
+}
+
+.rating-g .bar-rating .current-rating {
+    line-height: 1.1;
+    float: left;
+    padding: 0 20px 0 20px;
+    color: #646464;
 }
 
 @media
