@@ -1,7 +1,19 @@
 HEAD
 ----
 
-- prefixed class names
+- prefixed class names:
+
+  `.bar-rating` changed to `.br-widget`
+
+  `.current-rating` changed to `.br-current-rating`
+
+  `.active` changed to `.br-active`
+
+  `.selected` changed to `.br-selected`
+
+  `.current` changed to `.br-current`
+
+- read-only and reversed rating marked with `.br-readonly` and `.br-reverse` classes respectively
 
 1.0.4
 -----
