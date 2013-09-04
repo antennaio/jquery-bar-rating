@@ -224,6 +224,11 @@ button.blue-pill.deactivated:hover {
     color: #646464;
 }
 
+.rating-b .br-readonly a.br-active,
+.rating-b .br-readonly a.br-selected {
+    background-color: #cbcbcb;
+}
+
 /******* EXAMPLE C *******/
 
 .rating-c .br-widget {
