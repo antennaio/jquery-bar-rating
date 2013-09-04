@@ -1,3 +1,8 @@
+HEAD
+----
+
+- prefixed class names
+
 1.0.4
 -----
 

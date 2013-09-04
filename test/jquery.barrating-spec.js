@@ -65,14 +65,14 @@ describe('bar rating plugin on show', function () {
     });
 
     it('should transform the select field into a rating widget', function () {
-        expect($('.bar-rating a')).to.have.length(10);
+        expect($('.br-widget a')).to.have.length(10);
     });
 
     it('should store rating values in data attributes', function () {
-        expect($('.bar-rating a:first').attr('data-rating-value')).to.equal('1');
-        expect($('.bar-rating a:nth-child(8)').attr('data-rating-value')).to.equal('8');
-        expect($('.bar-rating a:first').attr('data-rating-text')).to.equal('rating-text-1');
-        expect($('.bar-rating a:nth-child(8)').attr('data-rating-text')).to.equal('rating-text-8');
+        expect($('.br-widget a:first').attr('data-rating-value')).to.equal('1');
+        expect($('.br-widget a:nth-child(8)').attr('data-rating-value')).to.equal('8');
+        expect($('.br-widget a:first').attr('data-rating-text')).to.equal('rating-text-1');
+        expect($('.br-widget a:nth-child(8)').attr('data-rating-text')).to.equal('rating-text-8');
     });
 
     it('should read the selected rating from the select field', function () {
@@ -81,17 +81,17 @@ describe('bar rating plugin on show', function () {
     });
 
     it('should set correct class', function () {
-        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
-        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
-        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
+        expect($('.br-widget a:nth-child(6)').hasClass('br-selected')).to.equal(false);
     });
 
     it('should append a rating div', function () {
-        expect($('div.current-rating')).to.have.length(1);
+        expect($('div.br-current-rating')).to.have.length(1);
     });
 
     it('should display a correct rating', function () {
-        expect($('div.current-rating').html()).to.equal(
+        expect($('div.br-current-rating').html()).to.equal(
             $('#rating').data('barrating').currentRatingText
         );
     });
@@ -116,7 +116,7 @@ describe('bar rating plugin on show and rating selected', function () {
             }
         });
 
-        $('.bar-rating a:nth-child(2)').trigger('click');
+        $('.br-widget a:nth-child(2)').trigger('click');
     });
 
     after(function () {
@@ -130,13 +130,13 @@ describe('bar rating plugin on show and rating selected', function () {
     });
 
     it('should set correct class', function () {
-        expect($('.bar-rating a:nth-child(1)').hasClass('selected')).to.equal(true);
-        expect($('.bar-rating a:nth-child(2)').hasClass('selected current')).to.equal(true);
-        expect($('.bar-rating a:nth-child(3)').hasClass('selected')).to.equal(false);
+        expect($('.br-widget a:nth-child(1)').hasClass('br-selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(2)').hasClass('br-selected br-current')).to.equal(true);
+        expect($('.br-widget a:nth-child(3)').hasClass('br-selected')).to.equal(false);
     });
 
     it('should display a correct rating', function () {
-        expect($('div.current-rating').html()).to.equal(
+        expect($('div.br-current-rating').html()).to.equal(
             $('#rating').data('barrating').currentRatingText
         );
     });
@@ -165,9 +165,9 @@ describe('bar rating plugin reversed', function () {
     });
 
     it('should set correct class', function () {
-        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(false);
-        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
-        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(false);
+        expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
+        expect($('.br-widget a:nth-child(6)').hasClass('br-selected')).to.equal(true);
     });
 
 });
@@ -182,7 +182,7 @@ describe('bar rating plugin read-only', function () {
             readonly:true
         });
 
-        $('.bar-rating a:nth-child(6)').trigger('click');
+        $('.br-widget a:nth-child(6)').trigger('click');
     });
 
     after(function () {
@@ -191,9 +191,9 @@ describe('bar rating plugin read-only', function () {
     });
 
     it('should set correct class', function () {
-        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
-        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
-        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
+        expect($('.br-widget a:nth-child(6)').hasClass('br-selected')).to.equal(false);
     });
 
     it('should ignore user input', function () {
@@ -214,7 +214,7 @@ describe('bar rating plugin on deselect', function () {
         $('#rating').barrating('show');
 
         // deselect rating
-        $('.bar-rating a:nth-child(5)').trigger('click');
+        $('.br-widget a:nth-child(5)').trigger('click');
     });
 
     after(function () {
@@ -240,7 +240,7 @@ describe('bar rating plugin on clear', function () {
         createSelect();
 
         $('#rating').barrating('show');
-        $('.bar-rating a:nth-child(6)').trigger('click');
+        $('.br-widget a:nth-child(6)').trigger('click');
         $('#rating').barrating('clear');        
     });
 
@@ -255,9 +255,9 @@ describe('bar rating plugin on clear', function () {
     });
 
     it('should set correct class', function () {
-        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
-        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
-        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
+        expect($('.br-widget a:nth-child(6)').hasClass('br-selected')).to.equal(false);
     });
 });
 

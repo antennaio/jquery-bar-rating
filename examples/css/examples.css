@@ -169,11 +169,11 @@ button.blue-pill.deactivated:hover {
 
 /******* EXAMPLE A *******/
 
-.rating-a .bar-rating {
+.rating-a .br-widget {
     height: 52px;
 }
 
-.rating-a .bar-rating a {
+.rating-a .br-widget a {
     display: block;
     width: 15px;
     padding: 5px 0 5px 0;
@@ -184,12 +184,12 @@ button.blue-pill.deactivated:hover {
     text-align: center;
 }
 
-.rating-a .bar-rating a.active,
-.rating-a .bar-rating a.selected {
+.rating-a .br-widget a.br-active,
+.rating-a .br-widget a.br-selected {
     background-color: #59a6d6;
 }
 
-.rating-a .bar-rating .current-rating {
+.rating-a .br-widget .br-current-rating {
     font-size: 20px;
     line-height: 2;
     float: left;
@@ -199,11 +199,11 @@ button.blue-pill.deactivated:hover {
 
 /******* EXAMPLE B *******/
 
-.rating-b .bar-rating {
+.rating-b .br-widget {
     height: 25px;
 }
 
-.rating-b .bar-rating a {
+.rating-b .br-widget a {
     display: block;
     width: 70px;
     height: 16px;
@@ -212,12 +212,12 @@ button.blue-pill.deactivated:hover {
     margin: 1px;
 }
 
-.rating-b .bar-rating a.active,
-.rating-b .bar-rating a.selected {
+.rating-b .br-widget a.br-active,
+.rating-b .br-widget a.br-selected {
     background-color: #59a6d6;
 }
 
-.rating-b .bar-rating .current-rating {
+.rating-b .br-widget .br-current-rating {
     line-height: 1.1;
     float: left;
     padding: 0 20px 0 20px;
@@ -226,11 +226,11 @@ button.blue-pill.deactivated:hover {
 
 /******* EXAMPLE C *******/
 
-.rating-c .bar-rating {
+.rating-c .br-widget {
     height: 52px;
 }
 
-.rating-c .bar-rating a {
+.rating-c .br-widget a {
     display: block;
     width: 35px;
     height: 35px;
@@ -245,19 +245,19 @@ button.blue-pill.deactivated:hover {
     color: #b6b6b6;
 }
 
-.rating-c .bar-rating a.active,
-.rating-c .bar-rating a.selected {
+.rating-c .br-widget a.br-active,
+.rating-c .br-widget a.br-selected {
     background-color: #59a6d6;
     color: white;
 }
 
 /******* EXAMPLE D *******/
 
-.rating-d .bar-rating {
+.rating-d .br-widget {
     height: 52px;
 }
 
-.rating-d .bar-rating a {
+.rating-d .br-widget a {
     display: block;
     width: 40px;
     padding: 5px 0 5px 0;
@@ -272,24 +272,24 @@ button.blue-pill.deactivated:hover {
     text-align: center;
 }
 
-.rating-d .bar-rating a span {
+.rating-d .br-widget a span {
     color: white;
 }
 
-.rating-d .bar-rating a.active,
-.rating-d .bar-rating a.selected {
+.rating-d .br-widget a.br-active,
+.rating-d .br-widget a.br-selected {
 
     border-bottom: 2px solid #646464;
 }
 
-.rating-d .bar-rating a:hover span,
-.rating-d .bar-rating a.current span {
+.rating-d .br-widget a:hover span,
+.rating-d .br-widget a.br-current span {
     color: #646464;
 }
 
 /******* EXAMPLE E *******/
 
-.rating-e .bar-rating a {
+.rating-e .br-widget a {
     padding: 5px;
     color: #646464;
     text-decoration: none;
@@ -299,23 +299,23 @@ button.blue-pill.deactivated:hover {
     text-align: center;
 }
 
-.rating-e .bar-rating a.active {
+.rating-e .br-widget a.br-active {
     background-color: #e3e3e3;
     color: #646464;
 }
 
-.rating-e .bar-rating a.selected {
+.rating-e .br-widget a.br-selected {
     background-color: #59a6d6;
     color: white;
 }
 
 /******* EXAMPLE F *******/
 
-.rating-f .bar-rating {
+.rating-f .br-widget {
     height: 24px;
 }
 
-.rating-f .bar-rating a {
+.rating-f .br-widget a {
     background: url('../img/star.png');
     width: 24px;
     height: 24px;
@@ -323,19 +323,19 @@ button.blue-pill.deactivated:hover {
     float: left;
 }
 
-.rating-f .bar-rating a:hover,
-.rating-f .bar-rating a.active,
-.rating-f .bar-rating a.selected {
+.rating-f .br-widget a:hover,
+.rating-f .br-widget a.br-active,
+.rating-f .br-widget a.br-selected {
     background-position: 0 24px;
 }
 
 /******* EXAMPLE G *******/
 
-.rating-g .bar-rating {
+.rating-g .br-widget {
     height: 25px;
 }
 
-.rating-g .bar-rating a {
+.rating-g .br-widget a {
     display: block;
     width: 50px;
     height: 16px;
@@ -344,12 +344,12 @@ button.blue-pill.deactivated:hover {
     margin: 1px;
 }
 
-.rating-g .bar-rating a.active,
-.rating-g .bar-rating a.selected {
+.rating-g .br-widget a.br-active,
+.rating-g .br-widget a.br-selected {
     background-color: #59a6d6;
 }
 
-.rating-g .bar-rating .current-rating {
+.rating-g .br-widget .br-current-rating {
     line-height: 1.1;
     float: left;
     padding: 0 20px 0 20px;
@@ -360,7 +360,7 @@ button.blue-pill.deactivated:hover {
 only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio : 1.5),
 (min-resolution: 192dpi) {
-    .rating-f .bar-rating a {
+    .rating-f .br-widget a {
         background: url('../img/star@2x.png');
         background-size: 24px 48px;
     }

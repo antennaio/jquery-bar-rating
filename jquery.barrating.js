@@ -40,7 +40,7 @@
 
                     });
 
-                    $widget = $('<div />', { 'class':'bar-rating' }).insertAfter($this);
+                    $widget = $('<div />', { 'class':'br-widget' }).insertAfter($this);
 
                     // create A elements that will replace OPTIONs
                     $this.find('option').each(function () {
@@ -59,9 +59,9 @@
 
                     });
 
-                    // append .current-rating div to the widget
+                    // append .br-current-rating div to the widget
                     if (userOptions.showSelectedRating) {
-                        $widget.append($('<div />', { text:'', 'class':'current-rating' }));
+                        $widget.append($('<div />', { text:'', 'class':'br-current-rating' }));
                     }
 
                     // first OPTION empty - allow deselecting of ratings
@@ -79,9 +79,9 @@
                             $this.find('option').attr('selected', false);
                             $this.find('option[value="' + value + '"]').attr('selected', true);
 
-                            // update .current-rating div
+                            // update .br-current-rating div
                             if (userOptions.showSelectedRating) { 
-                                $(this).find('.current-rating').text(text);
+                                $(this).find('.br-current-rating').text(text);
                             }
 
                         }).trigger('ratingchange');
@@ -99,8 +99,8 @@
 
                             // add classes
                             $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
-                                .addClass('selected current')[nextAllorPreviousAll]()
-                                .addClass('selected');
+                                .addClass('br-selected br-current')[nextAllorPreviousAll]()
+                                .addClass('br-selected');
 
                         }).trigger('updaterating');
 
@@ -124,21 +124,21 @@
 
                             event.preventDefault();
 
-                            $all.removeClass('active selected');
-                            $a.addClass('selected')[nextAllorPreviousAll]()
-                                .addClass('selected');
+                            $all.removeClass('br-active br-selected');
+                            $a.addClass('br-selected')[nextAllorPreviousAll]()
+                                .addClass('br-selected');
 
                             value = $a.attr('data-rating-value');
                             text = $a.attr('data-rating-text');
 
                             // is current and deselectable?
-                            if ($a.hasClass('current') && $this.data('barrating').deselectable) {
-                                $a.removeClass('selected current')[nextAllorPreviousAll]()
-                                    .removeClass('selected current');
+                            if ($a.hasClass('br-current') && $this.data('barrating').deselectable) {
+                                $a.removeClass('br-selected br-current')[nextAllorPreviousAll]()
+                                    .removeClass('br-selected br-current');
                                 value = '', text = '';
                             } else {
-                                $all.removeClass('current');
-                                $a.addClass('current')
+                                $all.removeClass('br-current');
+                                $a.addClass('br-current')
                             }
 
                             // remember selected rating
@@ -165,9 +165,9 @@
                                 mouseenter:function () {
                                     var $a = $(this);
 
-                                    $all.removeClass('active').removeClass('selected');
-                                    $a.addClass('active')[nextAllorPreviousAll]()
-                                        .addClass('active');
+                                    $all.removeClass('br-active').removeClass('br-selected');
+                                    $a.addClass('br-active')[nextAllorPreviousAll]()
+                                        .addClass('br-active');
 
                                     $widget.trigger('ratingchange',
                                         [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
@@ -177,7 +177,7 @@
 
                             $widget.on({
                                 mouseleave:function () {
-                                    $all.removeClass('active');
+                                    $all.removeClass('br-active');
                                     $widget
                                         .trigger('ratingchange')
                                         .trigger('updaterating');
@@ -193,12 +193,12 @@
             }
             this.clear = function () {
                 var $this = $(this.elem);
-                var $widget = $this.next('.bar-rating');
+                var $widget = $this.next('.br-widget');
 
                 // attempt to clear the rating
                 if ($widget && $this.data('barrating')) {
 
-                    $widget.find('a').removeClass('selected current');
+                    $widget.find('a').removeClass('br-selected br-current');
 
                     // restore original data
                     $this.data('barrating').currentRatingValue = $this.data('barrating').originalRatingValue;
@@ -218,7 +218,7 @@
             }            
             this.destroy = function () {
                 var $this = $(this.elem);
-                var $widget = $this.next('.bar-rating');
+                var $widget = $this.next('.br-widget');
 
                 // attempt to destroy the widget
                 if ($widget && $this.data('barrating')) {
