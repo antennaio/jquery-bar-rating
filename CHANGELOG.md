@@ -1,5 +1,5 @@
-HEAD
-----
+1.0.4
+-----
 
 - `readonly` setting added
 - `reverse` setting added
