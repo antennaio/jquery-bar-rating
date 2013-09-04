@@ -38,6 +38,13 @@ npm install
     ✓ should display a correct rating 
     ✓ should pass correct values to a callback 
 
+  bar rating plugin reversed
+    ✓ should set correct class 
+
+  bar rating plugin read-only
+    ✓ should set correct class 
+    ✓ should ignore user input 
+
   bar rating plugin on deselect
     ✓ should update data 
     ✓ should successfully deselect rating 
@@ -51,8 +58,7 @@ npm install
     ✓ should show the select field back again 
 
 
-  ✔ 19 tests complete (515 ms)
-
+  ✔ 22 tests complete (320 ms)
 
 ```
 
