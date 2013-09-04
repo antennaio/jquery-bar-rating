@@ -42,6 +42,7 @@ describe('bar rating plugin on init with custom options', function () {
         expect(BarRating.options.showValues).to.equal(false);
         expect(BarRating.options.showSelectedRating).to.equal(true);
         expect(BarRating.options.reverse).to.equal(false);
+        expect(BarRating.options.readonly).to.equal(false);
     });
 
 });
@@ -143,6 +144,61 @@ describe('bar rating plugin on show and rating selected', function () {
     it('should pass correct values to a callback', function () {
         expect(valuesFromCallback[0]).to.equal('2');
         expect(valuesFromCallback[1]).to.equal('rating-text-2');
+    });
+
+});
+
+
+describe('bar rating plugin reversed', function () {
+
+    before(function () {
+        createSelect();
+
+        $('#rating').barrating('show', {
+            reverse:true
+        });
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should set correct class', function () {
+        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(false);
+        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
+        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(true);
+    });
+
+});
+
+
+describe('bar rating plugin read-only', function () {
+
+    before(function () {
+        createSelect();
+
+        $('#rating').barrating('show', {
+            readonly:true
+        });
+
+        $('.bar-rating a:nth-child(6)').trigger('click');
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should set correct class', function () {
+        expect($('.bar-rating a:nth-child(4)').hasClass('selected')).to.equal(true);
+        expect($('.bar-rating a:nth-child(5)').hasClass('selected current')).to.equal(true);
+        expect($('.bar-rating a:nth-child(6)').hasClass('selected')).to.equal(false);
+    });
+
+    it('should ignore user input', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('5');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-5');
     });
 
 });
