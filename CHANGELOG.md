@@ -1,6 +1,7 @@
 HEAD
-____
+----
 
+- `readonly` setting added
 - `reverse` setting added
 
 1.0.3

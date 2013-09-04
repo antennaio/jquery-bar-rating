@@ -12,7 +12,11 @@
     <script type="text/javascript">
         $(function () {
             $('.rating-enable').click(function () {
-                $('#example-a, #example-b').barrating();
+                $('#example-a').barrating();
+
+                $('#example-b').barrating('show', {
+                    readonly:true
+                });
 
                 $('#example-c, #example-d').barrating('show', {
                     showValues:true,
@@ -23,7 +27,7 @@
                     showValues:true,
                     showSelectedRating:false,
                     onSelect:function(value, text) {
-                        alert('Rating: ' + value);
+                        alert('Selected rating: ' + value);
                     }
                 });
 
@@ -67,7 +71,7 @@
             <blockquote>
                 jQuery Bar Rating Plugin works by transforming a standard
                 select box into a rating widget. It’s only 4kb minified and easy
-                to style with CSS. Take a look at some examples.
+                to style with CSS. Take a look at a few examples.
             </blockquote>
         </header>
 
@@ -77,7 +81,7 @@
         </div>
 
         <div class="input select rating-a">
-            <label for="example-a">Rating (example A):</label>
+            <label for="example-a">Basic example:</label>
             <select id="example-a" name="rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -93,17 +97,17 @@
         </div>
 
         <div class="input select rating-b">
-            <label for="example-b">Rating (example B):</label>
+            <label for="example-b">Read-only rating:</label>
             <select id="example-b" name="rating">
                 <option value="Bad">Bad</option>
                 <option value="Mediocre">Mediocre</option>
-                <option value="Quite good">Quite good</option>
+                <option value="Quite good" selected="selected">Quite good</option>
                 <option value="Awesome">Awesome</option>
             </select>
         </div>
 
         <div class="input select rating-c">
-            <label for="example-c">Rating (example C):</label>
+            <label for="example-c">Rating values displayed on the bars:</label>
             <select id="example-c" name="rating">
                 <option value=""></option>
                 <option value="1">1</option>
@@ -115,7 +119,7 @@
         </div>
 
         <div class="input select rating-d">
-            <label for="example-d">Rating (example D):</label>
+            <label for="example-d">Advanced styling:</label>
             <select id="example-d" name="rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -131,7 +135,7 @@
         </div>
 
         <div class="input select rating-e">
-            <label for="example-e">Rating (example E), with a callback:</label>
+            <label for="example-e">A rating with <i>onSelect</i> callback:</label>
             <select id="example-e" name="rating">
                 <option value="D">D</option>
                 <option value="C">C</option>
@@ -170,7 +174,7 @@
         </div>
 
         <div class="input select rating-g">
-            <label for="example-g">Reversed ratings:</label>
+            <label for="example-g">Reversed rating:</label>
             <select id="example-g" name="rating">
                 <option value="Strongly Agree">Strongly Agree</option>
                 <option value="Agree">Agree</option>
@@ -192,6 +196,9 @@
 
         <strong>reverse:false</strong>
         <p>If set to true, the ratings will be reversed.</p>
+
+        <strong>readonly:false</strong>
+        <p>If set to true, the ratings will be read-only.</p>
 
         <h2>Methods</h2>
 
