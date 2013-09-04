@@ -67,6 +67,22 @@
                     // first OPTION empty - allow deselecting of ratings
                     $this.data('barrating').deselectable = (!$this.find('option:first').val()) ? true : false;
 
+                    // use different jQuery function depending on the 'reverse' setting
+                    if (userOptions.reverse) {                        
+                        nextAllorPreviousAll = 'nextAll';
+                    } else {
+                        nextAllorPreviousAll = 'prevAll';
+                    }
+
+                    // additional classes for the widget
+                    if (userOptions.reverse) {
+                        $widget.addClass('br-reverse');
+                    }
+
+                    if (userOptions.readonly) {
+                        $widget.addClass('br-readonly');
+                    }
+
                     // rating change event
                     $widget.on('ratingchange',
                         function (event, value, text) {
@@ -85,13 +101,6 @@
                             }
 
                         }).trigger('ratingchange');
-
-                    // use different jQuery function depending on the 'reverse' setting
-                    if (userOptions.reverse) {
-                        nextAllorPreviousAll = 'nextAll';
-                    } else {
-                        nextAllorPreviousAll = 'prevAll';
-                    }
 
                     // update rating event
                     $widget.on('updaterating',
