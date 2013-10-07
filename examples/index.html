@@ -24,6 +24,7 @@
                 });
 
                 $('#example-e').barrating('show', {
+                    initialRating:'A',                    
                     showValues:true,
                     showSelectedRating:false,
                     onSelect:function(value, text) {
@@ -153,7 +154,7 @@
                 <option value="BBB">BBB</option>
                 <option value="BBB+">BBB+</option>
                 <option value="A-">A-</option>
-                <option value="A" selected="selected">A</option>
+                <option value="A">A</option>
                 <option value="A+">A+</option>
                 <option value="AA-">AA-</option>
                 <option value="AA">AA</option>
@@ -187,6 +188,9 @@
         <br/><br/>
 
         <h2>Configuration</h2>
+
+        <strong>initialRating:null</strong>
+        <p>Pass an option value to specify initial rating. If null, the plugin will try to set the initial rating by finding an option with a `selected` attribute.</p>
 
         <strong>showValues:false</strong>
         <p>If set to true, rating values will be displayed on the bars.</p>

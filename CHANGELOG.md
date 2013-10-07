@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- `initialRating` setting added
+
 - prefixed class names:
 
   `.bar-rating` changed to `.br-widget`

@@ -23,22 +23,29 @@
                     $all,
                     userOptions = this.options,
                     nextAllorPreviousAll,
+                    initialOption,
                     clickEvent = hasTouch ? 'touchstart' : 'click';
 
                 // run only once
                 if (!$this.data('barrating')) {
 
+                    if (userOptions.initialRating) {
+                        initialOption = $('option[value="' + userOptions.initialRating  + '"]', $this);
+                    } else {
+                        initialOption = $('option:selected', $this);
+                    }
+
                     $this.data('barrating', {
 
                         // initial rating based on the OPTION value
-                        currentRatingValue:$this.val(),
-                        currentRatingText:$('option:selected', $this).text(),
+                        currentRatingValue:initialOption.val(),
+                        currentRatingText:initialOption.text(),
 
                         // rating will be restored by calling destroy method
-                        originalRatingValue:$this.val(),
-                        originalRatingText:$('option:selected', $this).text()
+                        originalRatingValue:initialOption.val(),
+                        originalRatingText:initialOption.text()
 
-                    });
+                    });   
 
                     $widget = $('<div />', { 'class':'br-widget' }).insertAfter($this);
 
@@ -290,6 +297,7 @@
         });
     };
     return $.fn.barrating.defaults = {
+        initialRating:null, // initial rating
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
         reverse:false, // reverse the rating?
