@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- bugfix: selected option changed by propterties, not attributes (fixes issue #7)
+
 - `initialRating` setting added
 
 - prefixed class names:
