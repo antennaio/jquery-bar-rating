@@ -19,6 +19,8 @@ HEAD
 
 - read-only and reversed rating marked with `.br-readonly` and `.br-reverse` classes respectively
 
+- bugfix: removed touch detection - improved cross-browser compatibility (fixes issue #11)
+
 1.0.4
 -----
 

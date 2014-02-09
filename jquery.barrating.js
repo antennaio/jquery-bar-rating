@@ -3,16 +3,16 @@
  *
  * http://github.com/netboy/jquery-bar-rating
  *
- * Copyright (c) 2012-2013 Kazik Pietruszewski
+ * Copyright (c) 2012-2014 Kazik Pietruszewski
  *
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
 (function ($) {
-    var BarRating, root, hasTouch;
+    var BarRating, root;
+
     root = typeof window !== "undefined" && window !== null ? window : global;
-    hasTouch = 'ontouchstart' in root;
 
     root.BarRating = BarRating = (function () {
 
@@ -23,8 +23,7 @@
                     $all,
                     userOptions = this.options,
                     nextAllorPreviousAll,
-                    initialOption,
-                    clickEvent = hasTouch ? 'touchstart' : 'click';
+                    initialOption;
 
                 // run only once
                 if (!$this.data('barrating')) {
@@ -121,9 +120,16 @@
 
                     $all = $widget.find('a');
 
-                    // make sure click event doesn't cause trouble on touch devices
+                    // fast clicks
+                    $all.on('touchstart', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        $(this).click();
+                    });
+
                     // do not react to click events if rating is read-only
-                    if (hasTouch || userOptions.readonly) {
+                    if (userOptions.readonly) {
                         $all.on('click', function (event) {
                             event.preventDefault();
                         });
@@ -132,7 +138,7 @@
                     // add interactions
                     if (!userOptions.readonly) {
 
-                        $all.on(clickEvent, function (event) {
+                        $all.on('click', function (event) {
                             var $a = $(this),
                                 value,
                                 text;
@@ -174,31 +180,28 @@
                         });
 
                         // attach mouseenter/mouseleave event handlers
-                        if (!hasTouch) {
+                        $all.on({
+                            mouseenter:function () {
+                                var $a = $(this);
 
-                            $all.on({
-                                mouseenter:function () {
-                                    var $a = $(this);
+                                $all.removeClass('br-active').removeClass('br-selected');
+                                $a.addClass('br-active')[nextAllorPreviousAll]()
+                                    .addClass('br-active');
 
-                                    $all.removeClass('br-active').removeClass('br-selected');
-                                    $a.addClass('br-active')[nextAllorPreviousAll]()
-                                        .addClass('br-active');
+                                $widget.trigger('ratingchange',
+                                    [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
+                                );
+                            }
+                        });
 
-                                    $widget.trigger('ratingchange',
-                                        [$a.attr('data-rating-value'), $a.attr('data-rating-text')]
-                                    );
-                                }
-                            });
-
-                            $widget.on({
-                                mouseleave:function () {
-                                    $all.removeClass('br-active');
-                                    $widget
-                                        .trigger('ratingchange')
-                                        .trigger('updaterating');
-                                }
-                            });
-                        }
+                        $widget.on({
+                            mouseleave:function () {
+                                $all.removeClass('br-active');
+                                $widget
+                                    .trigger('ratingchange')
+                                    .trigger('updaterating');
+                            }
+                        });
 
                     }
 
