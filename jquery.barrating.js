@@ -98,6 +98,7 @@
                             text = text ? text : $this.data('barrating').currentRatingText;
 
                             // change selected OPTION in the select box (now hidden)
+                            // Prop instead of attr
                             $this.find('option[value="' + value + '"]').prop('selected', true);
 
                             // update .br-current-rating div
