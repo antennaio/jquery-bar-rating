@@ -1,6 +1,10 @@
 jQuery Bar Rating Plugin
 ========================
 
+Forked: Prop instead of attr 
+--------------------------
+$this.find('option[value="' + value + '"]').prop('selected', true);
+
 Minimal, light-weight jQuery ratings.
 
 How to use
