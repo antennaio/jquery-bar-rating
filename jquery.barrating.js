@@ -1,7 +1,7 @@
 /**
  * jQuery Bar Rating Plugin v1.0.4
  *
- * http://github.com/netboy/jquery-bar-rating
+ * http://github.com/antennaio/jquery-bar-rating
  *
  * Copyright (c) 2012-2014 Kazik Pietruszewski
  *

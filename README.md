@@ -8,13 +8,13 @@ How to use
 
 Examples of use are here:
 
-[http://netboy.pl/demo/jquery-bar-rating/examples/](http://netboy.pl/demo/jquery-bar-rating/examples/)
+[http://antenna.io/demo/jquery-bar-rating/examples/](http://antenna.io/demo/jquery-bar-rating/examples/)
 
 How to run tests
 ----------------
 
 ```
-git clone https://github.com/netboy/jquery-bar-rating
+git clone https://github.com/antennaio/jquery-bar-rating
 cd jquery-bar-rating
 npm install
 ./node_modules/mocha/bin/mocha -R spec
