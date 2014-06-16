@@ -59,7 +59,7 @@
                             text = $(this).text();
                             $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
                             $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
-
+                            text.length > 18 ? $span.addClass('br-longtext'):''; 
                             $widget.append($a.append($span));
                         }
 
