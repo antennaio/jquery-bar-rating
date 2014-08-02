@@ -30,7 +30,7 @@ describe('bar rating plugin on init with custom options', function () {
 
     it('should update defaults', function () {
         var BarRating;
-        BarRating = new root.BarRating();
+        BarRating = new global.BarRating();
         BarRating.init({
             showValues: false
         });
@@ -238,7 +238,7 @@ describe('bar rating plugin on clear', function () {
 
         $('#rating').barrating('show');
         $('.br-widget a:nth-child(6)').trigger('click');
-        $('#rating').barrating('clear');        
+        $('#rating').barrating('clear');
     });
 
     after(function () {
@@ -273,8 +273,8 @@ describe('bar rating plugin on destroy', function () {
     });
 
     it('should remove data', function () {
-        expect($('#rating').data('barrating')).to.equal('');    
-    });    
+        expect($('#rating').data('barrating')).to.equal('');
+    });
 
     it('should show the select field back again', function () {
         expect($('#rating').is(":visible")).to.equal(true);
