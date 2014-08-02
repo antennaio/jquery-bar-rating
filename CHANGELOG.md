@@ -21,6 +21,8 @@ HEAD
 
 - bugfix: removed touch detection - improved cross-browser compatibility (fixes issue #11)
 
+- bower.json added
+
 1.0.4
 -----
 
