@@ -1,5 +1,5 @@
-HEAD
-----
+1.0.5
+-----
 
 - bugfix: selected option changed by propterties, not attributes (fixes issue #7)
 
