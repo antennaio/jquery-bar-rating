@@ -24,7 +24,7 @@
                 });
 
                 $('#example-e').barrating('show', {
-                    initialRating:'A',                    
+                    initialRating:'A',
                     showValues:true,
                     showSelectedRating:false,
                     onSelect:function(value, text) {
@@ -187,6 +187,40 @@
 
         <br/><br/>
 
+        <h2>How to use</h2>
+
+        <p>1. Create a select field.</p>
+
+        <p>
+            <strong>
+                &lt;select id=&quot;example&quot;&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;<br/>
+                &nbsp;&nbsp;&nbsp;&lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;<br/>
+                &lt;/select&gt;
+            </strong>
+        </p>
+
+        <p>
+            2. The widget is styled with CSS to allow maximum flexibility.
+            A few examples of <a href="css/examples.css">CSS styling</a>
+            are provided that you can use to customize the plugin to your needs.
+        </p>
+
+        <p>3. Activate the plugin:</p>
+
+        <p>
+            <strong>
+                &lt;script type=&quot;text/javascript&quot;&gt;<br/>
+                &nbsp;&nbsp;&nbsp;$(function () {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#example').barrating();<br/>
+                &nbsp;&nbsp;&nbsp;});<br/>
+                &lt;/script&gt;
+            </strong>
+        </p>
+
         <h2>Configuration</h2>
 
         <strong>initialRating:null</strong>
@@ -224,7 +258,7 @@
         <p>Fired when a rating is cleared.</p>
 
         <strong>onDestroy:function(value, text)</strong>
-        <p>Fired when a rating is destroyed.</p>        
+        <p>Fired when a rating is destroyed.</p>
 
         <h2>License</h2>
 
