@@ -99,6 +99,8 @@
 
                             // change selected OPTION in the select box (now hidden)
                             $this.find('option[value="' + value + '"]').prop('selected', true);
+                            
+                            $this.change();
 
                             // update .br-current-rating div
                             if (userOptions.showSelectedRating) {
