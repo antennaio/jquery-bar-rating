@@ -361,6 +361,30 @@ button.blue-pill.deactivated:hover {
     color: #646464;
 }
 
+/******* EXAMPLE H *******/
+
+.rating-h .br-widget {
+}
+
+.rating-h .br-widget a {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: #e3e3e3;
+    margin: 1px;
+}
+
+.rating-h .br-widget a.br-active,
+.rating-h .br-widget a.br-selected {
+    background-color: #59a6d6;
+}
+
+.rating-h .br-widget .br-current-rating {
+    width: 25px;
+    text-align: center;
+    color: #646464;
+}
+
 @media
 only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio : 1.5),
