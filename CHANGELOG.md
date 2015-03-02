@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- vertical rating example
+
 - bugfix: Knockout doesn't recognize values set by the widget unless we call change() on the select tag. (@akshaykarle, [#25](https://github.com/antennaio/jquery-bar-rating/pull/25))
 
 - documentation updated with detailed installation instructions
