@@ -364,6 +364,7 @@ button.blue-pill.deactivated:hover {
 /******* EXAMPLE H *******/
 
 .rating-h .br-widget {
+    width: 25px;
 }
 
 .rating-h .br-widget a {
