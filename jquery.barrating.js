@@ -263,10 +263,10 @@
                 var $this = $(this.elem);
                 var $widget = $this.next('.br-widget');
 
-                // attempt to destroy the widget
+                // attempt to set a value
                 if ($widget && $this.data('barrating')) {
 
-                    // restore original data
+                    // set data
                     $this.data('barrating').currentRatingValue = value;
                     $this.data('barrating').currentRatingText = $this.find('option[value="' + value + '"]').text();
 
