@@ -110,7 +110,7 @@
                         }).trigger('ratingchange');
 
                     // update rating event
-                    $widget.on('updaterating',
+                    $widget.on('ratingstyle',
                         function (event) {
                             $widget.find('a').removeClass('br-selected br-current');
 
@@ -119,7 +119,7 @@
                                 .addClass('br-selected br-current')[nextAllorPreviousAll]()
                                 .addClass('br-selected');
 
-                        }).trigger('updaterating');
+                        }).trigger('ratingstyle');
 
                     $all = $widget.find('a');
 
@@ -202,7 +202,7 @@
                                 $all.removeClass('br-active');
                                 $widget
                                     .trigger('ratingchange')
-                                    .trigger('updaterating');
+                                    .trigger('ratingstyle');
                             }
                         });
 
@@ -220,7 +220,7 @@
 
                 this.$widget
                     .trigger('ratingchange')
-                    .trigger('updaterating');
+                    .trigger('ratingstyle');
 
                 // onClear callback
                 this.options.onClear.call(
@@ -258,7 +258,7 @@
 
                 this.$widget
                     .trigger('ratingchange')
-                    .trigger('updaterating');
+                    .trigger('ratingstyle');
 
             }
         }
