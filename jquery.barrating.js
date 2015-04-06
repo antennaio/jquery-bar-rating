@@ -3,7 +3,7 @@
  *
  * http://github.com/antennaio/jquery-bar-rating
  *
- * Copyright (c) 2012-2014 Kazik Pietruszewski
+ * Copyright (c) 2012-2015 Kazik Pietruszewski
  *
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
