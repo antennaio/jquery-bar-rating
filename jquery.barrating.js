@@ -214,6 +214,8 @@
             }
             this.set = function (value) {
 
+                if (!this.$elem.find('option[value="' + value + '"]').val()) return;
+
                 // set data
                 this.$elem.data('barrating').currentRatingValue = value;
                 this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
