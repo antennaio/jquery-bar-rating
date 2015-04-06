@@ -99,7 +99,7 @@
 
                             // change selected OPTION in the select box (now hidden)
                             $this.find('option[value="' + value + '"]').prop('selected', true);
-                            
+
                             $this.change();
 
                             // update .br-current-rating div
@@ -112,6 +112,7 @@
                     // update rating event
                     $widget.on('updaterating',
                         function (event) {
+                            $widget.find('a').removeClass('br-selected br-current');
 
                             // add classes
                             $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
@@ -218,8 +219,6 @@
                 // attempt to clear the rating
                 if ($widget && $this.data('barrating')) {
 
-                    $widget.find('a').removeClass('br-selected br-current');
-
                     // restore original data
                     $this.data('barrating').currentRatingValue = $this.data('barrating').originalRatingValue;
                     $this.data('barrating').currentRatingText = $this.data('barrating').originalRatingText;
@@ -260,6 +259,22 @@
                     );
                 }
             }
+            this.set = function (value) {
+                var $this = $(this.elem);
+                var $widget = $this.next('.br-widget');
+
+                // attempt to destroy the widget
+                if ($widget && $this.data('barrating')) {
+
+                    // restore original data
+                    $this.data('barrating').currentRatingValue = value;
+                    $this.data('barrating').currentRatingText = $this.find('option[value="' + value + '"]').text();
+
+                    $widget
+                        .trigger('ratingchange')
+                        .trigger('updaterating');
+                }
+            }
         }
 
         BarRating.prototype.init = function (options, elem) {
@@ -286,7 +301,7 @@
             // method supplied
             if (plugin.hasOwnProperty(method)) {
                 plugin.init(options, this);
-                return plugin[method]();
+                return plugin[method](options);
 
             // no method supplied or only options supplied
             } else if (typeof method === 'object' || !method) {
