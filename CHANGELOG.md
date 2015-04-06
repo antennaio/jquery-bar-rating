@@ -7,6 +7,8 @@ HEAD
 
 - documentation updated with detailed installation instructions
 
+- `set` method added
+
 1.0.5
 -----
 
