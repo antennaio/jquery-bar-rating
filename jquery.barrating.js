@@ -109,7 +109,7 @@
 
                         }).trigger('ratingchange');
 
-                    // update rating event
+                    // rating style event
                     $widget.on('ratingstyle',
                         function (event) {
                             $widget.find('a').removeClass('br-selected br-current');
