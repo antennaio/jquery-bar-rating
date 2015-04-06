@@ -213,64 +213,53 @@
                 }
             }
             this.clear = function () {
-                var $widget = this.$elem.next('.br-widget');
 
-                // attempt to clear the rating
-                if ($widget && this.$elem.data('barrating')) {
+                // restore original data
+                this.$elem.data('barrating').currentRatingValue = this.$elem.data('barrating').originalRatingValue;
+                this.$elem.data('barrating').currentRatingText = this.$elem.data('barrating').originalRatingText;
 
-                    // restore original data
-                    this.$elem.data('barrating').currentRatingValue = this.$elem.data('barrating').originalRatingValue;
-                    this.$elem.data('barrating').currentRatingText = this.$elem.data('barrating').originalRatingText;
+                this.$widget
+                    .trigger('ratingchange')
+                    .trigger('updaterating');
 
-                    $widget
-                        .trigger('ratingchange')
-                        .trigger('updaterating');
+                // onClear callback
+                this.options.onClear.call(
+                    this,
+                    this.$elem.data('barrating').currentRatingValue,
+                    this.$elem.data('barrating').currentRatingText
+                );
 
-                    // onClear callback
-                    this.options.onClear.call(
-                        this,
-                        this.$elem.data('barrating').currentRatingValue,
-                        this.$elem.data('barrating').currentRatingText
-                    );
-                }
             }
             this.destroy = function () {
-                var $widget = this.$elem.next('.br-widget');
 
-                // attempt to destroy the widget
-                if ($widget && this.$elem.data('barrating')) {
-                    var value = this.$elem.data('barrating').currentRatingValue;
-                    var text = this.$elem.data('barrating').currentRatingText;
+                var value = this.$elem.data('barrating').currentRatingValue;
+                var text = this.$elem.data('barrating').currentRatingText;
 
-                    this.$elem.removeData('barrating');
+                this.$elem.removeData('barrating');
 
-                    $widget.off().remove();
+                this.$widget.off().remove();
 
-                    // show the select box
-                    this.$elem.show();
+                // show the select box
+                this.$elem.show();
 
-                    // onDestroy callback
-                    this.options.onDestroy.call(
-                        this,
-                        value,
-                        text
-                    );
-                }
+                // onDestroy callback
+                this.options.onDestroy.call(
+                    this,
+                    value,
+                    text
+                );
+
             }
             this.set = function (value) {
-                var $widget = this.$elem.next('.br-widget');
 
-                // attempt to set a value
-                if ($widget && this.$elem.data('barrating')) {
+                // set data
+                this.$elem.data('barrating').currentRatingValue = value;
+                this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
 
-                    // set data
-                    this.$elem.data('barrating').currentRatingValue = value;
-                    this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
+                this.$widget
+                    .trigger('ratingchange')
+                    .trigger('updaterating');
 
-                    $widget
-                        .trigger('ratingchange')
-                        .trigger('updaterating');
-                }
             }
         }
 
@@ -299,7 +288,16 @@
             // method supplied
             if (plugin.hasOwnProperty(method)) {
                 plugin.init(options, this);
-                return plugin[method](options);
+                if (method == 'show') {
+                    return plugin.show(options);
+                } else {
+                    plugin.$widget = $(this).next('.br-widget');
+
+                    // widget exists?
+                    if (plugin.$widget && plugin.$elem.data('barrating')) {
+                        return plugin[method](options);
+                    }
+                }
 
             // no method supplied or only options supplied
             } else if (typeof method === 'object' || !method) {
