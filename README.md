@@ -61,8 +61,11 @@ npm install
     ✓ should set correct value
     ✓ should set correct class
 
+  bar rating plugin on set non-existing value
+    ✓ should do nothing
 
-  ✔ 24 tests complete (1.519 seconds)
+
+  ✔ 25 tests complete (1.629 seconds)
 
 ```
 

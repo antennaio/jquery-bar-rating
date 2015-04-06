@@ -307,3 +307,24 @@ describe('bar rating plugin on set value', function () {
     });
 
 });
+
+
+describe('bar rating plugin on set non-existing value', function () {
+
+    before(function () {
+        createSelect();
+        $('#rating')
+            .barrating('show', { initialRating: 5 })
+            .barrating('set', 9999);
+    });
+
+    after(function () {
+        destroySelect();
+    });
+
+    it('should do nothing', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal('5');
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-5');
+    });
+
+});
