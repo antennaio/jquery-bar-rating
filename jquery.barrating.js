@@ -162,7 +162,7 @@
                                 value = '', text = '';
                             } else {
                                 $all.removeClass('br-current');
-                                $a.addClass('br-current')
+                                $a.addClass('br-current');
                             }
 
                             // remember selected rating
@@ -211,7 +211,7 @@
                     // hide the select box
                     $elem.hide();
                 }
-            }
+            };
             this.set = function (value) {
 
                 if (!this.$elem.find('option[value="' + value + '"]').val()) return;
@@ -224,7 +224,7 @@
                     .trigger('ratingchange')
                     .trigger('ratingstyle');
 
-            }
+            };
             this.clear = function () {
 
                 // restore original data
@@ -242,7 +242,7 @@
                     this.$elem.data('barrating').currentRatingText
                 );
 
-            }
+            };
             this.destroy = function () {
 
                 var value = this.$elem.data('barrating').currentRatingValue;
@@ -262,14 +262,14 @@
                     text
                 );
 
-            }
+            };
         }
 
         BarRating.prototype.init = function (options, elem) {
             var self;
             self = this;
             self.elem = elem;
-            self.$elem = $(this.elem);
+            self.$elem = $(elem);
 
             return self.options = $.extend({}, $.fn.barrating.defaults, options);
         };
@@ -290,7 +290,7 @@
             // method supplied
             if (plugin.hasOwnProperty(method)) {
                 plugin.init(options, this);
-                if (method == 'show') {
+                if (method === 'show') {
                     return plugin.show(options);
                 } else {
                     plugin.$widget = $(this).next('.br-widget');
