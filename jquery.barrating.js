@@ -212,6 +212,17 @@
                     $elem.hide();
                 }
             }
+            this.set = function (value) {
+
+                // set data
+                this.$elem.data('barrating').currentRatingValue = value;
+                this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
+
+                this.$widget
+                    .trigger('ratingchange')
+                    .trigger('ratingstyle');
+
+            }
             this.clear = function () {
 
                 // restore original data
@@ -248,17 +259,6 @@
                     value,
                     text
                 );
-
-            }
-            this.set = function (value) {
-
-                // set data
-                this.$elem.data('barrating').currentRatingValue = value;
-                this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
-
-                this.$widget
-                    .trigger('ratingchange')
-                    .trigger('ratingstyle');
 
             }
         }
