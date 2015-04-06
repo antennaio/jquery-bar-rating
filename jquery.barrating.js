@@ -18,7 +18,7 @@
 
         function BarRating() {
             this.show = function () {
-                var $this = $(this.elem),
+                var $elem = this.$elem,
                     $widget,
                     $all,
                     userOptions = this.options,
@@ -26,15 +26,15 @@
                     initialOption;
 
                 // run only once
-                if (!$this.data('barrating')) {
+                if (!$elem.data('barrating')) {
 
                     if (userOptions.initialRating) {
-                        initialOption = $('option[value="' + userOptions.initialRating  + '"]', $this);
+                        initialOption = $('option[value="' + userOptions.initialRating  + '"]', $elem);
                     } else {
-                        initialOption = $('option:selected', $this);
+                        initialOption = $('option:selected', $elem);
                     }
 
-                    $this.data('barrating', {
+                    $elem.data('barrating', {
 
                         // initial rating based on the OPTION value
                         currentRatingValue:initialOption.val(),
@@ -46,10 +46,10 @@
 
                     });
 
-                    $widget = $('<div />', { 'class':'br-widget' }).insertAfter($this);
+                    $widget = $('<div />', { 'class':'br-widget' }).insertAfter($elem);
 
                     // create A elements that will replace OPTIONs
-                    $this.find('option').each(function () {
+                    $elem.find('option').each(function () {
                         var val, text, $a, $span;
 
                         val = $(this).val();
@@ -71,7 +71,7 @@
                     }
 
                     // first OPTION empty - allow deselecting of ratings
-                    $this.data('barrating').deselectable = (!$this.find('option:first').val()) ? true : false;
+                    $elem.data('barrating').deselectable = (!$elem.find('option:first').val()) ? true : false;
 
                     // use different jQuery function depending on the 'reverse' setting
                     if (userOptions.reverse) {
@@ -94,13 +94,13 @@
                         function (event, value, text) {
 
                             // value or text undefined?
-                            value = value ? value : $this.data('barrating').currentRatingValue;
-                            text = text ? text : $this.data('barrating').currentRatingText;
+                            value = value ? value : $elem.data('barrating').currentRatingValue;
+                            text = text ? text : $elem.data('barrating').currentRatingText;
 
                             // change selected OPTION in the select box (now hidden)
-                            $this.find('option[value="' + value + '"]').prop('selected', true);
+                            $elem.find('option[value="' + value + '"]').prop('selected', true);
 
-                            $this.change();
+                            $elem.change();
 
                             // update .br-current-rating div
                             if (userOptions.showSelectedRating) {
@@ -115,7 +115,7 @@
                             $widget.find('a').removeClass('br-selected br-current');
 
                             // add classes
-                            $(this).find('a[data-rating-value="' + $this.data('barrating').currentRatingValue + '"]')
+                            $(this).find('a[data-rating-value="' + $elem.data('barrating').currentRatingValue + '"]')
                                 .addClass('br-selected br-current')[nextAllorPreviousAll]()
                                 .addClass('br-selected');
 
@@ -156,7 +156,7 @@
                             text = $a.attr('data-rating-text');
 
                             // is current and deselectable?
-                            if ($a.hasClass('br-current') && $this.data('barrating').deselectable) {
+                            if ($a.hasClass('br-current') && $elem.data('barrating').deselectable) {
                                 $a.removeClass('br-selected br-current')[nextAllorPreviousAll]()
                                     .removeClass('br-selected br-current');
                                 value = '', text = '';
@@ -166,16 +166,16 @@
                             }
 
                             // remember selected rating
-                            $this.data('barrating').currentRatingValue = value;
-                            $this.data('barrating').currentRatingText = text;
+                            $elem.data('barrating').currentRatingValue = value;
+                            $elem.data('barrating').currentRatingText = text;
 
                             $widget.trigger('ratingchange');
 
                             // onSelect callback
                             userOptions.onSelect.call(
                                 this,
-                                $this.data('barrating').currentRatingValue,
-                                $this.data('barrating').currentRatingText
+                                $elem.data('barrating').currentRatingValue,
+                                $elem.data('barrating').currentRatingText
                             );
 
                             return false;
@@ -209,19 +209,18 @@
                     }
 
                     // hide the select box
-                    $this.hide();
+                    $elem.hide();
                 }
             }
             this.clear = function () {
-                var $this = $(this.elem);
-                var $widget = $this.next('.br-widget');
+                var $widget = this.$elem.next('.br-widget');
 
                 // attempt to clear the rating
-                if ($widget && $this.data('barrating')) {
+                if ($widget && this.$elem.data('barrating')) {
 
                     // restore original data
-                    $this.data('barrating').currentRatingValue = $this.data('barrating').originalRatingValue;
-                    $this.data('barrating').currentRatingText = $this.data('barrating').originalRatingText;
+                    this.$elem.data('barrating').currentRatingValue = this.$elem.data('barrating').originalRatingValue;
+                    this.$elem.data('barrating').currentRatingText = this.$elem.data('barrating').originalRatingText;
 
                     $widget
                         .trigger('ratingchange')
@@ -230,26 +229,25 @@
                     // onClear callback
                     this.options.onClear.call(
                         this,
-                        $this.data('barrating').currentRatingValue,
-                        $this.data('barrating').currentRatingText
+                        this.$elem.data('barrating').currentRatingValue,
+                        this.$elem.data('barrating').currentRatingText
                     );
                 }
             }
             this.destroy = function () {
-                var $this = $(this.elem);
-                var $widget = $this.next('.br-widget');
+                var $widget = this.$elem.next('.br-widget');
 
                 // attempt to destroy the widget
-                if ($widget && $this.data('barrating')) {
-                    var value = $this.data('barrating').currentRatingValue;
-                    var text = $this.data('barrating').currentRatingText;
+                if ($widget && this.$elem.data('barrating')) {
+                    var value = this.$elem.data('barrating').currentRatingValue;
+                    var text = this.$elem.data('barrating').currentRatingText;
 
-                    $this.removeData('barrating');
+                    this.$elem.removeData('barrating');
 
                     $widget.off().remove();
 
                     // show the select box
-                    $this.show();
+                    this.$elem.show();
 
                     // onDestroy callback
                     this.options.onDestroy.call(
@@ -260,15 +258,14 @@
                 }
             }
             this.set = function (value) {
-                var $this = $(this.elem);
-                var $widget = $this.next('.br-widget');
+                var $widget = this.$elem.next('.br-widget');
 
                 // attempt to set a value
-                if ($widget && $this.data('barrating')) {
+                if ($widget && this.$elem.data('barrating')) {
 
                     // set data
-                    $this.data('barrating').currentRatingValue = value;
-                    $this.data('barrating').currentRatingText = $this.find('option[value="' + value + '"]').text();
+                    this.$elem.data('barrating').currentRatingValue = value;
+                    this.$elem.data('barrating').currentRatingText = this.$elem.find('option[value="' + value + '"]').text();
 
                     $widget
                         .trigger('ratingchange')
@@ -281,6 +278,7 @@
             var self;
             self = this;
             self.elem = elem;
+            self.$elem = $(this.elem);
 
             return self.options = $.extend({}, $.fn.barrating.defaults, options);
         };
