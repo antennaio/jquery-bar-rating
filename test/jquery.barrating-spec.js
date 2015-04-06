@@ -281,3 +281,29 @@ describe('bar rating plugin on destroy', function () {
     });
 
 });
+
+
+describe('bar rating plugin on set value', function () {
+
+    before(function () {
+        createSelect();
+        $('#rating')
+            .barrating()
+            .barrating('set', 3);
+    });
+
+    after(function () {
+        destroySelect();
+    });
+
+    it('should set correct value', function () {
+        expect($('#rating').data('barrating').currentRatingValue).to.equal(3);
+        expect($('#rating').data('barrating').currentRatingText).to.equal('rating-text-3');
+    });
+
+    it('should set correct class', function () {
+        expect($('.br-widget a:nth-child(3)').hasClass('br-selected')).to.equal(true);
+        expect($('.br-widget a:nth-child(3)').hasClass('br-current')).to.equal(true);
+    });
+
+});

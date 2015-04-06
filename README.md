@@ -57,8 +57,12 @@ npm install
     ✓ should remove data
     ✓ should show the select field back again
 
+  bar rating plugin on set value
+    ✓ should set correct value
+    ✓ should set correct class
 
-  ✓ 22 tests complete (320 ms)
+
+  ✔ 24 tests complete (1.519 seconds)
 
 ```
 
