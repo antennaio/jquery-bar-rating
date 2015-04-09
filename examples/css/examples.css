@@ -23,6 +23,10 @@ html, body {
     border: 1px solid #d2d2d2;
 }
 
+b, strong {
+    font-weight: 700;
+}
+
 header {
     text-align: center;
 }
@@ -263,6 +267,7 @@ button.blue-pill.deactivated:hover {
 }
 
 .rating-d .br-widget a {
+    font-size: 14px;
     display: block;
     width: 40px;
     padding: 5px 0 5px 0;

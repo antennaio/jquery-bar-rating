@@ -40,11 +40,11 @@
 
                         // initial rating based on the OPTION value
                         currentRatingValue:initialOption.val(),
-                        currentRatingText:initialOption.text(),
+                        currentRatingText: (initialOption.data('html')) ? initialOption.data('html') : initialOption.text(),
 
-                        // rating will be restored by calling destroy method
+                        // rating will be restored by calling clear method
                         originalRatingValue:initialOption.val(),
-                        originalRatingText:initialOption.text()
+                        originalRatingText: (initialOption.data('html')) ? initialOption.data('html') : initialOption.text()
 
                     });
 
@@ -59,8 +59,11 @@
                         // create ratings - but only if val is defined
                         if (val) {
                             text = $(this).text();
+                            html = $(this).data('html');
+                            if (html) { text = html }
+
                             $a = $('<a />', { href:'#', 'data-rating-value':val, 'data-rating-text':text });
-                            $span = $('<span />', { text:(userOptions.showValues) ? text : '' });
+                            $span = $('<span />', { html: (userOptions.showValues) ? text : '' });
 
                             $widget.append($a.append($span));
                         }
