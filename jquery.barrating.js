@@ -52,7 +52,7 @@
 
                     // create A elements that will replace OPTIONs
                     $elem.find('option').each(function () {
-                        var val, text, $a, $span;
+                        var val, text, html, $a, $span;
 
                         val = $(this).val();
 
