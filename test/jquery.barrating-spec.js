@@ -233,10 +233,16 @@ describe('bar rating plugin on deselect', function () {
 
 describe('bar rating plugin on clear', function () {
 
+    var valuesFromCallback = [];
+
     before(function () {
         createSelect();
 
-        $('#rating').barrating('show');
+        $('#rating').barrating('show', {
+            onClear:function (value, text) {
+                valuesFromCallback.push(value, text);
+            }
+        });
         $('.br-widget a:nth-child(6)').trigger('click');
         $('#rating').barrating('clear');
     });
@@ -256,16 +262,30 @@ describe('bar rating plugin on clear', function () {
         expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
         expect($('.br-widget a:nth-child(6)').hasClass('br-selected')).to.equal(false);
     });
+
+    it('should pass correct values to a callback', function () {
+        expect(valuesFromCallback[0]).to.equal('5');
+        expect(valuesFromCallback[1]).to.equal('rating-text-5');
+    });
+
 });
 
 
 describe('bar rating plugin on destroy', function () {
 
+    var valuesFromCallback = [];
+
     before(function () {
         createSelect();
-        $('#rating')
-            .barrating()
-            .barrating('destroy');
+
+        $('#rating').barrating('show', {
+            onDestroy:function (value, text) {
+                valuesFromCallback.push(value, text);
+            }
+        });
+
+        $('#rating').barrating('destroy');
+
     });
 
     after(function () {
@@ -278,6 +298,11 @@ describe('bar rating plugin on destroy', function () {
 
     it('should show the select field back again', function () {
         expect($('#rating').is(":visible")).to.equal(true);
+    });
+
+    it('should pass correct values to a callback', function () {
+        expect(valuesFromCallback[0]).to.equal('5');
+        expect(valuesFromCallback[1]).to.equal('rating-text-5');
     });
 
 });
