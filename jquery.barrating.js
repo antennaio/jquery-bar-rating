@@ -36,6 +36,8 @@
 
                     $elem.data('barrating', {
 
+                        userOptions:userOptions,
+
                         // initial rating based on the OPTION value
                         currentRatingValue:initialOption.val(),
                         currentRatingText:initialOption.text(),
@@ -236,7 +238,7 @@
                     .trigger('ratingstyle');
 
                 // onClear callback
-                this.options.onClear.call(
+                this.$elem.data('barrating').userOptions.onClear.call(
                     this,
                     this.$elem.data('barrating').currentRatingValue,
                     this.$elem.data('barrating').currentRatingText
@@ -247,6 +249,7 @@
 
                 var value = this.$elem.data('barrating').currentRatingValue;
                 var text = this.$elem.data('barrating').currentRatingText;
+                var options = this.$elem.data('barrating').userOptions;
 
                 this.$elem.removeData('barrating');
 
@@ -256,7 +259,7 @@
                 this.$elem.show();
 
                 // onDestroy callback
-                this.options.onDestroy.call(
+                options.onDestroy.call(
                     this,
                     value,
                     text
