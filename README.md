@@ -52,10 +52,12 @@ npm install
   bar rating plugin on clear
     ✓ should restore original rating
     ✓ should set correct class
+    ✓ should pass correct values to a callback
 
   bar rating plugin on destroy
     ✓ should remove data
     ✓ should show the select field back again
+    ✓ should pass correct values to a callback
 
   bar rating plugin on set value
     ✓ should set correct value
@@ -65,7 +67,7 @@ npm install
     ✓ should do nothing
 
 
-  ✔ 25 tests complete (1.629 seconds)
+  ✔ 27 tests complete (1.511 seconds)
 
 ```
 

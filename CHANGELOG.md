@@ -9,6 +9,10 @@ HEAD
 
 - `set` method added
 
+- bugfix: onClear and onDestroy callbacks fixed
+
+- allow html in ratings (fixes issue [#30](https://github.com/antennaio/jquery-bar-rating/issues/30)), thanks @techmantoolz
+
 1.0.5
 -----
 
