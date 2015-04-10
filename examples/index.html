@@ -10,8 +10,8 @@
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="../jquery.barrating.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $('.rating-enable').click(function () {
+        $(function() {
+            function ratingEnable() {
                 $('#example-a').barrating();
 
                 $('#example-b').barrating('show', {
@@ -44,18 +44,27 @@
                 $('#example-h').barrating('show', {
                     reverse:true
                 });
+            }
+
+            function ratingDisable() {
+                $('select').barrating('destroy');
+            }
+
+            $('.rating-enable').click(function() {
+                ratingEnable();
 
                 $(this).addClass('deactivated');
                 $('.rating-disable').removeClass('deactivated');
             });
 
-            $('.rating-disable').click(function () {
-                $('select').barrating('destroy');
+            $('.rating-disable').click(function() {
+                ratingDisable();
+
                 $(this).addClass('deactivated');
                 $('.rating-enable').removeClass('deactivated');
             });
 
-            $('.rating-enable').trigger('click');
+            ratingEnable();
         });
     </script>
 </head>
