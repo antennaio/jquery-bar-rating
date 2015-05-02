@@ -57,6 +57,7 @@ npm install
 
   bar rating plugin on destroy
     ✓ should remove data
+    ✓ should unwrap the select field
     ✓ should show the select field back again
     ✓ should pass correct values to a callback
 
@@ -68,7 +69,7 @@ npm install
     ✓ should do nothing
 
 
-  ✔ 28 tests complete (1.739 seconds)
+  ✔ 29 tests complete (1.661 seconds)
 
 ```
 
