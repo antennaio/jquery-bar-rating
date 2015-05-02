@@ -261,7 +261,10 @@
 
                 this.$widget.off().remove();
 
-                // show the select box
+                // unwrap the element
+                this.$elem.unwrap();
+
+                // show the element
                 this.$elem.show();
 
                 // onDestroy callback

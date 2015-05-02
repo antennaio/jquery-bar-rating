@@ -300,6 +300,10 @@ describe('bar rating plugin on destroy', function () {
         expect($('#rating').data('barrating')).to.equal('');
     });
 
+    it('should unwrap the select field', function () {
+        expect($('.br-wrapper').length).to.equal(0);
+    });
+
     it('should show the select field back again', function () {
         expect($('#rating').is(":visible")).to.equal(true);
     });
