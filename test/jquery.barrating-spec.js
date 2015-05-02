@@ -61,6 +61,10 @@ describe('bar rating plugin on show', function () {
         expect($('#rating').data('barrating')).to.be.a('object');
     });
 
+    it('should wrap the select field into a wrapper div', function () {
+        expect($('.br-widget').parent().hasClass('br-wrapper')).to.equal(true);
+    });
+
     it('should transform the select field into a rating widget', function () {
         expect($('.br-widget a')).to.have.length(10);
     });
