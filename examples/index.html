@@ -15,17 +15,26 @@
                 $('#example-a').barrating();
 
                 $('#example-b').barrating('show', {
+                    wrapperClass:'rating-b',
                     readonly:true
                 });
 
                 $('#example-b').barrating('set', 'Mediocre');
 
-                $('#example-c, #example-d').barrating('show', {
+                $('#example-c').barrating('show', {
+                    wrapperClass:'rating-c',
+                    showValues:true,
+                    showSelectedRating:false
+                });
+
+                $('#example-d').barrating('show', {
+                    wrapperClass:'rating-d',
                     showValues:true,
                     showSelectedRating:false
                 });
 
                 $('#example-e').barrating('show', {
+                    wrapperClass:'rating-e',
                     initialRating:'A',
                     showValues:true,
                     showSelectedRating:false,
@@ -34,14 +43,19 @@
                     }
                 });
 
-                $('#example-f').barrating({ showSelectedRating:false });
+                $('#example-f').barrating({
+                    wrapperClass:'rating-f',
+                    showSelectedRating:false
+                });
 
                 $('#example-g').barrating('show', {
+                    wrapperClass:'rating-g',
                     showSelectedRating:true,
                     reverse:true
                 });
 
                 $('#example-h').barrating('show', {
+                    wrapperClass:'rating-h',
                     reverse:true
                 });
             }
@@ -100,7 +114,7 @@
             <button class="blue-pill rating-disable">disable</button>
         </div>
 
-        <div class="input select rating-a">
+        <div class="input select">
             <label for="example-a">Basic example:</label>
             <select id="example-a" name="rating">
                 <option value="1">1</option>
@@ -116,7 +130,7 @@
             </select>
         </div>
 
-        <div class="input select rating-b">
+        <div class="input select">
             <label for="example-b">Read-only rating:</label>
             <select id="example-b" name="rating">
                 <option value="Bad">Bad</option>
@@ -126,7 +140,7 @@
             </select>
         </div>
 
-        <div class="input select rating-c">
+        <div class="input select">
             <label for="example-c">Rating values displayed on the bars:</label>
             <select id="example-c" name="rating">
                 <option value=""></option>
@@ -138,7 +152,7 @@
             </select>
         </div>
 
-        <div class="input select rating-d">
+        <div class="input select">
             <label for="example-d">Advanced styling:</label>
             <select id="example-d" name="rating">
                 <option value="1" data-html="<strong>1</strong>">1</option>
@@ -154,7 +168,7 @@
             </select>
         </div>
 
-        <div class="input select rating-e">
+        <div class="input select">
             <label for="example-e">A rating with <i>onSelect</i> callback:</label>
             <select id="example-e" name="rating">
                 <option value="D">D</option>
@@ -182,7 +196,7 @@
             </select>
         </div>
 
-        <div class="input select rating-f">
+        <div class="input select">
             <label for="example-f">Star rating... why not:</label>
             <select id="example-f" name="rating">
                 <option value="1">1</option>
@@ -193,7 +207,7 @@
             </select>
         </div>
 
-        <div class="input select rating-g">
+        <div class="input select">
             <label for="example-g">Reversed rating:</label>
             <select id="example-g" name="rating">
                 <option value="Strongly Agree">Strongly Agree</option>
@@ -204,7 +218,7 @@
             </select>
         </div>
 
-        <div class="input select rating-h">
+        <div class="input select">
             <label for="example-h">Vertical rating:</label>
             <select id="example-h" name="rating">
                 <option value="5">5</option>

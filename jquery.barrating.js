@@ -28,6 +28,9 @@
                 // run only once
                 if (!$elem.data('barrating')) {
 
+                    // wrap element
+                    $($elem).wrap($('<div />', { 'class': (userOptions.wrapperClass) ? userOptions.wrapperClass : '' }));
+
                     if (userOptions.initialRating) {
                         initialOption = $('option[value="' + userOptions.initialRating  + '"]', $elem);
                     } else {
@@ -325,6 +328,7 @@
         showSelectedRating:true, // append a div with a rating to the widget?
         reverse:false, // reverse the rating?
         readonly:false, // make the rating ready-only?
+        wrapperClass:'br-wrapper', // class applied to wrapper div
         onSelect:function (value, text) {
         }, // callback fired when a rating is selected
         onClear:function (value, text) {

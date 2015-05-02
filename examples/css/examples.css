@@ -173,11 +173,11 @@ button.blue-pill.deactivated:hover {
 
 /******* EXAMPLE A *******/
 
-.rating-a .br-widget {
+.br-wrapper .br-widget {
     height: 52px;
 }
 
-.rating-a .br-widget a {
+.br-wrapper .br-widget a {
     display: block;
     width: 15px;
     padding: 5px 0 5px 0;
@@ -188,12 +188,12 @@ button.blue-pill.deactivated:hover {
     text-align: center;
 }
 
-.rating-a .br-widget a.br-active,
-.rating-a .br-widget a.br-selected {
+.br-wrapper .br-widget a.br-active,
+.br-wrapper .br-widget a.br-selected {
     background-color: #59a6d6;
 }
 
-.rating-a .br-widget .br-current-rating {
+.br-wrapper .br-widget .br-current-rating {
     font-size: 20px;
     line-height: 2;
     float: left;
