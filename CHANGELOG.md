@@ -1,5 +1,5 @@
-HEAD
-----
+1.0.6
+-----
 
 - vertical rating example
 
