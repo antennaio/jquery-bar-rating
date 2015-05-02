@@ -1,3 +1,10 @@
+HEAD
+----
+
+- plugin will create a wrapper div by itself
+
+- new option added: `wrapperClass`
+
 1.0.6
 -----
 

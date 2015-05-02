@@ -24,6 +24,7 @@ npm install
 
   bar rating plugin on show
     ✓ should have data
+    ✓ should wrap the select field into a wrapper div
     ✓ should transform the select field into a rating widget
     ✓ should store rating values in data attributes
     ✓ should read the selected rating from the select field
@@ -67,7 +68,7 @@ npm install
     ✓ should do nothing
 
 
-  ✔ 27 tests complete (1.511 seconds)
+  ✔ 28 tests complete (1.739 seconds)
 
 ```
 
