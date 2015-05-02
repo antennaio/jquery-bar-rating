@@ -1,0 +1,481 @@
+/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browserupgrade {
+    margin: 0;
+    background: #ccc;
+    color: #000;
+    padding: 1em 2em;
+    text-align: center;
+
+    a {
+        color: #000;
+        text-decoration: underline;
+
+        &:hover {
+            color: #000;
+            text-decoration: none;
+        }
+    }
+}
+
+/* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
+
+.col {
+    padding: 0 1em;
+}
+
+.row .row {
+    margin: 0 -1em;
+}
+
+.row:before, .row:after {
+    content: "";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+@media only screen {
+    .col {
+        float: left;
+        width: 100%;
+
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import "_vars";
+@import "_retina";
+
+body {
+    font-family: @fontFamily;
+    color: @textColor;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    color: @headerColor;
+}
+
+h1 {
+    font-size: 2.8em;
+    margin: 0;
+}
+
+pre {
+    background: white;
+    border-left: 2px solid @blueColor;
+    padding: 0 2em;
+}
+
+code {
+    font-family: @fontFamilyMonospaced;
+    font-size: 18px;
+    color: @blueColor;
+}
+
+a {
+  color: @greenColor;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    color: darken(@greenColor, 20%);
+    text-decoration: none;
+  }
+}
+
+.github {
+    .retina-image('../img/github.png', '../img/github@2x.png', 50px, 50px);
+    position: fixed;
+    right: 25px;
+    top: 25px;
+    width: 50px;
+    height: 50px;
+    display: block;
+    z-index: 1;
+    opacity: 0.3;
+
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.antennaio {
+    .retina-image('../img/antenna.png', '../img/antenna@2x.png', 60px, 60px);
+    background-repeat: no-repeat;
+    color: lighten(@textColor, 35%);
+    width: 280px;
+    height: 60px;
+    display: block;
+    margin: auto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 5.5;
+    letter-spacing: 2px;
+    margin-bottom: 7em;
+
+    -webkit-transition: color .2s;
+    transition: color .2s;
+
+    &:hover {
+        color: @textColor;
+    }
+
+    span {
+        padding: 0 0 0 70px;
+    }
+}
+
+.bars {
+    .retina-image('../img/bars.png', '../img/bars@2x.png', 80px, 80px);
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: auto;
+}
+
+.section {
+    padding: 2em 0;
+}
+
+.section-intro {
+    text-align: center;
+    margin: 3em 0 4em 0;
+
+    h1 {
+        line-height: 2.4;
+    }
+
+    p {
+        max-width: 560px;
+        margin: auto;
+    }
+
+    p.tagline {
+        font-size: 14px;
+        margin-bottom: 3em;
+    }
+}
+
+.section-examples {
+    position: relative;
+    background: @backgroundColor;
+}
+
+.examples {
+    margin: auto;
+    width: 980px;
+    padding: 3em 0;
+
+    .col {
+        width: 50%;
+    }
+}
+
+.section-docs {
+    margin: 3em 0;
+}
+
+.coloredDocs(@color) {
+    header {
+        background: @color;
+    }
+
+    strong {
+        color: @color;
+    }
+
+    a {
+        color: @color;
+
+        &:hover {
+            color: darken(@color, 20%);
+        }
+    }
+}
+
+.docs {
+    width: 800px;
+    margin: auto;
+
+    header {
+        text-align: center;
+        padding: .8em 0;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: white;
+        width: 100%;
+    }
+
+    .how-to-use, .callbacks {
+        .coloredDocs(@blueColor);
+    }
+
+    .configuration, .license {
+        .coloredDocs(@greenColor);
+    }
+
+    .methods, .download {
+        .coloredDocs(@orangeColor);
+    }
+
+    .instructions {
+        padding: 2em 3em;
+        background: @backgroundColor;
+    }
+}
+
+.controls {
+    position: absolute;
+    top: -23px;
+    left: 50%;
+    margin-left: -190px;
+
+    a {
+        display: block;
+        width: 150px;
+        background-color: @greenColor;
+        color: white;
+        float: left;
+        padding: .4em 1em .5em 1em;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 600;
+
+        -webkit-transition: background-color .2s;
+        transition: background-color .2s;
+
+        &:hover {
+            background-color: darken(@greenColor, 5%);
+        }
+
+        &:focus {
+            color: lighten(@greenColor, 30%);
+            background-color: darken(@greenColor, 25%);
+        }
+    }
+
+    a.rating-enable {
+        -webkit-border-top-left-radius: 999px;
+        -webkit-border-bottom-left-radius: 999px;
+        -moz-border-radius-topleft: 999px;
+        -moz-border-radius-bottomleft: 999px;
+        border-top-left-radius: 999px;
+        border-bottom-left-radius: 999px;
+    }
+
+    a.rating-disable {
+        -webkit-border-top-right-radius: 999px;
+        -webkit-border-bottom-right-radius: 999px;
+        -moz-border-radius-topright: 999px;
+        -moz-border-radius-bottomright: 999px;
+        border-top-right-radius: 999px;
+        border-bottom-right-radius: 999px;
+    }
+
+    a:last-child {
+        border-left: 0;
+    }
+
+    a.deactivated {
+        background: darken(@greenColor, 15%);
+        color: white;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

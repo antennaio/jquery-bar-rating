@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- new & improved demo page
+
 - plugin will create a wrapper div by itself
 
 - new option added: `wrapperClass`
