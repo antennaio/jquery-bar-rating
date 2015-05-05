@@ -214,6 +214,18 @@
 					<header>How to use</header>
 					<div class="instructions">
 						<ol>
+							<li>
+
+								Get the plugin from <a href="http://github.com/antennaio/jquery-bar-rating">GitHub</a>
+								or install with Bower:
+
+<pre>
+<code>
+bower install jquery-bar-rating
+</code>
+</pre>
+
+							</li>
 							<li>Create a select field:
 <pre>
 <code>
@@ -231,11 +243,12 @@
 							<li>
 
 								<p>
-									Call the plugin:
+									Include and call the plugin (after jQuery v1.7.2+)
 								</p>
 
 <pre>
 <code>
+&lt;script src="jquery.barrating.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
    $(function() {
       $('#example').barrating();
