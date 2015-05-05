@@ -222,6 +222,8 @@
             };
 
             // somewhat primitive way to remove 300ms click delay on touch devices
+            // for a more advanced solution consider setting `fastClicks` option to false
+            // and using a library such as fastclick (https://github.com/ftlabs/fastclick)
             var fastClicks = function($all) {
                 $all.on('touchstart', function(event) {
                     event.preventDefault();
@@ -259,7 +261,9 @@
 
                 $all = $widget.find('a');
 
-                fastClicks($all);
+                if (self.options.fastClicks) {
+                    fastClicks($all);
+                }
 
                 if (self.options.readonly) {
 
@@ -388,6 +392,7 @@
         showSelectedRating:true, // append a div with a rating to the widget?
         reverse:false, // reverse the rating?
         readonly:false, // make the rating ready-only?
+        fastClicks:true, // remove 300ms click delay on touch devices?
         wrapperClass:'br-wrapper', // class applied to wrapper div
         onSelect:function (value, text) {
         }, // callback fired when a rating is selected

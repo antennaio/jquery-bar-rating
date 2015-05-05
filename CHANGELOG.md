@@ -7,6 +7,8 @@ HEAD
 
 - new option added: `wrapperClass`
 
+- new option added: `fastClicks`
+
 1.0.6
 -----
 
