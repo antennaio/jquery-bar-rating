@@ -1,10 +1,12 @@
 var chai = require("chai"),
-    jQuery = require("jQuery");
+    jQuery = require("jQuery"),
+    jsdom = require("jsdom");
 
 var expect = chai.expect;
 
-var $ = global.jQuery = jQuery;
+var doc = jsdom.jsdom('<html><body></body></html>');
 
+var $ = global.jQuery = jQuery(doc.defaultView);
 
 function createSelect() {
     $('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
@@ -98,7 +100,7 @@ describe('bar rating plugin on show', function () {
     });
 
     it('should hide the select field', function () {
-        expect($('#rating').is(":visible")).to.equal(false);
+        expect($('#rating').css('display')).to.equal('none');
     });
 
 });
@@ -297,7 +299,7 @@ describe('bar rating plugin on destroy', function () {
     });
 
     it('should remove data', function () {
-        expect($('#rating').data('barrating')).to.equal('');
+        expect($('#rating').data('barrating')).to.equal(undefined);
     });
 
     it('should unwrap the select field', function () {
