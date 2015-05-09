@@ -3,6 +3,10 @@
   "description": "Minimal, light-weight jQuery ratings.",
   "version": "1.1.0",
   "main": "./jquery.barrating",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/antennaio/jquery-bar-rating.git"
+  },
   "devDependencies": {
     "mocha": "2.2.4",
     "chai": "2.3.0",
