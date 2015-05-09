@@ -1,3 +1,10 @@
+HEAD
+----
+
+- gulp tasks added
+
+- minified version with source map file stored in `dist` directory
+
 1.1.0
 -----
 
