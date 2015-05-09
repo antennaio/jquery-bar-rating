@@ -22,7 +22,7 @@
             // wrap element in a wrapper div
             var wrapElement = function() {
                 self.$elem.wrap($('<div />', {
-                    'class': (self.options.wrapperClass) ? self.options.wrapperClass : ''
+                    'class': self.options.wrapperClass
                 }));
             };
 
