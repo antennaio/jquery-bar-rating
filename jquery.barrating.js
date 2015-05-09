@@ -127,7 +127,7 @@
                 // change selected OPTION in the select field (hidden)
                 self.$elem.find('option[value="' + value + '"]').prop('selected', true);
                 self.$elem.change();
-            }
+            };
 
             // display the currently selected rating
             var showSelectedRating = function(text) {
@@ -345,8 +345,9 @@
 
         BarRating.prototype.init = function (options, elem) {
             this.$elem = $(elem);
+            this.options = $.extend({}, $.fn.barrating.defaults, options);
 
-            return this.options = $.extend({}, $.fn.barrating.defaults, options);
+            return this.options;
         };
 
         return BarRating;
@@ -386,7 +387,7 @@
         });
     };
 
-    return $.fn.barrating.defaults = {
+    $.fn.barrating.defaults = {
         initialRating:null, // initial rating
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
@@ -401,5 +402,7 @@
         onDestroy:function (value, text) {
         } // callback fired when a widget is destroyed
     };
+
+    return $.fn.barrating.defaults;
 
 })(jQuery);
