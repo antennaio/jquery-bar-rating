@@ -186,7 +186,6 @@ a:focus {
   margin: 3em 0 4em 0;
   max-height: 9999px;
   /* no font boosting please */
-
 }
 .section-intro h1 {
   line-height: 2.4;
@@ -219,7 +218,6 @@ a:focus {
   margin: auto;
   max-height: 9999px;
   /* no font boosting please */
-
 }
 .docs header {
   text-align: center;
@@ -334,12 +332,6 @@ a:focus {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-@media only screen and (min-width: 35em) {
-
-}
-@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-
-}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

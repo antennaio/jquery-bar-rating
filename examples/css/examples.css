@@ -342,7 +342,6 @@
   padding-top: 2em;
   height: 85px;
   /* rating widgets will be absolutely centered relative to box body */
-
   position: relative;
 }
 .box select {
