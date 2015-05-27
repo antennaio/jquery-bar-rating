@@ -37,6 +37,7 @@ describe('bar rating plugin on init with custom options', function () {
             showValues: false
         });
         expect(BarRating.options).to.be.a('object');
+        expect(BarRating.options.theme).to.equal('');
         expect(BarRating.options.initialRating).to.equal(null);
         expect(BarRating.options.showValues).to.equal(false);
         expect(BarRating.options.showSelectedRating).to.equal(true);
@@ -101,6 +102,27 @@ describe('bar rating plugin on show', function () {
 
     it('should hide the select field', function () {
         expect($('#rating').css('display')).to.equal('none');
+    });
+
+});
+
+describe('bar rating themes', function() {
+
+    before(function () {
+        createSelect();
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should set the theme class', function() {
+        $('#rating').barrating({
+            theme: 'bootstrap-stars'
+        });
+
+        expect($('.br-wrapper').hasClass('br-theme-bootstrap-stars')).to.be.true;
     });
 
 });

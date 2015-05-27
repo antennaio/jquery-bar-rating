@@ -20,6 +20,7 @@ var lessFiles = [
 var cssPath = path.join(__dirname, 'examples', 'css'),
     distPath = 'dist';
 
+var themePath = path.join(__dirname, 'dist', 'themes');
 
 gulp.task('jshint', function() {
   return gulp.src(srcFile)
@@ -50,13 +51,20 @@ gulp.task('less', function() {
     .pipe(gulp.dest(cssPath));
 });
 
+gulp.task('themes', function() {
+  return gulp.src(['themes/*.less', '!themes/variables.less'])
+    .pipe(less())
+    .pipe(gulp.dest(themePath));
+});
+
 gulp.task('build', function() {
-  runSequence('jshint', 'test', 'uglify');
+  runSequence('jshint', 'test', 'themes', 'uglify');
 });
 
 gulp.task('watch', function() {
   gulp.watch(srcFile, ['jshint']);
   gulp.watch(lessFiles, ['less']);
+  gulp.watch(themeLessFiles, ['themes']);
 });
 
 gulp.task('default', ['build']);
