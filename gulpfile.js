@@ -2,15 +2,14 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    mocha = require('gulp-mocha'),
+    karma = require('gulp-karma')
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
     runSequence = require('run-sequence');
 
 var path = require('path');
 
-var srcFile = 'jquery.barrating.js',
-    specFile = path.join(__dirname, 'test', 'jquery.barrating-spec.js');
+var srcFile = 'jquery.barrating.js';
 
 var lessFiles = [
       path.join(__dirname, 'examples', 'less', 'examples.less'),
@@ -40,8 +39,15 @@ gulp.task('uglify', function() {
 });
 
 gulp.task('test', function() {
-    return gulp.src(specFile)
-        .pipe(mocha({reporter: 'spec'}));
+    return gulp.src('dummy')
+        .pipe(karma({
+          configFile: 'karma.conf.js',
+          action: 'run'
+        }))
+        .on('error', function(err) {
+          // Stop gulp from any further processing.
+          throw err;
+        });
 });
 
 gulp.task('less', function() {

@@ -1,12 +1,4 @@
-var chai = require("chai"),
-    jQuery = require("jQuery"),
-    jsdom = require("jsdom");
-
-var expect = chai.expect;
-
-var doc = jsdom.jsdom('<html><body></body></html>');
-
-var $ = global.jQuery = jQuery(doc.defaultView);
+var expect = window.chai.expect;
 
 function createSelect() {
     $('<select />', { 'id':'rating', 'name':'rating' }).appendTo('body');
@@ -25,14 +17,12 @@ function destroySelect() {
 }
 
 
-require("../jquery.barrating");
-
 
 describe('bar rating plugin on init with custom options', function () {
 
     it('should update defaults', function () {
         var BarRating;
-        BarRating = new global.BarRating();
+        BarRating = new window.BarRating();
         BarRating.init({
             showValues: false
         });
