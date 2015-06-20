@@ -1,6 +1,10 @@
 HEAD
 ----
 
+- themes for basic stars in flavors for css, fontawesome and bootstrap (@garygreen, [#35](https://github.com/antennaio/jquery-bar-rating/pull/35))
+
+- switch to using karma and phantomjs for testing (@garygreen, [#37](https://github.com/antennaio/jquery-bar-rating/pull/37))
+
 - gulp tasks added
 
 - minified version with source map file stored in `dist` directory
