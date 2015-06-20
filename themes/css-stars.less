@@ -1,0 +1,36 @@
+@import "variables.less";
+
+.br-theme-css-stars {
+
+  .br-widget {
+    height: 28px;
+  
+    a {
+      text-decoration: none;
+      height: 18px;
+      width: 18px;
+      float: left;
+      font-size: 23px;
+      margin-right: 2px;
+    }
+
+    a:after {
+      content: "\2605";
+      position: absolute;
+      color: @star-default;
+    }
+
+    a.br-active:after {
+      color: @star-active;
+    }
+
+    a.br-selected:after {
+      color: @star-selected;
+    }
+
+    .br-current-rating {
+      display: none;
+    }
+  }
+
+}

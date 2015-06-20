@@ -1,0 +1,34 @@
+@import "variables.less";
+
+.br-theme-bootstrap-stars {
+
+  .br-widget {
+    height: 28px;
+  
+    a {
+      font: normal normal normal 18px/1 'Glyphicons Halflings';
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      text-decoration: none;
+      margin-right: 2px;
+    }
+
+    a:after {
+      content: '\e006';
+      color: @star-default;
+    }
+
+    a.br-active:after {
+      color: @star-active;
+    }
+
+    a.br-selected:after {
+      color: @star-selected;
+    }
+
+    .br-current-rating {
+      display: none;
+    }
+  }
+
+}

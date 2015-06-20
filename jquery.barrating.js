@@ -21,8 +21,14 @@
 
             // wrap element in a wrapper div
             var wrapElement = function() {
+                var classes = [self.options.wrapperClass];
+
+                if (self.options.theme !== '') {
+                    classes.push('br-theme-' + self.options.theme);
+                }
+                
                 self.$elem.wrap($('<div />', {
-                    'class': self.options.wrapperClass
+                    'class': classes.join(' ')
                 }));
             };
 
@@ -388,6 +394,7 @@
     };
 
     $.fn.barrating.defaults = {
+        theme:'',
         initialRating:null, // initial rating
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
