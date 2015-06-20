@@ -30,6 +30,7 @@
     "karma-chrome-launcher": "^0.1.12",
     "karma-mocha": "^0.1.10",
     "karma-phantomjs-launcher": "^0.2.0",
+    "karma-junit-reporter": "~0.2",
     "mocha": "2.2.4",
     "phantomjs": "^1.9.17",
     "run-sequence": "1.1.0"
