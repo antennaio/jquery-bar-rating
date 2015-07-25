@@ -1,0 +1,36 @@
+@import "variables.less";
+
+.br-theme-bars-horizontal {
+
+  .br-widget {
+    width: 120px;
+
+    a {
+      display: block;
+      width: 120px;
+      height: 5px;
+      background-color: lighten(@orange-color, 25%);
+      margin: 1px;
+
+      &.br-active,
+      &.br-selected {
+        background-color: @orange-color;
+      }
+    }
+
+    .br-current-rating {
+      width: 120px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 2;
+      text-align: center;
+      color: @orange-color;
+    }
+  }
+
+  .br-readonly a.br-active,
+  .br-readonly a.br-selected {
+    background-color: @orange-color;
+  }
+
+}

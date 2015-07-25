@@ -1,0 +1,47 @@
+@import "variables.less";
+
+.br-theme-bars-square {
+
+  .br-widget {
+    height: 15px;
+
+    a {
+      display: block;
+      width: 30px;
+      height: 30px;
+      float: left;
+      border: 2px solid lighten(@blue-color, 25%);
+      background-color: white;
+      margin: 2px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 2;
+      text-align: center;
+      color: lighten(@blue-color, 25%);
+      font-weight: 600;
+
+      &.br-active,
+      &.br-selected {
+        border: 2px solid @blue-color;
+        color: @blue-color;
+      }
+    }
+
+    .br-current-rating {
+      clear: both;
+      width: 330px;
+      text-align: center;
+      font-weight: 600;
+      display: block;
+      padding: .5em 0;
+      color: #646464;
+    }
+  }
+
+  .br-readonly a.br-active,
+  .br-readonly a.br-selected {
+    background-color: @blue-color;
+  }
+
+}

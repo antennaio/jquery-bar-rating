@@ -1,0 +1,34 @@
+@import "variables.less";
+
+.br-theme-bars-1to10 {
+
+  .br-widget {
+    height: 50px;
+
+    a {
+      display: block;
+      width: 12px;
+      padding: 5px 0;
+      height: 28px;
+      float: left;
+      background-color: lighten(@orange-color, 25%);
+      margin: 1px;
+      text-align: center;
+
+      &.br-active,
+      &.br-selected {
+        background-color: @orange-color;
+      }
+    }
+
+    .br-current-rating {
+      font-size: 20px;
+      line-height: 2;
+      float: left;
+      padding: 0 20px 0 20px;
+      color: @orange-color;
+      font-weight: 400;
+    }
+  }
+
+}
