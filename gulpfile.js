@@ -21,6 +21,8 @@ var cssPath = path.join(__dirname, 'examples', 'css'),
 
 var themePath = path.join(__dirname, 'dist', 'themes');
 
+var themeLessFiles = 'themes/*.less';
+
 gulp.task('jshint', function() {
   return gulp.src(srcFile)
     .pipe(jshint())
@@ -58,7 +60,7 @@ gulp.task('less', function() {
 });
 
 gulp.task('themes', function() {
-  return gulp.src(['themes/*.less', '!themes/variables.less'])
+  return gulp.src([themeLessFiles, '!themes/variables.less'])
     .pipe(less())
     .pipe(gulp.dest(themePath));
 });
