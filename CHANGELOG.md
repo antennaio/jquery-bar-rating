@@ -1,5 +1,5 @@
-HEAD
-----
+1.1.1
+-----
 
 - themes for basic stars in flavors for css, fontawesome and bootstrap (@garygreen, [#35](https://github.com/antennaio/jquery-bar-rating/pull/35))
 
