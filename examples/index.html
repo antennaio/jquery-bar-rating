@@ -11,6 +11,32 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/examples.css">
 
+		<!-- Icons -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+		<style>
+			@font-face {
+				font-family: 'Glyphicons Halflings';
+				src:url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot');
+				src:url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+					url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff') format('woff'),
+					url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+					url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+			}
+		</style>
+
+		<!-- Themes -->
+		<link rel="stylesheet" href="../dist/themes/bars-1to10.css">
+		<link rel="stylesheet" href="../dist/themes/bars-movie.css">
+		<link rel="stylesheet" href="../dist/themes/bars-square.css">
+		<link rel="stylesheet" href="../dist/themes/bars-pill.css">
+		<link rel="stylesheet" href="../dist/themes/bars-reversed.css">
+		<link rel="stylesheet" href="../dist/themes/bars-horizontal.css">
+
+		<link rel="stylesheet" href="../dist/themes/fontawesome-stars.css">
+		<link rel="stylesheet" href="../dist/themes/css-stars.css">
+		<link rel="stylesheet" href="../dist/themes/bootstrap-stars.css">
+
+		<!-- Fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,600" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
 
@@ -52,10 +78,10 @@
 				<div class="row">
 						<div class="col">
 
-								<div class="box box-orange">
-									<div class="box-header">Example A</div>
+								<div class="box box-orange box-example-1to10">
+									<div class="box-header">1/10 Rating</div>
 									<div class="box-body">
-										<select id="example-a" name="rating">
+										<select id="example-1to10" name="rating">
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -73,10 +99,10 @@
 						</div>
 						<div class="col">
 
-								<div class="box box-green">
-									<div class="box-header">Example B</div>
+								<div class="box box-blue box-example-movie">
+									<div class="box-header">Movie Rating</div>
 									<div class="box-body">
-										<select id="example-b" name="rating">
+										<select id="example-movie" name="rating">
 											<option value="Bad">Bad</option>
 											<option value="Mediocre">Mediocre</option>
 											<option value="Good" selected="selected">Good</option>
@@ -91,10 +117,10 @@
 				<div class="row">
 						<div class="col">
 
-								<div class="box box-blue">
-									<div class="box-header">Example C</div>
+								<div class="box box-blue box-example-square">
+									<div class="box-header">Square Rating</div>
 									<div class="box-body">
-										<select id="example-c" name="rating">
+										<select id="example-square" name="rating">
 												<option value=""></option>
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -108,32 +134,10 @@
 						</div>
 						<div class="col">
 
-								<div class="box box-orange">
-									<div class="box-header">Example D</div>
+								<div class="box box-green box-example-pill">
+									<div class="box-header">Pill Rating</div>
 									<div class="box-body">
-										<select id="example-d" name="rating">
-												<option value="1" data-html="<strong>1</strong>">1</option>
-												<option value="2" data-html="<strong>2</strong>">2</option>
-												<option value="3" data-html="<strong>3</strong>">3</option>
-												<option value="4" data-html="<strong>4</strong>">4</option>
-												<option value="5" data-html="<strong>5</strong>">5</option>
-												<option value="6" data-html="<strong>6</strong>">6</option>
-												<option value="7" data-html="<strong>7</strong>">7</option>
-												<option value="8" data-html="<strong>8</strong>">8</option>
-										</select>
-									</div>
-								</div>
-
-						</div>
-				</div>
-
-				<div class="row">
-						<div class="col">
-
-								<div class="box box-green">
-									<div class="box-header">Example E</div>
-									<div class="box-body">
-										<select id="example-e" name="rating">
+										<select id="example-pill" name="rating">
 											<option value="A">A</option>
 											<option value="B">B</option>
 											<option value="C">C</option>
@@ -145,31 +149,15 @@
 								</div>
 
 						</div>
-						<div class="col">
-
-								<div class="box box-blue">
-									<div class="box-header">Example F</div>
-									<div class="box-body">
-										<select id="example-f" name="rating">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-								</div>
-
-						</div>
 				</div>
 
 				<div class="row">
 						<div class="col">
 
-								<div class="box box-orange box-large">
-									<div class="box-header">Example G</div>
+								<div class="box box-green box-large box-example-reversed">
+									<div class="box-header">Reversed Rating</div>
 									<div class="box-body">
-										<select id="example-g" name="rating">
+										<select id="example-reversed" name="rating">
 											<option value="Strongly Agree">Strongly Agree</option>
 											<option value="Agree">Agree</option>
 											<option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
@@ -182,10 +170,10 @@
 						</div>
 						<div class="col">
 
-								<div class="box box-green box-large">
-									<div class="box-header">Example H</div>
+								<div class="box box-orange box-large box-example-horizontal">
+									<div class="box-header">Horizontal Rating</div>
 									<div class="box-body">
-										<select id="example-h" name="rating">
+										<select id="example-horizontal" name="rating">
 											<option value="10">10</option>
 											<option value="9">9</option>
 											<option value="8">8</option>
@@ -203,6 +191,60 @@
 						</div>
 				</div>
 
+				<div class="row">
+						<div class="col col-fullwidth">
+
+							<div class="star-ratings">
+
+								<h1>How about star ratings?</h1>
+
+								<p>The plugin comes with a few flavours of star ratings compatible with popular libraries.</p>
+
+								<div class="stars stars-example-fontawesome">
+
+									<select id="example-fontawesome" name="rating">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+
+									<span class="title">Font Awesome</span>
+
+								</div>
+								<div class="stars stars-example-css">
+
+									<select id="example-css" name="rating">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+
+									<span class="title">CSS Stars</span>
+
+								</div>
+								<div class="stars stars-example-bootstrap">
+
+									<select id="example-bootstrap" name="rating">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+
+									<span class="title">Bootstrap</span>
+
+								</div>
+
+							</div>
+
+						</div>
+				</div>
+
 			</div>
 
 		</section>
@@ -216,8 +258,10 @@
 						<ol>
 							<li>
 
-								Get the plugin from <a href="http://github.com/antennaio/jquery-bar-rating">GitHub</a>
-								or install with Bower:
+								<p>
+									Get the plugin from <a href="http://github.com/antennaio/jquery-bar-rating">GitHub</a>
+									or install with Bower:
+								</p>
 
 <pre>
 <code>
@@ -226,7 +270,9 @@ bower install jquery-bar-rating
 </pre>
 
 							</li>
-							<li>Create a select field:
+							<li>
+								<p>Create a select field:</p>
+
 <pre>
 <code>
 &lt;select id=&quot;example&quot;&gt;
@@ -243,6 +289,19 @@ bower install jquery-bar-rating
 							<li>
 
 								<p>
+									If you would like to use one of the provided themes
+									include the theme in the head section of the page.
+								</p>
+
+<pre>
+<code>
+&lt;link rel="stylesheet" href="fontawesome-stars.css"&gt;
+</code>
+</pre>
+
+							</li>
+							<li>
+								<p>
 									Include and call the plugin (after jQuery v1.7.2+)
 								</p>
 
@@ -251,7 +310,9 @@ bower install jquery-bar-rating
 &lt;script src="jquery.barrating.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
    $(function() {
-      $('#example').barrating();
+      $('#example').barrating(
+        theme: 'fontawesome-stars'
+      );
    });
 &lt;/script&gt;
 </code>
@@ -259,16 +320,16 @@ bower install jquery-bar-rating
 
 							</li>
 							<li>
+								<p>
+									The select field will be wrapped in a div with a `.br-theme-fontawesome-stars` class.
+									For a full list of available options please refer to <a href="#nav-configuration">configuration</a>.
+								</p>
 
-The select field will be wrapped in a div with a class `.br-wrapper`.
-You can change the div's class by specifying the
-<a href="#nav-configuration">`wrapperClass`</a> setting when calling the plugin.
-The `wrapperClass` setting is useful if you plan to have a few differently
-styled ratings coexist together. Expected result:
+								<p>Expected result:</p>
 
 <pre>
 <code>
-&lt;div class=&quot;br-wrapper&quot;&gt;
+&lt;div class=&quot;br-wrapper br-theme-fontawesome-stars&quot;&gt;
   &lt;select id=&quot;example&quot;&gt;
     &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
     &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
@@ -276,19 +337,10 @@ styled ratings coexist together. Expected result:
     &lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
     &lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
   &lt;/select&gt;
+  ...rating widget...
 &lt;/div&gt;
 </code>
 </pre>
-
-							</li>
-							<li>
-
-								<p>
-									By default there are no styles applied to the wrapper div.
-									<a href="css/examples.css">A few examples of CSS styling</a>
-									are provided that you can use as a starting point to customize
-									the plugin to your needs.
-								</p>
 
 							</li>
 						</ol>
@@ -298,6 +350,11 @@ styled ratings coexist together. Expected result:
 				<div class="configuration" id="nav-configuration">
 					<header>Configuration</header>
 					<div class="instructions">
+
+						<p>
+							<strong>theme: ''</strong><br>
+							Specify a theme.
+						</p>
 
 						<p>
 							<strong>initialRating: null</strong><br>
@@ -331,7 +388,7 @@ styled ratings coexist together. Expected result:
 
 						<p>
 							<strong>wrapperClass: 'br-wrapper'</strong><br>
-							Specify wrapper div's class. Useful in cases when you want to have a few differently styled ratings coexist together.
+							Specify the name of wrapper div's class.
 						</p>
 
 					</div>

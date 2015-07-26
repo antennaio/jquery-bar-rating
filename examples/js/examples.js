@@ -1,28 +1,23 @@
 $(function() {
     function ratingEnable() {
-        $('#example-a').barrating();
-
-        $('#example-b').barrating('show', {
-            wrapperClass: 'br-wrapper-b',
-            //readonly: true
+        $('#example-1to10').barrating('show', {
+            theme: 'bars-1to10'
         });
 
-        $('#example-b').barrating('set', 'Mediocre');
+        $('#example-movie').barrating('show', {
+            theme: 'bars-movie'
+        });
 
-        $('#example-c').barrating('show', {
-            wrapperClass: 'br-wrapper-c',
+        $('#example-movie').barrating('set', 'Mediocre');
+
+        $('#example-square').barrating('show', {
+            theme: 'bars-square',
             showValues: true,
             showSelectedRating: false
         });
 
-        $('#example-d').barrating('show', {
-            wrapperClass: 'br-wrapper-d',
-            showValues: true,
-            showSelectedRating: false
-        });
-
-        $('#example-e').barrating('show', {
-            wrapperClass: 'br-wrapper-e',
+        $('#example-pill').barrating('show', {
+            theme: 'bars-pill',
             initialRating: 'A',
             showValues: true,
             showSelectedRating: false,
@@ -31,21 +26,31 @@ $(function() {
             }
         });
 
-        $('#example-f').barrating({
-            wrapperClass: 'br-wrapper-f',
-            showSelectedRating: false
-        });
-
-        $('#example-g').barrating('show', {
-            wrapperClass: 'br-wrapper-g',
+        $('#example-reversed').barrating('show', {
+            theme: 'bars-reversed',
             showSelectedRating: true,
             reverse: true
         });
 
-        $('#example-h').barrating('show', {
-            wrapperClass: 'br-wrapper-h',
+        $('#example-horizontal').barrating('show', {
+            theme: 'bars-horizontal',
             reverse: true
         });
+
+        $('#example-fontawesome').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+
+        $('#example-css').barrating({
+            theme: 'css-stars',
+            showSelectedRating: false
+        });
+
+        $('#example-bootstrap').barrating({
+            theme: 'bootstrap-stars',
+            showSelectedRating: false
+        });                
     }
 
     function ratingDisable() {

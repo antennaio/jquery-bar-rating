@@ -82,7 +82,8 @@ body {
   font-family: "Lato", sans-serif;
   color: #757575;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 1.25em;
+  /* 20px */
   line-height: 1.6;
 }
 h1,
@@ -93,6 +94,7 @@ h3 {
 }
 h1 {
   font-size: 2.8em;
+  /* 56px */
   margin: 0;
 }
 pre {
@@ -102,7 +104,8 @@ pre {
 }
 code {
   font-family: "Source Code Pro", sans-serif;
-  font-size: 18px;
+  font-size: 0.9em;
+  /* 18px */
   color: #4278f5;
 }
 a {
@@ -146,7 +149,8 @@ a:focus {
   display: block;
   margin: auto;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.6em;
+  /* 12px */
   line-height: 5.5;
   letter-spacing: 2px;
   margin-bottom: 7em;
@@ -195,7 +199,9 @@ a:focus {
   margin: auto;
 }
 .section-intro p.tagline {
-  font-size: 14px;
+  font-size: 0.8em;
+  /* 16px */
+  color: #a8a8a8;
   margin-bottom: 3em;
 }
 .section-examples {
@@ -210,6 +216,9 @@ a:focus {
 .examples .col {
   width: 50%;
 }
+.examples .col-fullwidth {
+  width: 100%;
+}
 .section-docs {
   margin: 3em 0;
 }
@@ -221,12 +230,13 @@ a:focus {
 }
 .docs header {
   text-align: center;
-  padding: .8em 0;
-  letter-spacing: 5px;
+  padding: 1em 0;
+  letter-spacing: 3px;
   text-transform: uppercase;
   font-weight: 600;
   color: white;
   width: 100%;
+  font-size: .9em;
 }
 .docs .how-to-use header,
 .docs .callbacks header {
@@ -292,7 +302,7 @@ a:focus {
   background-color: #50e3c2;
   color: white;
   float: left;
-  padding: .4em 1em .5em 1em;
+  padding: .3em 1em .5em 1em;
   text-decoration: none;
   text-align: center;
   font-weight: 600;
