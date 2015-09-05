@@ -117,18 +117,6 @@ h1 {
     margin: 0;
 }
 
-pre {
-    background: white;
-    border-left: 2px solid @blueColor;
-    padding: 0 2em;
-}
-
-code {
-    font-family: @fontFamilyMonospaced;
-    font-size: 0.9em; /* 18px */
-    color: @blueColor;
-}
-
 a {
   color: @greenColor;
   text-decoration: none;
@@ -139,6 +127,10 @@ a {
     color: darken(@greenColor, 20%);
     text-decoration: none;
   }
+}
+
+p {
+    margin: 0 0 1em 0;
 }
 
 .github {
@@ -258,6 +250,18 @@ a {
             color: darken(@color, 20%);
         }
     }
+
+    pre {
+        background: white;
+        border-left: 2px solid @color;
+        padding: 0 2em;
+    }
+
+    code {
+        font-family: @fontFamilyMonospaced;
+        font-size: 0.9em; /* 18px */
+        color: @color;
+    }
 }
 
 .docs {
@@ -276,21 +280,35 @@ a {
         font-size: .9em;
     }
 
-    .how-to-use, .callbacks {
+    .how-to-use, .callbacks, .download {
         .coloredDocs(@blueColor);
     }
 
-    .configuration, .license {
+    .configuration, .faq {
         .coloredDocs(@greenColor);
     }
 
-    .methods, .download {
+    .license, .methods {
         .coloredDocs(@orangeColor);
     }
 
     .instructions {
         padding: 2em 3em;
         background: @backgroundColor;
+    }
+
+    .faq {
+        p {
+            margin: 0 0 .5em 0;
+        }
+
+        .question {
+            margin-bottom: 2em;
+        }
+
+        .question:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 

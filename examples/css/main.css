@@ -97,17 +97,6 @@ h1 {
   /* 56px */
   margin: 0;
 }
-pre {
-  background: white;
-  border-left: 2px solid #4278f5;
-  padding: 0 2em;
-}
-code {
-  font-family: "Source Code Pro", sans-serif;
-  font-size: 0.9em;
-  /* 18px */
-  color: #4278f5;
-}
 a {
   color: #50e3c2;
   text-decoration: none;
@@ -117,6 +106,9 @@ a:hover,
 a:focus {
   color: #1cb18f;
   text-decoration: none;
+}
+p {
+  margin: 0 0 1em 0;
 }
 .github {
   background-image: url("../img/github.png");
@@ -239,56 +231,110 @@ a:focus {
   font-size: .9em;
 }
 .docs .how-to-use header,
-.docs .callbacks header {
+.docs .callbacks header,
+.docs .download header {
   background: #4278f5;
 }
 .docs .how-to-use strong,
-.docs .callbacks strong {
+.docs .callbacks strong,
+.docs .download strong {
   color: #4278f5;
 }
 .docs .how-to-use a,
-.docs .callbacks a {
+.docs .callbacks a,
+.docs .download a {
   color: #4278f5;
 }
 .docs .how-to-use a:hover,
-.docs .callbacks a:hover {
+.docs .callbacks a:hover,
+.docs .download a:hover {
   color: #0b43c6;
 }
+.docs .how-to-use pre,
+.docs .callbacks pre,
+.docs .download pre {
+  background: white;
+  border-left: 2px solid #4278f5;
+  padding: 0 2em;
+}
+.docs .how-to-use code,
+.docs .callbacks code,
+.docs .download code {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 0.9em;
+  /* 18px */
+  color: #4278f5;
+}
 .docs .configuration header,
-.docs .license header {
+.docs .faq header {
   background: #50e3c2;
 }
 .docs .configuration strong,
-.docs .license strong {
+.docs .faq strong {
   color: #50e3c2;
 }
 .docs .configuration a,
-.docs .license a {
+.docs .faq a {
   color: #50e3c2;
 }
 .docs .configuration a:hover,
-.docs .license a:hover {
+.docs .faq a:hover {
   color: #1cb18f;
 }
-.docs .methods header,
-.docs .download header {
+.docs .configuration pre,
+.docs .faq pre {
+  background: white;
+  border-left: 2px solid #50e3c2;
+  padding: 0 2em;
+}
+.docs .configuration code,
+.docs .faq code {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 0.9em;
+  /* 18px */
+  color: #50e3c2;
+}
+.docs .license header,
+.docs .methods header {
   background: #edb867;
 }
-.docs .methods strong,
-.docs .download strong {
+.docs .license strong,
+.docs .methods strong {
   color: #edb867;
 }
-.docs .methods a,
-.docs .download a {
+.docs .license a,
+.docs .methods a {
   color: #edb867;
 }
-.docs .methods a:hover,
-.docs .download a:hover {
+.docs .license a:hover,
+.docs .methods a:hover {
   color: #d58b19;
+}
+.docs .license pre,
+.docs .methods pre {
+  background: white;
+  border-left: 2px solid #edb867;
+  padding: 0 2em;
+}
+.docs .license code,
+.docs .methods code {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 0.9em;
+  /* 18px */
+  color: #edb867;
 }
 .docs .instructions {
   padding: 2em 3em;
   background: #f8f8f8;
+}
+.docs .faq p {
+  margin: 0 0 .5em 0;
+}
+.docs .faq .question {
+  margin-bottom: 2em;
+}
+.docs .faq .question:last-child {
+  margin-bottom: 0;
 }
 .controls {
   position: absolute;

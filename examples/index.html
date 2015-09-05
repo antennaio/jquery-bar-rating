@@ -443,6 +443,56 @@ bower install jquery-bar-rating
 					</div>
 				</div>
 
+				<div class="faq" id="nav-faq">
+					<header>FAQ</header>
+					<div class="instructions">
+
+						<div  class="question">
+							<p>
+								<strong>How do I allow users to select empty ratings?</strong>
+							</p>
+							<p>
+								To allow users to select empty ratings simply include an empty
+								option in your select field:
+							</p>
+
+<pre>
+<code>
+&lt;select id=&quot;example&quot;&gt;
+  &lt;option value=&quot;&quot;&gt;&lt;/option&gt;
+  &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+  &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+  &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+&lt;/select&gt;
+</code>
+</pre>
+						</div>
+						<div  class="question">
+							<p>
+								<strong>How can I specify text that is displayed on the bars?</strong>
+							</p>
+							<p>
+								The `showValues` plugin setting already makes it easy to display
+								option values directly on the bars. For more control over the text
+								that is displayed on the bars you can define `data-html` attribute
+								on each of the &lt;option&gt; elements that will take precedence
+								over actual option value.
+							</p>
+
+<pre>
+<code>
+&lt;select id=&quot;example&quot;&gt;
+  &lt;option value=&quot;1&quot; data-html=&quot;good&quot;&gt;1&lt;/option&gt;
+  &lt;option value=&quot;2&quot; data-html=&quot;better&quot;&gt;2&lt;/option&gt;
+  &lt;option value=&quot;3&quot; data-html=&quot;best&quot;&gt;3&lt;/option&gt;
+&lt;/select&gt;
+</code>
+</pre>
+						</div>
+
+					</div>
+				</div>
+
 				<div class="license" id="nav-license">
 					<header>License</header>
 					<div class="instructions">

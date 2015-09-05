@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- FAQ section added to the docs
+
 - triggering onSelect callback when using `set` method
 
 1.1.1
