@@ -304,6 +304,13 @@
                 showSelectedRating(this.$elem.data('barrating').currentRatingText);
 
                 applyStyle(this.$widget);
+
+                // onSelect callback
+                this.$elem.data('barrating').userOptions.onSelect.call(
+                    this,
+                    this.$elem.data('barrating').currentRatingValue,
+                    this.$elem.data('barrating').currentRatingText
+                );
             };
 
             this.clear = function() {

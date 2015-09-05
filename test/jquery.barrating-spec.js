@@ -332,11 +332,17 @@ describe('bar rating plugin on destroy', function () {
 
 describe('bar rating plugin on set value', function () {
 
+    var valuesFromCallback = [];
+
     before(function () {
         createSelect();
-        $('#rating')
-            .barrating()
-            .barrating('set', 3);
+
+        $('#rating').barrating('show', {
+            onSelect:function (value, text) {
+                valuesFromCallback.push(value, text);
+            }
+        }).barrating('set', 3);
+
     });
 
     after(function () {
@@ -351,6 +357,11 @@ describe('bar rating plugin on set value', function () {
     it('should set correct class', function () {
         expect($('.br-widget a:nth-child(3)').hasClass('br-selected')).to.equal(true);
         expect($('.br-widget a:nth-child(3)').hasClass('br-current')).to.equal(true);
+    });
+
+    it('should pass correct values to a callback', function () {
+        expect(valuesFromCallback[0]).to.equal(3);
+        expect(valuesFromCallback[1]).to.equal('rating-text-3');
     });
 
 });
