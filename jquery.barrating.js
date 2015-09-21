@@ -9,12 +9,20 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
-(function ($) {
-    var BarRating, root;
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // browser globals
+        factory(jQuery);
+    }
+}(function ($) {
 
-    root = typeof window !== "undefined" && window !== null ? window : global;
-
-    root.BarRating = BarRating = (function() {
+    var BarRating = (function() {
 
         function BarRating() {
             var self = this;
@@ -417,6 +425,6 @@
         } // callback fired when a widget is destroyed
     };
 
-    return $.fn.barrating.defaults;
+    $.fn.barrating.BarRating = BarRating;
 
-})(jQuery);
+}));

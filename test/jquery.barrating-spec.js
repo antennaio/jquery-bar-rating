@@ -22,7 +22,7 @@ describe('bar rating plugin on init with custom options', function () {
 
     it('should update defaults', function () {
         var BarRating;
-        BarRating = new window.BarRating();
+        BarRating = new $.fn.barrating.BarRating();
         BarRating.init({
             showValues: false
         });
