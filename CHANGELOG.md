@@ -1,5 +1,5 @@
-HEAD
-----
+1.1.2
+-----
 
 - AMD and CommonJS compatibility
 
