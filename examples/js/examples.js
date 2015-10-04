@@ -34,7 +34,8 @@ $(function() {
 
         $('#example-horizontal').barrating('show', {
             theme: 'bars-horizontal',
-            reverse: true
+            reverse: true,
+            hoverState: false
         });
 
         $('#example-fontawesome').barrating({

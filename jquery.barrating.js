@@ -289,11 +289,13 @@
                     // attach click event handler
                     attachClickHandler($all);
 
-                    // attach mouseenter event handler
-                    attachMouseEnterHandler($all);
+                    if (self.options.hoverState) {
+                        // attach mouseenter event handler
+                        attachMouseEnterHandler($all);
 
-                     // attach mouseleave event handler
-                    attachMouseLeaveHandler($all, $widget);
+                        // attach mouseleave event handler
+                        attachMouseLeaveHandler($all, $widget);
+                    }
 
                 }
 
@@ -416,6 +418,7 @@
         reverse:false, // reverse the rating?
         readonly:false, // make the rating ready-only?
         fastClicks:true, // remove 300ms click delay on touch devices?
+        hoverState:true, // change state on hover?
         wrapperClass:'br-wrapper', // class applied to wrapper div
         onSelect:function (value, text) {
         }, // callback fired when a rating is selected

@@ -1,3 +1,8 @@
+HEAD
+----
+
+- new option added: `hoverState`
+
 1.1.2
 -----
 
