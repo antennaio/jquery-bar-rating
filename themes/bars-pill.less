@@ -46,3 +46,21 @@
   }
 
 }
+
+@media print {
+  .br-theme-bars-pill {
+
+    .br-widget {
+      a {
+        color: black;
+        background: lighten(black, 70%);
+
+        &.br-active,
+        &.br-selected {
+          background: black;
+        }
+      }
+    }
+
+  }
+}

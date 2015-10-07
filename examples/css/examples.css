@@ -39,6 +39,7 @@
 /* Display star ratings */
 .star-ratings h1 {
   font-size: 1.5em;
+  line-height: 2;
   margin-top: 3em;
   color: #757575;
 }
@@ -119,4 +120,29 @@
   background-color: white;
   border: 2px solid #8bacf9;
   border-top: 0;
+}
+@media print {
+  .star-ratings h1 {
+    color: black;
+  }
+  .star-ratings .stars .title {
+    color: black;
+  }
+  .box-orange,
+  .box-green,
+  .box-blue {
+    -webkit-print-color-adjust: exact;
+  }
+  .box-orange .box-header,
+  .box-green .box-header,
+  .box-blue .box-header {
+    background-color: black;
+    color: white;
+  }
+  .box-orange .box-body,
+  .box-green .box-body,
+  .box-blue .box-body {
+    background-color: white;
+    border: 2px solid black;
+  }
 }

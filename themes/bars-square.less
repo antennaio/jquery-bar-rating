@@ -45,3 +45,22 @@
   }
 
 }
+
+@media print {
+  .br-theme-bars-square {
+
+    .br-widget {
+      a {
+        border: 2px solid lighten(black, 70%);
+        color: lighten(black, 70%);
+
+        &.br-active,
+        &.br-selected {
+          border: 2px solid black;
+          color: black;
+        }
+      }
+    }
+
+  }
+}

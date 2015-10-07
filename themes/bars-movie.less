@@ -37,3 +37,24 @@
   }
 
 }
+
+@media print {
+  .br-theme-bars-movie {
+
+    .br-widget {
+      a {
+        background: lighten(black, 70%);
+
+        &.br-active,
+        &.br-selected {
+          background: black;
+        }
+      }
+
+      .br-current-rating {
+        color: black;
+      }
+    }
+
+  }
+}

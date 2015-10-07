@@ -81,15 +81,13 @@ textarea {
     clear: both;
 }
 
-@media only screen {
-    .col {
-        float: left;
-        width: 100%;
+.col {
+    float: left;
+    width: 100%;
 
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-    }
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -392,6 +390,59 @@ p {
        (-webkit-min-device-pixel-ratio: 1.25),
        (min-resolution: 120dpi) {
 
+    body {
+        color: black;
+    }
+
+    h1, h2, h3 {
+        color: black;
+    }
+
+    .controls,
+    .github,
+    .antennaio {
+        display: none;
+    }
+
+    .section-intro {
+        p.tagline {
+            color: black;
+        }
+    }
+
+    .docs {
+        -webkit-print-color-adjust: exact;
+
+        .how-to-use,
+        .callbacks,
+        .download,
+        .configuration,
+        .faq,
+        .license,
+        .methods {
+            a {
+                color: black;
+                text-decoration: none;
+
+                &:hover {
+                    color: black;
+                }
+            }
+
+            header {
+                background: black;
+            }
+
+            code, strong {
+                color: black;
+            }
+
+            pre {
+                border-left: 2px solid black;
+            }
+        }
+    }
+
 }
 
 /* ==========================================================================
@@ -450,8 +501,6 @@ p {
     *,
     *:before,
     *:after {
-        background: transparent !important;
-        color: #000 !important;
         box-shadow: none !important;
         text-shadow: none !important;
     }

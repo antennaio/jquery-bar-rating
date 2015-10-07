@@ -21,3 +21,14 @@
 .br-theme-fontawesome-stars .br-widget .br-current-rating {
   display: none;
 }
+@media print {
+  .br-theme-fontawesome-stars .br-widget a:after {
+    content: '\f006';
+    color: black;
+  }
+  .br-theme-fontawesome-stars .br-widget a.br-active:after,
+  .br-theme-fontawesome-stars .br-widget a.br-selected:after {
+    content: '\f005';
+    color: black;
+  }
+}

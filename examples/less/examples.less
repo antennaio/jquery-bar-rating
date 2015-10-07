@@ -50,6 +50,7 @@
 .star-ratings {
     h1 {
         font-size: 1.5em;
+        line-height: 2;
         margin-top: 3em;
         color: @textColor;
     }
@@ -142,4 +143,34 @@
 
 .box-blue {
     .box-color(@blueColor);
+}
+
+@media print {
+    .star-ratings {
+        h1 {
+            color: black;
+        }
+
+        .stars {
+            .title {
+                color: black;
+            }
+        }
+    }
+
+    .box-orange,
+    .box-green,
+    .box-blue {
+        -webkit-print-color-adjust: exact;
+
+        .box-header {
+            background-color: black;
+            color: white;
+        }
+
+        .box-body {
+            background-color: white;
+            border: 2px solid black;
+        }
+    }
 }

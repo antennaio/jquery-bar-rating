@@ -34,3 +34,22 @@
   }
 
 }
+
+@media print {
+  .br-theme-css-stars {
+
+    .br-widget {
+      a:after {
+        content: "\2606";
+        color: black;
+      }
+
+      a.br-active:after,
+      a.br-selected:after {
+        content: "\2605";
+        color: black;
+      }
+    }
+
+  }
+}

@@ -32,3 +32,22 @@
   }
 
 }
+
+@media print {
+  .br-theme-bootstrap-stars {
+
+    .br-widget {
+      a:after {
+        content: '\e007';
+        color: black;
+      }
+
+      a.br-active:after,
+      a.br-selected:after {
+        content: '\e006';
+        color: black;
+      }
+    }
+
+  }
+}

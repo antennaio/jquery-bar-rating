@@ -35,3 +35,14 @@
 .br-theme-bars-square .br-readonly a.br-selected {
   background-color: #4278f5;
 }
+@media print {
+  .br-theme-bars-square .br-widget a {
+    border: 2px solid #b3b3b3;
+    color: #b3b3b3;
+  }
+  .br-theme-bars-square .br-widget a.br-active,
+  .br-theme-bars-square .br-widget a.br-selected {
+    border: 2px solid black;
+    color: black;
+  }
+}

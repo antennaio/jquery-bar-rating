@@ -66,14 +66,12 @@ textarea {
 .row:after {
   clear: both;
 }
-@media only screen {
-  .col {
-    float: left;
-    width: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+.col {
+  float: left;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* ==========================================================================
    Author's custom styles
@@ -388,6 +386,80 @@ p {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body {
+    color: black;
+  }
+  h1,
+  h2,
+  h3 {
+    color: black;
+  }
+  .controls,
+  .github,
+  .antennaio {
+    display: none;
+  }
+  .section-intro p.tagline {
+    color: black;
+  }
+  .docs {
+    -webkit-print-color-adjust: exact;
+  }
+  .docs .how-to-use a,
+  .docs .callbacks a,
+  .docs .download a,
+  .docs .configuration a,
+  .docs .faq a,
+  .docs .license a,
+  .docs .methods a {
+    color: black;
+    text-decoration: none;
+  }
+  .docs .how-to-use a:hover,
+  .docs .callbacks a:hover,
+  .docs .download a:hover,
+  .docs .configuration a:hover,
+  .docs .faq a:hover,
+  .docs .license a:hover,
+  .docs .methods a:hover {
+    color: black;
+  }
+  .docs .how-to-use header,
+  .docs .callbacks header,
+  .docs .download header,
+  .docs .configuration header,
+  .docs .faq header,
+  .docs .license header,
+  .docs .methods header {
+    background: black;
+  }
+  .docs .how-to-use code,
+  .docs .callbacks code,
+  .docs .download code,
+  .docs .configuration code,
+  .docs .faq code,
+  .docs .license code,
+  .docs .methods code,
+  .docs .how-to-use strong,
+  .docs .callbacks strong,
+  .docs .download strong,
+  .docs .configuration strong,
+  .docs .faq strong,
+  .docs .license strong,
+  .docs .methods strong {
+    color: black;
+  }
+  .docs .how-to-use pre,
+  .docs .callbacks pre,
+  .docs .download pre,
+  .docs .configuration pre,
+  .docs .faq pre,
+  .docs .license pre,
+  .docs .methods pre {
+    border-left: 2px solid black;
+  }
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -435,8 +507,6 @@ p {
   *,
   *:before,
   *:after {
-    background: transparent !important;
-    color: #000 !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
