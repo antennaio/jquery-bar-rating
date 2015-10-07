@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- print styles added
+
 - new option added: `hoverState`
 
 1.1.2
