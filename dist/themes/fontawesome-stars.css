@@ -1,5 +1,6 @@
 .br-theme-fontawesome-stars .br-widget {
   height: 28px;
+  white-space: nowrap;
 }
 .br-theme-fontawesome-stars .br-widget a {
   font: normal normal normal 18px/1 FontAwesome;

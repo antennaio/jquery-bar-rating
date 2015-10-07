@@ -1,5 +1,6 @@
 .br-theme-css-stars .br-widget {
   height: 28px;
+  white-space: nowrap;
 }
 .br-theme-css-stars .br-widget a {
   text-decoration: none;

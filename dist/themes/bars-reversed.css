@@ -1,5 +1,6 @@
 .br-theme-bars-reversed .br-widget {
   height: 25px;
+  white-space: nowrap;
 }
 .br-theme-bars-reversed .br-widget a {
   display: block;

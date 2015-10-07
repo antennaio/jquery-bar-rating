@@ -1,5 +1,6 @@
 .br-theme-bars-movie .br-widget {
   height: 10px;
+  white-space: nowrap;
 }
 .br-theme-bars-movie .br-widget a {
   display: block;

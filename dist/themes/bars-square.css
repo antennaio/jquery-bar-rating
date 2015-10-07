@@ -1,5 +1,6 @@
 .br-theme-bars-square .br-widget {
   height: 15px;
+  white-space: nowrap;
 }
 .br-theme-bars-square .br-widget a {
   display: block;

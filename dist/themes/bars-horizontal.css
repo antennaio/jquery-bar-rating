@@ -1,5 +1,6 @@
 .br-theme-bars-horizontal .br-widget {
   width: 120px;
+  white-space: nowrap;
 }
 .br-theme-bars-horizontal .br-widget a {
   display: block;

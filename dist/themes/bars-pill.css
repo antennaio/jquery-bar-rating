@@ -1,3 +1,6 @@
+.br-theme-bars-pill .br-widget {
+  white-space: nowrap;
+}
 .br-theme-bars-pill .br-widget a {
   padding: 7px 15px;
   background-color: #bef5e8;
