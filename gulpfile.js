@@ -60,7 +60,7 @@ gulp.task('less', function() {
 });
 
 gulp.task('themes', function() {
-  return gulp.src([themeLessFiles, '!themes/variables.less'])
+  return gulp.src([themeLessFiles, '!themes/variables.less', '!themes/mixins.less'])
     .pipe(less())
     .pipe(gulp.dest(themePath));
 });
