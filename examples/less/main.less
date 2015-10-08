@@ -44,6 +44,10 @@ textarea {
     resize: vertical;
 }
 
+b, strong {
+    font-weight: 400;
+}
+
 .browserupgrade {
     margin: 0;
     background: #ccc;
@@ -95,7 +99,7 @@ textarea {
    ========================================================================== */
 
 @import "variables.less";
-@import "retina-image.less";
+@import "mixins.less";
 
 body {
     font-family: @fontFamily;
@@ -118,7 +122,7 @@ h1 {
 a {
   color: @greenColor;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
 
   &:hover,
   &:focus {
@@ -272,7 +276,7 @@ p {
         padding: 1em 0;
         letter-spacing: 3px;
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: 400;
         color: white;
         width: 100%;
         font-size: .9em;
@@ -325,7 +329,7 @@ p {
         padding: .3em 1em .5em 1em;
         text-decoration: none;
         text-align: center;
-        font-weight: 600;
+        font-weight: 400;
 
         -webkit-transition: background-color .2s;
         transition: background-color .2s;
@@ -385,11 +389,7 @@ p {
 
 }
 
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-
+@media print {
     body {
         color: black;
     }
@@ -405,14 +405,26 @@ p {
     }
 
     .section-intro {
+        margin: 1em 0 2em 0;
+
         p.tagline {
             color: black;
         }
     }
 
-    .docs {
-        -webkit-print-color-adjust: exact;
+    .section-examples {
+        background: transparent;
 
+        .examples {
+            padding: 1em 0;
+        }
+    }
+
+    .section-docs {
+        margin: 1em 0;
+    }
+
+    .docs {
         .how-to-use,
         .callbacks,
         .download,
@@ -430,7 +442,8 @@ p {
             }
 
             header {
-                background: black;
+                background: transparent;
+                color: black;
             }
 
             code, strong {
@@ -438,7 +451,12 @@ p {
             }
 
             pre {
-                border-left: 2px solid black;
+                border: none;
+                padding: 0;
+            }
+
+            .instructions {
+                background: transparent;
             }
         }
     }
@@ -525,7 +543,6 @@ p {
 
     pre,
     blockquote {
-        border: 1px solid #999;
         page-break-inside: avoid;
     }
 

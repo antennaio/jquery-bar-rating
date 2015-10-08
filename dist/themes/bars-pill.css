@@ -38,11 +38,21 @@
 }
 @media print {
   .br-theme-bars-pill .br-widget a {
-    color: black;
-    background: #b3b3b3;
+    border: 1px solid #b3b3b3;
+    border-left: none;
+    background: white;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   .br-theme-bars-pill .br-widget a.br-active,
   .br-theme-bars-pill .br-widget a.br-selected {
-    background: black;
+    border: 1px solid black;
+    border-left: none;
+    background: white;
+    color: black;
+  }
+  .br-theme-bars-pill .br-widget a:first-child {
+    border-left: 1px solid black;
   }
 }

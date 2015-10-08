@@ -36,6 +36,10 @@ fieldset {
 textarea {
   resize: vertical;
 }
+b,
+strong {
+  font-weight: 400;
+}
 .browserupgrade {
   margin: 0;
   background: #ccc;
@@ -98,7 +102,7 @@ h1 {
 a {
   color: #50e3c2;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
 }
 a:hover,
 a:focus {
@@ -223,7 +227,7 @@ p {
   padding: 1em 0;
   letter-spacing: 3px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   color: white;
   width: 100%;
   font-size: .9em;
@@ -349,7 +353,7 @@ p {
   padding: .3em 1em .5em 1em;
   text-decoration: none;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
@@ -386,7 +390,7 @@ p {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+@media print {
   body {
     color: black;
   }
@@ -400,11 +404,20 @@ p {
   .antennaio {
     display: none;
   }
+  .section-intro {
+    margin: 1em 0 2em 0;
+  }
   .section-intro p.tagline {
     color: black;
   }
-  .docs {
-    -webkit-print-color-adjust: exact;
+  .section-examples {
+    background: transparent;
+  }
+  .section-examples .examples {
+    padding: 1em 0;
+  }
+  .section-docs {
+    margin: 1em 0;
   }
   .docs .how-to-use a,
   .docs .callbacks a,
@@ -432,7 +445,8 @@ p {
   .docs .faq header,
   .docs .license header,
   .docs .methods header {
-    background: black;
+    background: transparent;
+    color: black;
   }
   .docs .how-to-use code,
   .docs .callbacks code,
@@ -457,7 +471,17 @@ p {
   .docs .faq pre,
   .docs .license pre,
   .docs .methods pre {
-    border-left: 2px solid black;
+    border: none;
+    padding: 0;
+  }
+  .docs .how-to-use .instructions,
+  .docs .callbacks .instructions,
+  .docs .download .instructions,
+  .docs .configuration .instructions,
+  .docs .faq .instructions,
+  .docs .license .instructions,
+  .docs .methods .instructions {
+    background: transparent;
   }
 }
 /* ==========================================================================
@@ -526,7 +550,6 @@ p {
   }
   pre,
   blockquote {
-    border: 1px solid #999;
     page-break-inside: avoid;
   }
   thead {

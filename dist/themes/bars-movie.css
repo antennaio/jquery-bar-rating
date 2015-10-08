@@ -30,11 +30,16 @@
 }
 @media print {
   .br-theme-bars-movie .br-widget a {
-    background: #b3b3b3;
+    border: 1px solid #b3b3b3;
+    background: white;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   .br-theme-bars-movie .br-widget a.br-active,
   .br-theme-bars-movie .br-widget a.br-selected {
-    background: black;
+    border: 1px solid black;
+    background: white;
   }
   .br-theme-bars-movie .br-widget .br-current-rating {
     color: black;

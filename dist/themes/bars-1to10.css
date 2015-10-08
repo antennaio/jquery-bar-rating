@@ -26,11 +26,17 @@
 }
 @media print {
   .br-theme-bars-1to10 .br-widget a {
-    background: #b3b3b3;
+    border: 1px solid #b3b3b3;
+    background: white;
+    height: 38px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   .br-theme-bars-1to10 .br-widget a.br-active,
   .br-theme-bars-1to10 .br-widget a.br-selected {
-    background: black;
+    border: 1px solid black;
+    background: white;
   }
   .br-theme-bars-1to10 .br-widget .br-current-rating {
     color: black;

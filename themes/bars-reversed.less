@@ -1,4 +1,5 @@
 @import "variables.less";
+@import "mixins.less";
 
 .br-theme-bars-reversed {
 
@@ -42,11 +43,14 @@
 
     .br-widget {
       a {
-        background: lighten(black, 70%);
+        border: 1px solid lighten(black, 70%);
+        background: white;
+        .box-sizing(border-box);
 
         &.br-active,
         &.br-selected {
-          background: black;
+          border: 1px solid black;
+          background: white;
         }
       }
 
