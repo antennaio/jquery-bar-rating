@@ -126,8 +126,8 @@ describe('bar rating plugin on show and rating selected', function () {
         createSelect();
 
         $('#rating').barrating('show', {
-            onSelect:function (value, text) {
-                valuesFromCallback.push(value, text);
+            onSelect:function (value, text, event) {
+                valuesFromCallback.push(value, text, event);
             }
         });
 
@@ -159,6 +159,7 @@ describe('bar rating plugin on show and rating selected', function () {
     it('should pass correct values to a callback', function () {
         expect(valuesFromCallback[0]).to.equal('2');
         expect(valuesFromCallback[1]).to.equal('rating-text-2');
+        expect(valuesFromCallback[2]).to.be.a('object');
     });
 
 });

@@ -232,9 +232,10 @@
 
                     // onSelect callback
                     self.options.onSelect.call(
-                        this,
+                        self,
                         ratingValue(),
-                        ratingText()
+                        ratingText(),
+                        event
                     );
 
                     return false;
@@ -257,12 +258,12 @@
             };
 
             // handle mouseleave events
-            var attachMouseLeaveHandler = function($all, $widget) {
-                $widget.on({
+            var attachMouseLeaveHandler = function($all) {
+                self.$widget.on({
                     mouseleave: function() {
                         $all.removeClass('br-active');
                         showSelectedRating();
-                        applyStyle($widget);
+                        applyStyle(self.$widget);
                     }
                 });
             };
@@ -287,7 +288,7 @@
             };
 
             this.show = function() {
-                var $widget, $all;
+                var $all;
 
                 // run only once
                 if (getData()) return;
@@ -299,13 +300,13 @@
                 saveDataOnElement();
 
                 // build & append widget to the DOM
-                $widget = buildWidget();
-                $widget.insertAfter(self.$elem);
-                applyStyle($widget);
+                self.$widget = buildWidget();
+                self.$widget.insertAfter(self.$elem);
+                applyStyle(self.$widget);
 
                 showSelectedRating();
 
-                $all = $widget.find('a');
+                $all = self.$widget.find('a');
 
                 if (self.options.fastClicks) {
                     fastClicks($all);
@@ -326,7 +327,7 @@
                         attachMouseEnterHandler($all);
 
                         // attach mouseleave event handler
-                        attachMouseLeaveHandler($all, $widget);
+                        attachMouseLeaveHandler($all);
                     }
 
                 }
@@ -456,7 +457,7 @@
         fastClicks:true, // remove 300ms click delay on touch devices?
         hoverState:true, // change state on hover?
         wrapperClass:'br-wrapper', // class applied to wrapper div
-        onSelect:function (value, text) {
+        onSelect:function (value, text, event) {
         }, // callback fired when a rating is selected
         onClear:function (value, text) {
         }, // callback fired when a rating is cleared
