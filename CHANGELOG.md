@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- rating widget - redundant span elements dropped
+
 - `wrapperClass` option deprecated
 
 - pass event object to onSelect callback

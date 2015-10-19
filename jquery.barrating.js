@@ -124,7 +124,7 @@
 
                 // create A elements that will replace OPTIONs
                 self.$elem.find('option').each(function() {
-                    var val, text, html, $a, $span;
+                    var val, text, html, $a;
 
                     val = $(this).val();
 
@@ -134,10 +134,14 @@
                         html = $(this).data('html');
                         if (html) { text = html; }
 
-                        $a = $('<a />', { 'href': '#', 'data-rating-value': val, 'data-rating-text': text });
-                        $span = $('<span />', { 'html': (self.options.showValues) ? text : '' });
+                        $a = $('<a />', {
+                            'href': '#',
+                            'data-rating-value': val,
+                            'data-rating-text': text,
+                            'html': (self.options.showValues) ? text : ''
+                        });
 
-                        $w.append($a.append($span));
+                        $w.append($a);
                     }
 
                 });
