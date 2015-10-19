@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- pass event object to onSelect callback
+
 - print styles added
 
 - new option added: `hoverState`

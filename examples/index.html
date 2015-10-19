@@ -260,12 +260,18 @@
 
 								<p>
 									Get the plugin from <a href="http://github.com/antennaio/jquery-bar-rating">GitHub</a>
-									or install with Bower:
+									or install with Bower or NPM:
 								</p>
 
 <pre>
 <code>
 bower install jquery-bar-rating
+</code>
+</pre>
+
+<pre>
+<code>
+npm install jquery-bar-rating
 </code>
 </pre>
 
@@ -431,8 +437,9 @@ bower install jquery-bar-rating
 					<div class="instructions">
 
 						<p>
-							<strong>onSelect:function(value, text)</strong><br>
-							Fired when a rating is selected.
+							<strong>onSelect:function(value, text, event)</strong><br>
+							Fired when a rating is selected.<br>
+							<small>Notice: If the rating was set programmatically by using the `set` method event will be null.</small>
 						</p>
 
 						<p>
@@ -491,6 +498,33 @@ bower install jquery-bar-rating
   &lt;option value=&quot;2&quot; data-html=&quot;better&quot;&gt;2&lt;/option&gt;
   &lt;option value=&quot;3&quot; data-html=&quot;best&quot;&gt;3&lt;/option&gt;
 &lt;/select&gt;
+</code>
+</pre>
+						</div>
+						<div  class="question">
+							<p>
+								<strong>How do I use the onSelect callback?</strong>
+							</p>
+							<p>
+								The onSelect callback is fired when a user selects a rating or when the
+								`set` method is called to select a rating programmatically. The optional
+								third argument will give you access to the event object if it's available.
+							</p>
+
+<pre>
+<code>
+$('#example').barrating('show', {
+  theme: 'my-awesome-theme'
+  onSelect: function(value, text, event) {
+    if (typeof(event) !== 'undefined') {
+      // rating was selected by a user
+      console.log(event.target);
+    } else {
+      // rating was selected programmatically
+      // by calling `set` method
+    }
+  }
+});
 </code>
 </pre>
 						</div>
