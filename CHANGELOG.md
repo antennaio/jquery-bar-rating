@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- `wrapperClass` option deprecated
+
 - pass event object to onSelect callback
 
 - print styles added

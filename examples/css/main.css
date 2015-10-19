@@ -112,6 +112,9 @@ a:focus {
 p {
   margin: 0 0 1em 0;
 }
+.warning {
+  color: red;
+}
 .github {
   background-image: url("../img/github.png");
   position: fixed;
