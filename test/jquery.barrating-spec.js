@@ -180,6 +180,10 @@ describe('bar rating plugin reversed', function () {
         destroySelect();
     });
 
+    it('should set correct widget class', function () {
+        expect($('.br-widget').hasClass('br-reverse')).to.equal(true);
+    });
+
     it('should set correct class', function () {
         expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(false);
         expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);
@@ -319,6 +323,10 @@ describe('bar rating plugin on destroy', function () {
         expect($('.br-wrapper').length).to.equal(0);
     });
 
+    it('should remove the widget', function () {
+        expect($('.br-widget').length).to.equal(0);
+    });
+
     it('should show the select field back again', function () {
         expect($('#rating').is(":visible")).to.equal(true);
     });
@@ -384,6 +392,37 @@ describe('bar rating plugin on set non-existing value', function () {
     it('should do nothing', function () {
         expect($('#rating').data('barrating').ratingValue).to.equal('5');
         expect($('#rating').data('barrating').ratingText).to.equal('rating-text-5');
+    });
+
+});
+
+
+describe('bar rating plugin on change read-only state', function () {
+
+    before(function () {
+        createSelect();
+        $('#rating')
+            .barrating('show', { initialRating: 1 })
+            .barrating('readonly', true);
+
+        $('.br-widget a:last-child').trigger('click');
+    });
+
+    after(function () {
+        destroySelect();
+    });
+
+    it('should ignore user input', function () {
+        expect($('#rating').data('barrating').ratingValue).to.equal('1');
+        expect($('#rating').data('barrating').ratingText).to.equal('rating-text-1');
+    });
+
+    it('should update data', function () {
+        expect($('#rating').data('barrating').readOnly).to.equal(true);
+    });
+
+    it('should set correct widget class', function () {
+        expect($('.br-widget').hasClass('br-readonly')).to.equal(true);
     });
 
 });
