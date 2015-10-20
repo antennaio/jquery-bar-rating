@@ -1,6 +1,10 @@
 HEAD
 ----
 
+- `readonly` method added
+
+- namespaced events
+
 - rating widget - redundant span elements dropped
 
 - `wrapperClass` option deprecated
