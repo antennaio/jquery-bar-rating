@@ -91,11 +91,14 @@
 
                     // rating will be restored by calling clear method
                     originalRatingValue: $opt.val(),
-                    originalRatingText: ($opt.data('html')) ? $opt.data('html') : $opt.text()
-                });
+                    originalRatingText: ($opt.data('html')) ? $opt.data('html') : $opt.text(),
 
-                // first OPTION empty - allow deselecting of ratings
-                setData('deselectable', (!self.$elem.find('option:first').val()) ? true : false);
+                    // read-only state
+                    readOnly: self.options.readonly,
+
+                    // first OPTION empty - allow deselecting of ratings
+                    deselectable: (!self.$elem.find('option:first').val()) ? true : false
+                });
             };
 
             // remove data on element
@@ -111,11 +114,6 @@
             // return current rating value
             var ratingValue = function() {
                 return getData('ratingValue');
-            };
-
-            // is the rating deselectable?
-            var isDeselectable = function() {
-                return getData('deselectable');
             };
 
             // build widget and return jQuery element
@@ -191,26 +189,31 @@
             };
 
             // apply style by setting classes on elements
-            var applyStyle = function($w) {
+            var applyStyle = function() {
                 // remove classes
-                $w.find('a').removeClass('br-selected br-current');
+                self.$widget.find('a').removeClass('br-selected br-current');
 
                 // add classes
-                $w.find('a[data-rating-value="' + ratingValue() + '"]')
+                self.$widget.find('a[data-rating-value="' + ratingValue() + '"]')
                     .addClass('br-selected br-current')[nextAllorPreviousAll()]()
                     .addClass('br-selected');
             };
 
+            // check if the element is deselectable?
+            var isDeselectable = function($element) {
+                return ($element.hasClass('br-current') && getData('deselectable'));
+            };
+
             // handle click events
-            var attachClickHandler = function($all) {
-                $all.on('click', function(event) {
+            var attachClickHandler = function($elements) {
+                $elements.on('click.barrating', function(event) {
                     var $a = $(this),
                         value,
                         text;
 
                     event.preventDefault();
 
-                    $all.removeClass('br-active br-selected');
+                    $elements.removeClass('br-active br-selected');
                     $a.addClass('br-selected')[nextAllorPreviousAll()]()
                         .addClass('br-selected');
 
@@ -218,12 +221,12 @@
                     text = $a.attr('data-rating-text');
 
                     // is current and deselectable?
-                    if ($a.hasClass('br-current') && isDeselectable()) {
+                    if (isDeselectable($a)) {
                         $a.removeClass('br-selected br-current')[nextAllorPreviousAll()]()
                             .removeClass('br-selected br-current');
                         value = ''; text = '';
                     } else {
-                        $all.removeClass('br-current');
+                        $elements.removeClass('br-current');
                         $a.addClass('br-current');
                     }
 
@@ -247,36 +250,32 @@
             };
 
             // handle mouseenter events
-            var attachMouseEnterHandler = function($all) {
-                $all.on({
-                    mouseenter: function() {
-                        var $a = $(this);
+            var attachMouseEnterHandler = function($elements) {
+                $elements.on('mouseenter.barrating', function() {
+                    var $a = $(this);
 
-                        $all.removeClass('br-active br-selected');
-                        $a.addClass('br-active')[nextAllorPreviousAll()]()
-                            .addClass('br-active');
+                    $elements.removeClass('br-active br-selected');
+                    $a.addClass('br-active')[nextAllorPreviousAll()]()
+                        .addClass('br-active');
 
-                        showSelectedRating($a.attr('data-rating-text'));
-                    }
+                    showSelectedRating($a.attr('data-rating-text'));
                 });
             };
 
             // handle mouseleave events
-            var attachMouseLeaveHandler = function($all) {
-                self.$widget.on({
-                    mouseleave: function() {
-                        $all.removeClass('br-active');
-                        showSelectedRating();
-                        applyStyle(self.$widget);
-                    }
+            var attachMouseLeaveHandler = function($elements) {
+                self.$widget.on('mouseleave.barrating', function() {
+                    $elements.removeClass('br-active');
+                    showSelectedRating();
+                    applyStyle();
                 });
             };
 
             // somewhat primitive way to remove 300ms click delay on touch devices
             // for a more advanced solution consider setting `fastClicks` option to false
             // and using a library such as fastclick (https://github.com/ftlabs/fastclick)
-            var fastClicks = function($all) {
-                $all.on('touchstart', function(event) {
+            var fastClicks = function($elements) {
+                $elements.on('touchstart.barrating', function(event) {
                     event.preventDefault();
                     event.stopPropagation();
 
@@ -285,15 +284,46 @@
             };
 
             // disable clicks
-            var disableClicks = function($all) {
-                $all.on('click', function(event) {
+            var disableClicks = function($elements) {
+                $elements.on('click.barrating', function(event) {
                     event.preventDefault();
                 });
             };
 
-            this.show = function() {
-                var $all;
+            var attachHandlers = function($elements) {
+                // attach click event handler
+                attachClickHandler($elements);
 
+                if (self.options.hoverState) {
+                    // attach mouseenter event handler
+                    attachMouseEnterHandler($elements);
+
+                    // attach mouseleave event handler
+                    attachMouseLeaveHandler($elements);
+                }
+            };
+
+            var detachHandlers = function($elements) {
+                // remove event handlers in the ".barrating" namespace
+                $elements.off('.barrating');
+            };
+
+            var setupHandlers = function(readonly) {
+                $elements = self.$widget.find('a');
+
+                if (fastClicks) {
+                    fastClicks($elements);
+                }
+
+                if (readonly) {
+                    detachHandlers($elements);
+                    disableClicks($elements);
+                } else {
+                    attachHandlers($elements);
+                }
+            };
+
+            this.show = function() {
                 // run only once
                 if (getData()) return;
 
@@ -306,53 +336,38 @@
                 // build & append widget to the DOM
                 self.$widget = buildWidget();
                 self.$widget.insertAfter(self.$elem);
-                applyStyle(self.$widget);
+
+                applyStyle();
 
                 showSelectedRating();
 
-                $all = self.$widget.find('a');
-
-                if (self.options.fastClicks) {
-                    fastClicks($all);
-                }
-
-                if (self.options.readonly) {
-
-                    // do not react to click events if rating is read-only
-                    disableClicks($all);
-
-                } else {
-
-                    // attach click event handler
-                    attachClickHandler($all);
-
-                    if (self.options.hoverState) {
-                        // attach mouseenter event handler
-                        attachMouseEnterHandler($all);
-
-                        // attach mouseleave event handler
-                        attachMouseLeaveHandler($all);
-                    }
-
-                }
+                setupHandlers(self.options.readonly);
 
                 // hide the select field
                 self.$elem.hide();
             };
 
+            this.readonly = function(state) {
+                if (typeof state !== 'boolean' || getData('readOnly') == state) return;
+
+                setupHandlers(state);
+                setData('readOnly', state);
+                self.$widget.toggleClass('br-readonly');
+            };
+
             this.set = function(value) {
                 var options = getData('userOptions');
 
-                if (!this.$elem.find('option[value="' + value + '"]').val()) return;
+                if (!self.$elem.find('option[value="' + value + '"]').val()) return;
 
                 // set data
                 setData('ratingValue', value);
-                setData('ratingText', this.$elem.find('option[value="' + value + '"]').text());
+                setData('ratingText', self.$elem.find('option[value="' + value + '"]').text());
 
                 setSelectFieldValue(ratingValue());
                 showSelectedRating(ratingText());
 
-                applyStyle(this.$widget);
+                applyStyle();
 
                 // onSelect callback
                 options.onSelect.call(
@@ -372,7 +387,7 @@
                 setSelectFieldValue(ratingValue());
                 showSelectedRating(ratingText());
 
-                applyStyle(this.$widget);
+                applyStyle();
 
                 // onClear callback
                 options.onClear.call(
@@ -387,7 +402,11 @@
                 var text = ratingText();
                 var options = getData('userOptions');
 
-                this.$widget.off().remove();
+                // detach handlers
+                detachHandlers(self.$widget.find('a'));
+
+                // remove widget
+                self.$widget.remove();
 
                 // remove data
                 removeDataOnElement();
@@ -396,7 +415,7 @@
                 unwrapElement();
 
                 // show the element
-                this.$elem.show();
+                self.$elem.show();
 
                 // onDestroy callback
                 options.onDestroy.call(
