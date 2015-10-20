@@ -30,9 +30,14 @@
     }
   }
 
-  .br-readonly a.br-active,
-  .br-readonly a.br-selected {
-    background-color: @orange-color;
+  .br-readonly {
+    a.br-active, a.br-selected {
+      background-color: lighten(@orange-color, 10%);
+    }
+
+    .br-current-rating {
+      color: lighten(@orange-color, 10%);
+    }
   }
 
 }

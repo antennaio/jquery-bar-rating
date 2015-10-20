@@ -24,6 +24,13 @@
   color: #edb867;
   font-weight: 400;
 }
+.br-theme-bars-1to10 .br-readonly a.br-active,
+.br-theme-bars-1to10 .br-readonly a.br-selected {
+  background-color: #f2cd95;
+}
+.br-theme-bars-1to10 .br-readonly .br-current-rating {
+  color: #f2cd95;
+}
 @media print {
   .br-theme-bars-1to10 .br-widget a {
     border: 1px solid #b3b3b3;

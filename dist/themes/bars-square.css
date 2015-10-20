@@ -34,7 +34,8 @@
 }
 .br-theme-bars-square .br-readonly a.br-active,
 .br-theme-bars-square .br-readonly a.br-selected {
-  background-color: #4278f5;
+  border: 2px solid #729bf8;
+  color: #729bf8;
 }
 @media print {
   .br-theme-bars-square .br-widget a {

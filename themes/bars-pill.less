@@ -42,9 +42,10 @@
     }
   }
 
-  .br-readonly a.br-active,
-  .br-readonly a.br-selected {
-    background-color: @green-color;
+  .br-readonly {
+    a.br-active, a.br-selected {
+      background-color: lighten(@green-color, 10%);
+    }
   }
 
 }

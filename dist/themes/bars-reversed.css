@@ -24,7 +24,10 @@
 }
 .br-theme-bars-reversed .br-readonly a.br-active,
 .br-theme-bars-reversed .br-readonly a.br-selected {
-  background-color: #50e3c2;
+  background-color: #7cead1;
+}
+.br-theme-bars-reversed .br-readonly .br-current-rating {
+  color: #7cead1;
 }
 @media print {
   .br-theme-bars-reversed .br-widget a {

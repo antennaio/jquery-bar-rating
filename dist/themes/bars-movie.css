@@ -26,7 +26,10 @@
 }
 .br-theme-bars-movie .br-readonly a.br-active,
 .br-theme-bars-movie .br-readonly a.br-selected {
-  background-color: #4278f5;
+  background-color: #729bf8;
+}
+.br-theme-bars-movie .br-readonly .br-current-rating {
+  color: #729bf8;
 }
 @media print {
   .br-theme-bars-movie .br-widget a {

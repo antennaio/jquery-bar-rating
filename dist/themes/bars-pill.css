@@ -34,7 +34,7 @@
 }
 .br-theme-bars-pill .br-readonly a.br-active,
 .br-theme-bars-pill .br-readonly a.br-selected {
-  background-color: #50e3c2;
+  background-color: #7cead1;
 }
 @media print {
   .br-theme-bars-pill .br-widget a {
