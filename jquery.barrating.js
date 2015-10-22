@@ -370,11 +370,13 @@
                 applyStyle();
 
                 // onSelect callback
-                options.onSelect.call(
-                    this,
-                    ratingValue(),
-                    ratingText()
-                );
+                if (!options.silent) {
+                    options.onSelect.call(
+                        this,
+                        ratingValue(),
+                        ratingText()
+                    );
+                }
             };
 
             this.clear = function() {
@@ -479,6 +481,7 @@
         readonly:false, // make the rating ready-only?
         fastClicks:true, // remove 300ms click delay on touch devices?
         hoverState:true, // change state on hover?
+        silent:false, // supress callbacks when controlling ratings programatically
         wrapperClass:'br-wrapper', // class applied to wrapper div
         onSelect:function (value, text, event) {
         }, // callback fired when a rating is selected

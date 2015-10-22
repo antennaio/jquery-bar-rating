@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- new option added: `silent`
+
 - `readonly` method added
 
 - namespaced events
