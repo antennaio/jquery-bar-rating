@@ -1,5 +1,5 @@
-HEAD
-----
+1.1.3
+-----
 
 - new option added: `silent`
 
