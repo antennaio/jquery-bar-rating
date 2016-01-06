@@ -238,7 +238,8 @@
                     showSelectedRating(text);
 
                     // onSelect callback
-                    self.options.onSelect.call(
+                    var options = getData('userOptions');
+                    options.onSelect.call(
                         self,
                         ratingValue(),
                         ratingText(),
