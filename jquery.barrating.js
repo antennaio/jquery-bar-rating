@@ -208,6 +208,7 @@
             var attachClickHandler = function($elements) {
                 $elements.on('click.barrating', function(event) {
                     var $a = $(this),
+                        options = getData('userOptions'),
                         value,
                         text;
 
@@ -238,7 +239,6 @@
                     showSelectedRating(text);
 
                     // onSelect callback
-                    var options = getData('userOptions');
                     options.onSelect.call(
                         self,
                         ratingValue(),
