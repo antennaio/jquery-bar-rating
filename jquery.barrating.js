@@ -252,7 +252,7 @@
 
             // handle mouseenter events
             var attachMouseEnterHandler = function($elements) {
-                $elements.on('mouseenter.barrating', function() {
+                $elements.on('mouseenter.barrating focus.barrating', function() {
                     var $a = $(this);
 
                     $elements.removeClass('br-active br-selected');
@@ -265,7 +265,7 @@
 
             // handle mouseleave events
             var attachMouseLeaveHandler = function($elements) {
-                self.$widget.on('mouseleave.barrating', function() {
+                self.$widget.on('mouseleave.barrating blur.barrating', function() {
                     $elements.removeClass('br-active');
                     showSelectedRating();
                     applyStyle();

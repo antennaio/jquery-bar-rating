@@ -1,7 +1,9 @@
 HEAD
 ----
 
-- bugfix: Click doesn't fire onSelect, after changing readonly to true and then to false (@zimarai, [#54](https://github.com/antennaio/jquery-bar-rating/pull/54))
+- update selected rating value when tabbing (fixes issue [#51](https://github.com/antennaio/jquery-bar-rating/issues/51))
+
+- bugfix: click doesn't fire onSelect after changing readonly to true and then to false (@zimarai, [#54](https://github.com/antennaio/jquery-bar-rating/pull/54))
 
 1.1.3
 -----
