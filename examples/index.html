@@ -295,12 +295,15 @@ npm install jquery-bar-rating
 							<li>
 
 								<p>
-									If you would like to use one of the provided themes
-									include the theme in the head section of the page.
+									If you would like to use one of the provided themes include the theme
+									in the head section of the page. Adjust the path to the CSS file
+									and make sure it points to the correct theme file. In this example we are
+									also pulling Font Awesome icons from CDN. 
 								</p>
 
 <pre>
 <code>
+&lt;link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"&gt;
 &lt;link rel="stylesheet" href="fontawesome-stars.css"&gt;
 </code>
 </pre>
@@ -313,6 +316,7 @@ npm install jquery-bar-rating
 
 <pre>
 <code>
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script src="jquery.barrating.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
    $(function() {
@@ -326,28 +330,7 @@ npm install jquery-bar-rating
 
 							</li>
 							<li>
-								<p>
-									The select field will be wrapped in a div with a `.br-theme-fontawesome-stars` class.
-									For a full list of available options please refer to <a href="#nav-configuration">configuration</a>.
-								</p>
-
-								<p>Expected result:</p>
-
-<pre>
-<code>
-&lt;div class=&quot;br-wrapper br-theme-fontawesome-stars&quot;&gt;
-  &lt;select id=&quot;example&quot;&gt;
-    &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
-    &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
-    &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
-    &lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
-    &lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
-  &lt;/select&gt;
-  ...rating widget...
-&lt;/div&gt;
-</code>
-</pre>
-
+								You are done.
 							</li>
 						</ol>
 					</div>
@@ -470,6 +453,37 @@ npm install jquery-bar-rating
 					<header>FAQ</header>
 					<div class="instructions">
 
+
+
+						<div  class="question">
+							<p>
+								<strong>How does this plugin work?</strong>
+							</p>
+							<p>
+								When you initialise the plugin the select field will be wrapped in a div
+								with a `.br-theme-fontawesome-stars` class (or a different class indicating
+								the theme in use). The select field will get hidden and a rating widget
+								will be appended right after the select field.
+							</p>
+							<p>Expected result:</p>
+
+<pre>
+<code>
+&lt;div class=&quot;br-wrapper br-theme-fontawesome-stars&quot;&gt;
+  &lt;select id=&quot;example&quot;&gt; &lt;!-- now hidden --&gt;
+    &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+    &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+    &lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
+    &lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
+  &lt;/select&gt;
+  ...rating widget...
+&lt;/div&gt;
+</code>
+</pre>
+
+						</div>
+
 						<div  class="question">
 							<p>
 								<strong>How do I allow users to select empty ratings?</strong>
@@ -538,6 +552,11 @@ $('#example').barrating('show', {
 });
 </code>
 </pre>
+							<p>
+								Often you don't want the callback to run at all when a rating is selected
+								with the `set` method. If this is the case please use the <a href="#nav-configuration">
+								`silent`</a> option.
+							</p>
 						</div>
 
 					</div>
