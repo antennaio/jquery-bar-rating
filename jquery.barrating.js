@@ -163,7 +163,7 @@
 
             // return a jQuery function name depending on the 'reverse' setting
             var nextAllorPreviousAll = function() {
-                if (self.options.reverse) {
+                if (getData('userOptions').reverse) {
                     return 'nextAll';
                 } else {
                     return 'prevAll';
