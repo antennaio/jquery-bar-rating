@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- license file added
+
 - bugfix: when using "set" method the colors are reversed (@hrishiballal, [#59](https://github.com/antennaio/jquery-bar-rating/issues/59))
 
 - update selected rating value when tabbing (fixes issue [#51](https://github.com/antennaio/jquery-bar-rating/issues/51))

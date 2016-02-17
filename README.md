@@ -19,6 +19,4 @@ npm test
 
 ## License
 
-Dual licensed under the MIT and GPL licenses:<br />
-[http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)<br />
-[http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)
+This plugin is available under [the MIT license](http://www.opensource.org/licenses/mit-license.php).
