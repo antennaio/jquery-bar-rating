@@ -1,5 +1,5 @@
-HEAD
-----
+1.1.4
+-----
 
 - license file added
 
