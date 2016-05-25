@@ -51,13 +51,8 @@
 .star-ratings p {
   text-align: center;
 }
-.star-ratings select {
-  width: 120px;
-  font-size: 16px;
-}
 .star-ratings .stars {
   width: 120px;
-  float: left;
   text-align: center;
   margin: auto;
   padding: 0 95px;
@@ -66,6 +61,24 @@
   font-size: 14px;
   color: #cccccc;
   line-height: 3;
+}
+.star-ratings .stars select {
+  width: 120px;
+  font-size: 16px;
+}
+.star-ratings .stars-example-fontawesome,
+.star-ratings .stars-example-css,
+.star-ratings .stars-example-bootstrap {
+  float: left;
+}
+.star-ratings .stars-example-fontawesome-o {
+  width: 200px;
+}
+.star-ratings .stars-example-fontawesome-o select {
+  width: 200px;
+}
+.start-ratings-main {
+  margin-bottom: 3em;
 }
 /* Boxes */
 .box {
