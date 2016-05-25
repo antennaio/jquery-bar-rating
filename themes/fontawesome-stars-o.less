@@ -1,6 +1,6 @@
 @import "variables.less";
 
-.br-theme-fontawesome-stars {
+.br-theme-fontawesome-stars-o {
 
   .br-widget {
     height: 28px;
@@ -15,16 +15,23 @@
     }
 
     a:after {
-      content: '\f005';
+      content: '\f006';
       color: @star-default;
     }
 
     a.br-active:after {
-      color: @star-active;
+      content: '\f005';
+      color: @green-color;
     }
 
     a.br-selected:after {
-      color: @star-selected;
+      content: '\f005';
+      color: @green-color;
+    }
+
+    a.br-half:after {
+      content: '\f123';
+      color: @green-color;
     }
 
     .br-current-rating {
@@ -32,10 +39,19 @@
     }
   }
 
+  .br-reverse {
+    a.br-half {
+      transform: scaleX(-1);
+      -moz-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+    }    
+  }
+
 }
 
 @media print {
-  .br-theme-fontawesome-stars {
+  .br-theme-fontawesome-stars-o {
 
     .br-widget {
       a:after {
@@ -46,6 +62,11 @@
       a.br-active:after,
       a.br-selected:after {
         content: '\f005';
+        color: black;
+      }
+
+      a.br-half:after {
+        content: '\f123';
         color: black;
       }
     }

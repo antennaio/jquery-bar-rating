@@ -3,7 +3,7 @@
   white-space: nowrap;
 }
 .br-theme-fontawesome-stars .br-widget a {
-  font: normal normal normal 18px/1 FontAwesome;
+  font: normal normal normal 20px/1 FontAwesome;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -11,13 +11,13 @@
 }
 .br-theme-fontawesome-stars .br-widget a:after {
   content: '\f005';
-  color: #dddddd;
+  color: #d2d2d2;
 }
 .br-theme-fontawesome-stars .br-widget a.br-active:after {
-  color: #ffdf88;
+  color: #edb867;
 }
 .br-theme-fontawesome-stars .br-widget a.br-selected:after {
-  color: #ffdf88;
+  color: #edb867;
 }
 .br-theme-fontawesome-stars .br-widget .br-current-rating {
   display: none;

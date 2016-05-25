@@ -11,13 +11,13 @@
 }
 .br-theme-bootstrap-stars .br-widget a:after {
   content: '\e006';
-  color: #dddddd;
+  color: #d2d2d2;
 }
 .br-theme-bootstrap-stars .br-widget a.br-active:after {
-  color: #ffdf88;
+  color: #edb867;
 }
 .br-theme-bootstrap-stars .br-widget a.br-selected:after {
-  color: #ffdf88;
+  color: #edb867;
 }
 .br-theme-bootstrap-stars .br-widget .br-current-rating {
   display: none;
