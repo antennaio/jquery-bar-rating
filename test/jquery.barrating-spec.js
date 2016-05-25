@@ -96,6 +96,25 @@ describe('bar rating plugin on show', function () {
 
 });
 
+describe('bar rating plugin on set fractional value', function () {
+
+    before(function () {
+        createSelect();
+        $('#rating')
+            .barrating('show', { initialRating: 3.3 });
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should set .br-half class', function () {
+        expect($('.br-widget a:nth-child(4)').hasClass('br-half')).to.equal(true);
+    });
+
+});
+
 describe('bar rating themes', function() {
 
     before(function () {
