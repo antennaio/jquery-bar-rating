@@ -44,17 +44,24 @@
                 self.$elem.unwrap();
             };
 
-            // return initial option
-            var findInitialOption = function() {
-                var option;
-
-                if (self.options.initialRating) {
-                    option = $('option[value="' + self.options.initialRating  + '"]', self.$elem);
-                } else {
-                    option = $('option:selected', self.$elem);
+            // find option by value
+            var findOption = function(value) {
+                if ($.isNumeric(value)) {
+                    value = Math.floor(value);
                 }
 
-                return option;
+                return $('option[value="' + value  + '"]', self.$elem);
+            };
+
+            // find initial option
+            var findInitialOption = function() {
+                var initialRating = self.options.initialRating;
+
+                if (!initialRating) {
+                    return $('option:selected', self.$elem);
+                }
+
+                return findOption(initialRating);
             };
 
             // get data
@@ -81,19 +88,25 @@
             var saveDataOnElement = function() {
                 var $opt = findInitialOption();
 
+                var value = $opt.val();
+                var text = $opt.data('html') ? $opt.data('html') : $opt.text();
+
                 setData(null, {
                     userOptions: self.options,
 
                     // initial rating based on the OPTION value
-                    ratingValue: $opt.val(),
-                    ratingText: ($opt.data('html')) ? $opt.data('html') : $opt.text(),
+                    ratingValue: value,
+                    ratingText: text,
 
                     // rating will be restored by calling clear method
-                    originalRatingValue: $opt.val(),
-                    originalRatingText: ($opt.data('html')) ? $opt.data('html') : $opt.text(),
+                    originalRatingValue: value,
+                    originalRatingText: text,
 
                     // read-only state
-                    readOnly: self.options.readonly
+                    readOnly: self.options.readonly,
+
+                    // did the user already select a rating?
+                    ratingMade: false
                 });
             };
 
@@ -196,13 +209,21 @@
 
             // apply style by setting classes on elements
             var applyStyle = function() {
+                var $a = self.$widget.find('a[data-rating-value="' + ratingValue() + '"]');
+                var initialRating = getData('userOptions').initialRating;
+
                 // remove classes
-                self.$widget.find('a').removeClass('br-selected br-current');
+                self.$widget.find('a').removeClass('br-selected br-current br-half');
 
                 // add classes
-                self.$widget.find('a[data-rating-value="' + ratingValue() + '"]')
-                    .addClass('br-selected br-current')[nextAllorPreviousAll()]()
+                $a.addClass('br-selected br-current')[nextAllorPreviousAll()]()
                     .addClass('br-selected');
+
+                if (!getData('ratingMade') && $.isNumeric(initialRating) && $.isNumeric(ratingValue())) {
+                    if (initialRating > ratingValue()) {
+                        $a[(getData('userOptions').reverse) ? 'prev' : 'next']().addClass('br-half');
+                    }
+                }
             };
 
             // check if the element is deselectable?
@@ -229,7 +250,7 @@
 
                     event.preventDefault();
 
-                    $elements.removeClass('br-active br-selected');
+                    $elements.removeClass('br-active br-selected br-half');
                     $a.addClass('br-selected')[nextAllorPreviousAll()]()
                         .addClass('br-selected');
 
@@ -249,6 +270,7 @@
                     // remember selected rating
                     setData('ratingValue', value);
                     setData('ratingText', text);
+                    setData('ratingMade', true);
 
                     setSelectFieldValue(value);
                     showSelectedRating(text);
@@ -267,10 +289,10 @@
 
             // handle mouseenter events
             var attachMouseEnterHandler = function($elements) {
-                $elements.on('mouseenter.barrating focus.barrating', function() {
+                $elements.on('mouseenter.barrating', function() {
                     var $a = $(this);
 
-                    $elements.removeClass('br-active br-selected');
+                    $elements.removeClass('br-active br-selected br-half');
                     $a.addClass('br-active')[nextAllorPreviousAll()]()
                         .addClass('br-active');
 
@@ -379,6 +401,7 @@
                 // set data
                 setData('ratingValue', value);
                 setData('ratingText', self.$elem.find('option[value="' + value + '"]').text());
+                setData('ratingMade', true);
 
                 setSelectFieldValue(ratingValue());
                 showSelectedRating(ratingText());
@@ -401,6 +424,7 @@
                 // restore original data
                 setData('ratingValue', getData('originalRatingValue'));
                 setData('ratingText', getData('originalRatingText'));
+                setData('ratingMade', false);
 
                 resetSelectField();
                 showSelectedRating(ratingText());
