@@ -1,3 +1,12 @@
+HEAD
+____
+
+- support for displaying of fractional star ratings (2.5, 3.7, 4.9)
+
+- reset select field when ratings are cleared
+
+- `deselectable` option added
+
 1.1.4
 -----
 
