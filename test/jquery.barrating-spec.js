@@ -280,6 +280,10 @@ describe('bar rating plugin on clear', function () {
         expect($('#rating').data('barrating').ratingText).to.equal('rating-text-5');
     });
 
+    it('should reset select field', function () {
+        expect($('#rating').val()).to.equal('5');
+    });
+
     it('should set correct class', function () {
         expect($('.br-widget a:nth-child(4)').hasClass('br-selected')).to.equal(true);
         expect($('.br-widget a:nth-child(5)').hasClass('br-selected br-current')).to.equal(true);

@@ -171,8 +171,18 @@
 
             // set the value of the select field
             var setSelectFieldValue = function(value) {
-                // change selected OPTION in the select field (hidden)
-                self.$elem.find('option[value="' + value + '"]').prop('selected', true);
+                // change selected option
+                findOption(value).prop('selected', true);
+
+                self.$elem.change();
+            };
+
+            // reset select field
+            var resetSelectField = function() {
+                $('option', self.$elem).prop('selected', function() {
+                    return this.defaultSelected;
+                });
+
                 self.$elem.change();
             };
 
@@ -386,7 +396,7 @@
                 setData('ratingValue', getData('originalRatingValue'));
                 setData('ratingText', getData('originalRatingText'));
 
-                setSelectFieldValue(ratingValue());
+                resetSelectField();
                 showSelectedRating(ratingText());
 
                 applyStyle();
