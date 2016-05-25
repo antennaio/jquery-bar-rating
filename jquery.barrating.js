@@ -93,10 +93,7 @@
                     originalRatingText: ($opt.data('html')) ? $opt.data('html') : $opt.text(),
 
                     // read-only state
-                    readOnly: self.options.readonly,
-
-                    // first OPTION empty - allow deselecting of ratings
-                    deselectable: (!self.$elem.find('option:first').val()) ? true : false
+                    readOnly: self.options.readonly
                 });
             };
 
@@ -210,7 +207,16 @@
 
             // check if the element is deselectable?
             var isDeselectable = function($element) {
-                return ($element.hasClass('br-current') && getData('deselectable'));
+                if (!self.options.deselectable) {
+                    return false;
+                }
+
+                if (self.$elem.find('option:first').val()) {
+                    // empty option not found
+                    return false;
+                }
+
+                return $element.hasClass('br-current');
             };
 
             // handle click events
@@ -487,6 +493,7 @@
         initialRating:null, // initial rating
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
+        deselectable:true, // allow to deselect ratings
         reverse:false, // reverse the rating?
         readonly:false, // make the rating ready-only?
         fastClicks:true, // remove 300ms click delay on touch devices?

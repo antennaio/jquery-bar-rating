@@ -242,10 +242,6 @@ describe('bar rating plugin on deselect', function () {
         destroySelect();
     });
 
-    it('should update data', function () {
-        expect($('#rating').data('barrating').deselectable).to.equal(true);
-    });
-
     it('should successfully deselect rating', function () {
         expect($('#rating').data('barrating').ratingValue).to.equal('');
         expect($('#rating').data('barrating').ratingText).to.equal('');
