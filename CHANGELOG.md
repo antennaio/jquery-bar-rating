@@ -1,5 +1,5 @@
-HEAD
-____
+1.2
+___
 
 - deprecated `wrapperClass` option removed
 
