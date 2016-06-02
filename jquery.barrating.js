@@ -207,13 +207,17 @@
                 }
             };
 
+            // remove all classes from elements
+            var resetStyle = function() {
+                self.$widget.find('a').removeClass();
+            }
+
             // apply style by setting classes on elements
             var applyStyle = function() {
                 var $a = self.$widget.find('a[data-rating-value="' + ratingValue() + '"]');
                 var initialRating = getData('userOptions').initialRating;
 
-                // remove classes
-                self.$widget.find('a').removeClass('br-selected br-current br-half');
+                resetStyle();
 
                 // add classes
                 $a.addClass('br-selected br-current')[nextAllorPreviousAll()]()
@@ -286,7 +290,8 @@
                 $elements.on('mouseenter.barrating', function() {
                     var $a = $(this);
 
-                    $elements.removeClass('br-active br-selected br-half');
+                    resetStyle();
+
                     $a.addClass('br-active')[nextAllorPreviousAll()]()
                         .addClass('br-active');
 
@@ -297,7 +302,6 @@
             // handle mouseleave events
             var attachMouseLeaveHandler = function($elements) {
                 self.$widget.on('mouseleave.barrating blur.barrating', function() {
-                    $elements.removeClass('br-active');
                     showSelectedRating();
                     applyStyle();
                 });
