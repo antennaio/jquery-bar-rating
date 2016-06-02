@@ -28,7 +28,7 @@
 
             // wrap element in a wrapper div
             var wrapElement = function() {
-                var classes = [self.options.wrapperClass];
+                var classes = ['br-wrapper'];
 
                 if (self.options.theme !== '') {
                     classes.push('br-theme-' + self.options.theme);
@@ -538,7 +538,6 @@
         fastClicks:true, // remove 300ms click delay on touch devices?
         hoverState:true, // change state on hover?
         silent:false, // supress callbacks when controlling ratings programatically
-        wrapperClass:'br-wrapper', // class applied to wrapper div
         onSelect:function (value, text, event) {
         }, // callback fired when a rating is selected
         onClear:function (value, text) {
