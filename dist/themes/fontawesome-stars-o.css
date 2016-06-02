@@ -21,7 +21,7 @@
   content: '\f005';
   color: #50e3c2;
 }
-.br-theme-fontawesome-stars-o .br-widget a.br-half:after {
+.br-theme-fontawesome-stars-o .br-widget a.br-fractional:after {
   content: '\f123';
   color: #50e3c2;
 }
@@ -31,7 +31,7 @@
 .br-theme-fontawesome-stars-o .br-readonly a {
   cursor: default;
 }
-.br-theme-fontawesome-stars-o .br-reverse a.br-half {
+.br-theme-fontawesome-stars-o .br-reverse a.br-fractional {
   display: inline-block;
   transform: scaleX(-1);
   -moz-transform: scaleX(-1);
@@ -49,7 +49,7 @@
     content: '\f005';
     color: black;
   }
-  .br-theme-fontawesome-stars-o .br-widget a.br-half:after {
+  .br-theme-fontawesome-stars-o .br-widget a.br-fractional:after {
     content: '\f123';
     color: black;
   }
