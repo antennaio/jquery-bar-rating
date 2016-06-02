@@ -115,6 +115,25 @@ describe('bar rating plugin on set fractional value', function () {
 
 });
 
+describe('bar rating plugin on set fractional value < 1', function () {
+
+    before(function () {
+        createSelect();
+        $('#rating')
+            .barrating('show', { initialRating: 0.3 });
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should set .br-half class', function () {
+        expect($('.br-widget a:first').hasClass('br-half')).to.equal(true);
+    });
+
+});
+
 describe('bar rating themes', function() {
 
     before(function () {

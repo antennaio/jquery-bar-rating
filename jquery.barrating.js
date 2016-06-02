@@ -223,9 +223,18 @@
                 $a.addClass('br-selected br-current')[nextAllorPreviousAll()]()
                     .addClass('br-selected');
 
-                if (!getData('ratingMade') && $.isNumeric(initialRating) && $.isNumeric(ratingValue())) {
-                    if (initialRating > ratingValue()) {
-                        $a[(getData('userOptions').reverse) ? 'prev' : 'next']().addClass('br-half');
+                if (!getData('ratingMade') && $.isNumeric(initialRating)) {
+                    // compare initial rating to rating value or zero
+                    var baseValue = $.isNumeric(ratingValue()) ? ratingValue() : 0;
+
+                    if (initialRating > baseValue) {
+                        var $all = self.$widget.find('a');
+
+                        var $fractionalA = ($a.length) ?
+                            $a[(getData('userOptions').reverse) ? 'prev' : 'next']() :
+                            $all[(getData('userOptions').reverse) ? 'last' : 'first']();
+
+                        $fractionalA.addClass('br-half');
                     }
                 }
             };
