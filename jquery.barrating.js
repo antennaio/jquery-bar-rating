@@ -215,7 +215,7 @@
             // remove all classes from elements
             var resetStyle = function() {
                 self.$widget.find('a').removeClass();
-            }
+            };
 
             // apply style by setting classes on elements
             var applyStyle = function() {
