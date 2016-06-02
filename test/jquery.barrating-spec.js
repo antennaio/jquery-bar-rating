@@ -110,7 +110,8 @@ describe('bar rating plugin on set fractional value', function () {
     });
 
     it('should set .br-half class', function () {
-        expect($('.br-widget a:nth-child(4)').hasClass('br-half')).to.equal(true);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-fractional')).to.equal(true);
+        expect($('.br-widget a:nth-child(4)').hasClass('br-fractional-30')).to.equal(true);
     });
 
 });
@@ -120,7 +121,7 @@ describe('bar rating plugin on set fractional value < 1', function () {
     before(function () {
         createSelect();
         $('#rating')
-            .barrating('show', { initialRating: 0.3 });
+            .barrating('show', { initialRating: 0.99 });
     });
 
     after(function () {
@@ -129,7 +130,8 @@ describe('bar rating plugin on set fractional value < 1', function () {
     });
 
     it('should set .br-half class', function () {
-        expect($('.br-widget a:first').hasClass('br-half')).to.equal(true);
+        expect($('.br-widget a:first').hasClass('br-fractional')).to.equal(true);
+        expect($('.br-widget a:first').hasClass('br-fractional-90')).to.equal(true);
     });
 
 });

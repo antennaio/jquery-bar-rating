@@ -207,6 +207,11 @@
                 }
             };
 
+            // return rounded fraction of a value (14.4 -> 40, 0.99 -> 90)
+            var fraction = function(value) {
+                return Math.round(((Math.floor(value * 10) / 10) % 1) * 100);
+            };
+
             // remove all classes from elements
             var resetStyle = function() {
                 self.$widget.find('a').removeClass();
@@ -216,6 +221,9 @@
             var applyStyle = function() {
                 var $a = self.$widget.find('a[data-rating-value="' + ratingValue() + '"]');
                 var initialRating = getData('userOptions').initialRating;
+                var baseValue = $.isNumeric(ratingValue()) ? ratingValue() : 0;
+                var f = fraction(initialRating);
+                var $all, $fractional;
 
                 resetStyle();
 
@@ -224,18 +232,18 @@
                     .addClass('br-selected');
 
                 if (!getData('ratingMade') && $.isNumeric(initialRating)) {
-                    // compare initial rating to rating value or zero
-                    var baseValue = $.isNumeric(ratingValue()) ? ratingValue() : 0;
-
-                    if (initialRating > baseValue) {
-                        var $all = self.$widget.find('a');
-
-                        var $fractionalA = ($a.length) ?
-                            $a[(getData('userOptions').reverse) ? 'prev' : 'next']() :
-                            $all[(getData('userOptions').reverse) ? 'last' : 'first']();
-
-                        $fractionalA.addClass('br-half');
+                    if ((initialRating <= baseValue) || !f) {
+                        return;
                     }
+
+                    $all = self.$widget.find('a');
+
+                    $fractional = ($a.length) ?
+                        $a[(getData('userOptions').reverse) ? 'prev' : 'next']() :
+                        $all[(getData('userOptions').reverse) ? 'last' : 'first']();
+
+                    $fractional.addClass('br-fractional');
+                    $fractional.addClass('br-fractional-' + f);
                 }
             };
 
