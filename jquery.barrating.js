@@ -250,21 +250,13 @@
 
                     event.preventDefault();
 
-                    $elements.removeClass('br-active br-selected br-half');
-                    $a.addClass('br-selected')[nextAllorPreviousAll()]()
-                        .addClass('br-selected');
-
                     value = $a.attr('data-rating-value');
                     text = $a.attr('data-rating-text');
 
                     // is current and deselectable?
                     if (isDeselectable($a)) {
-                        $a.removeClass('br-selected br-current')[nextAllorPreviousAll()]()
-                            .removeClass('br-selected br-current');
-                        value = ''; text = '';
-                    } else {
-                        $elements.removeClass('br-current');
-                        $a.addClass('br-current');
+                        value = '';
+                        text = '';
                     }
 
                     // remember selected rating
@@ -274,6 +266,8 @@
 
                     setSelectFieldValue(value);
                     showSelectedRating(text);
+
+                    applyStyle();
 
                     // onSelect callback
                     options.onSelect.call(
