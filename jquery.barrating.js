@@ -237,7 +237,7 @@
                     return false;
                 }
 
-                return $element.hasClass('br-current');
+                return (ratingValue() == $element.attr('data-rating-value'));
             };
 
             // handle click events
