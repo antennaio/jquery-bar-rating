@@ -29,10 +29,12 @@
   display: none;
 }
 .br-theme-fontawesome-stars-o .br-reverse a.br-half {
+  display: inline-block;
   transform: scaleX(-1);
   -moz-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
-  -ms-transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 @media print {
   .br-theme-fontawesome-stars-o .br-widget a:after {
