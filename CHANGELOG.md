@@ -3,7 +3,7 @@ ____
 
 - readonly ratings - `cursor: default` rule added to all themes
 
-- support for displaying of fractional star ratings (2.5, 3.7, 4.9)
+- support for displaying of fractional star ratings (2.5, 3.7, 4.9) - fractional ratings will be marked with `br-fractional` and `br-fractional-*` classes (where * is 10, 20, 30...)
 
 - reset select field when ratings are cleared
 
