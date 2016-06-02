@@ -32,6 +32,9 @@
   padding: .5em 0;
   color: #646464;
 }
+.br-theme-bars-square .br-readonly a {
+  cursor: default;
+}
 .br-theme-bars-square .br-readonly a.br-active,
 .br-theme-bars-square .br-readonly a.br-selected {
   border: 2px solid #729bf8;

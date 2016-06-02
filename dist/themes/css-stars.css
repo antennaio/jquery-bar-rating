@@ -23,6 +23,9 @@
 .br-theme-css-stars .br-widget .br-current-rating {
   display: none;
 }
+.br-theme-css-stars .br-readonly a {
+  cursor: default;
+}
 @media print {
   .br-theme-css-stars .br-widget a:after {
     content: "\2606";

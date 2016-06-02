@@ -31,8 +31,12 @@
   }
 
   .br-readonly {
-    a.br-active, a.br-selected {
-      background-color: lighten(@orange-color, 10%);
+    a {
+      cursor: default;
+
+      &.br-active, &.br-selected {
+        background-color: lighten(@orange-color, 10%);
+      }
     }
 
     .br-current-rating {

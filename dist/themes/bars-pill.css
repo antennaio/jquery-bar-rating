@@ -32,6 +32,9 @@
   background-color: #50e3c2;
   color: white;
 }
+.br-theme-bars-pill .br-readonly a {
+  cursor: default;
+}
 .br-theme-bars-pill .br-readonly a.br-active,
 .br-theme-bars-pill .br-readonly a.br-selected {
   background-color: #7cead1;

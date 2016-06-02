@@ -28,6 +28,9 @@
 .br-theme-fontawesome-stars-o .br-widget .br-current-rating {
   display: none;
 }
+.br-theme-fontawesome-stars-o .br-readonly a {
+  cursor: default;
+}
 .br-theme-fontawesome-stars-o .br-reverse a.br-half {
   display: inline-block;
   transform: scaleX(-1);

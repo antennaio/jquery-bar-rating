@@ -42,9 +42,13 @@
   }
 
   .br-readonly {
-    a.br-active, a.br-selected {
-      border: 2px solid lighten(@blue-color, 10%);
-      color: lighten(@blue-color, 10%);
+    a {
+      cursor: default;
+
+      &.br-active, &.br-selected {
+        border: 2px solid lighten(@blue-color, 10%);
+        color: lighten(@blue-color, 10%);
+      }
     }
   }
 

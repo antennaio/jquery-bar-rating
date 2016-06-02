@@ -22,6 +22,9 @@
 .br-theme-fontawesome-stars .br-widget .br-current-rating {
   display: none;
 }
+.br-theme-fontawesome-stars .br-readonly a {
+  cursor: default;
+}
 @media print {
   .br-theme-fontawesome-stars .br-widget a:after {
     content: '\f006';

@@ -21,6 +21,9 @@
   text-align: center;
   color: #edb867;
 }
+.br-theme-bars-horizontal .br-readonly a {
+  cursor: default;
+}
 .br-theme-bars-horizontal .br-readonly a.br-active,
 .br-theme-bars-horizontal .br-readonly a.br-selected {
   background-color: #f2cd95;

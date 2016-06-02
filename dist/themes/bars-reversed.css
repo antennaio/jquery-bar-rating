@@ -22,6 +22,9 @@
   font-size: 17px;
   font-weight: 400;
 }
+.br-theme-bars-reversed .br-readonly a {
+  cursor: default;
+}
 .br-theme-bars-reversed .br-readonly a.br-active,
 .br-theme-bars-reversed .br-readonly a.br-selected {
   background-color: #7cead1;

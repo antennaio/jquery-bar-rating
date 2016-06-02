@@ -22,6 +22,9 @@
 .br-theme-bootstrap-stars .br-widget .br-current-rating {
   display: none;
 }
+.br-theme-bootstrap-stars .br-readonly a {
+  cursor: default;
+}
 @media print {
   .br-theme-bootstrap-stars .br-widget a:after {
     content: '\e007';

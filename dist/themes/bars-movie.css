@@ -24,6 +24,9 @@
   color: #4278f5;
   font-weight: 400;
 }
+.br-theme-bars-movie .br-readonly a {
+  cursor: default;
+}
 .br-theme-bars-movie .br-readonly a.br-active,
 .br-theme-bars-movie .br-readonly a.br-selected {
   background-color: #729bf8;
