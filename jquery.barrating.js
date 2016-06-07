@@ -214,7 +214,10 @@
 
             // remove all classes from elements
             var resetStyle = function() {
-                self.$widget.find('a').removeClass();
+                // remove all classes starting with br-*
+                self.$widget.find('a').removeClass(function(index, classes) {
+                    return (classes.match(/(^|\s)br-\S+/g) || []).join(' ');
+                });
             };
 
             // apply style by setting classes on elements
