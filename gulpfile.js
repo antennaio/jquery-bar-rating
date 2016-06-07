@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    karma = require('gulp-karma')
+    KarmaServer = require('karma').Server,
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
     runSequence = require('run-sequence');
@@ -41,16 +41,10 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest(distPath));
 });
 
-gulp.task('test', function() {
-    return gulp.src('dummy')
-        .pipe(karma({
-          configFile: 'karma.conf.js',
-          action: 'run'
-        }))
-        .on('error', function(err) {
-          // Stop gulp from any further processing.
-          throw err;
-        });
+gulp.task('test', function(done) {
+  new KarmaServer({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
 });
 
 gulp.task('less', function() {

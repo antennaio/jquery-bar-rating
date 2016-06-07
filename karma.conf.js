@@ -21,10 +21,14 @@ module.exports = function (config) {
       
     },
 
-    // use dots reporter, as travis terminal does not support escaping sequences
-    // possible values: 'dots', 'progress'
+    // possible values: 'progress', 'junit'
     // CLI --reporters progress
     reporters: ['progress', 'junit'],
+
+    junitReporter: {
+      outputDir: '',
+      outputFile: 'test-results.xml'
+    },
 
     // web server port
     // CLI --port 9876
