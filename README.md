@@ -1,4 +1,4 @@
-# jQuery Bar Rating Plugin [![Build Status](https://travis-ci.org/antennaio/jquery-bar-rating.svg?branch=master)](https://travis-ci.org/antennaio/jquery-bar-rating)
+# jQuery Bar Rating Plugin [![Build Status](https://img.shields.io/travis/antennaio/jquery-bar-rating/master.svg?style=flat-square)](https://travis-ci.org/antennaio/jquery-bar-rating)
 
 Minimal, light-weight jQuery ratings.
 
