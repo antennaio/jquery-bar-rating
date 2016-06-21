@@ -33,7 +33,7 @@
                 if (self.options.theme !== '') {
                     classes.push('br-theme-' + self.options.theme);
                 }
-                
+
                 self.$elem.wrap($('<div />', {
                     'class': classes.join(' ')
                 }));
@@ -365,7 +365,7 @@
             };
 
             var setupHandlers = function(readonly) {
-                $elements = self.$widget.find('a');
+                var $elements = self.$widget.find('a');
 
                 if (fastClicks) {
                     fastClicks($elements);
