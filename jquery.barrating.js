@@ -1,5 +1,5 @@
 /**
- * jQuery Bar Rating Plugin v1.2.0
+ * jQuery Bar Rating Plugin v1.2.1
  *
  * http://github.com/antennaio/jquery-bar-rating
  *

@@ -1,5 +1,5 @@
-HEAD
-----
+1.2.1
+-----
 
 - fixed variable declaration (@schurig, [#68](https://github.com/antennaio/jquery-bar-rating/pull/68))
 

@@ -1,7 +1,7 @@
 {
   "name": "jquery-bar-rating",
   "description": "Minimal, light-weight jQuery ratings.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "jquery.barrating.js",
   "license": "MIT",
   "keywords": [
