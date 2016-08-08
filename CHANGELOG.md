@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- fixed variable declaration (@schurig, [#54](https://github.com/antennaio/jquery-bar-rating/pull/68))
+
 - added a note about [R language integration](https://github.com/harveyl888/barRating) to the FAQ (@harveyl888, [#67](https://github.com/antennaio/jquery-bar-rating/issues/67))
 
 1.2.0
