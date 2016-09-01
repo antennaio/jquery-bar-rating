@@ -11,7 +11,7 @@
 }
 .br-theme-bars-horizontal .br-widget a.br-active,
 .br-theme-bars-horizontal .br-widget a.br-selected {
-  background-color: #edb867;
+  background-color: #EDB867;
 }
 .br-theme-bars-horizontal .br-widget .br-current-rating {
   width: 120px;
@@ -19,7 +19,7 @@
   font-weight: 600;
   line-height: 2;
   text-align: center;
-  color: #edb867;
+  color: #EDB867;
 }
 .br-theme-bars-horizontal .br-readonly a {
   cursor: default;

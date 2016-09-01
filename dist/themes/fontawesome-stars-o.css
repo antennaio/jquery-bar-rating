@@ -15,15 +15,15 @@
 }
 .br-theme-fontawesome-stars-o .br-widget a.br-active:after {
   content: '\f005';
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .br-theme-fontawesome-stars-o .br-widget a.br-selected:after {
   content: '\f005';
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .br-theme-fontawesome-stars-o .br-widget a.br-fractional:after {
   content: '\f123';
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .br-theme-fontawesome-stars-o .br-widget .br-current-rating {
   display: none;
