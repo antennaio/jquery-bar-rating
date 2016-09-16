@@ -285,7 +285,7 @@ npm install jquery-bar-rating
                   If you would like to use one of the provided themes include the theme
                   in the head section of the page. Adjust the path to the CSS file
                   and make sure it points to the correct theme file. In this example we are
-                  also pulling Font Awesome icons from CDN. 
+                  also pulling Font Awesome icons from a CDN. 
                 </p>
 
 <pre>
@@ -328,11 +328,28 @@ npm install jquery-bar-rating
           <div class="instructions">
             <p>
               <strong>theme: ''</strong><br>
-              Specify a theme.
+              Defines a theme.
             </p>
             <p>
               <strong>initialRating: null</strong><br>
-              Specify initial rating by passing select field's option value. If null, the plugin will try to set the initial rating by finding an option with a `selected` attribute.
+              Defines initial rating.
+            </p>
+            <p>
+              The default value is `null`, which means that the plugin will try to set the initial rating by finding an option with a `selected` attribute.
+            </p>
+            <p>
+              Optionally, if your ratings are numeric, you can pass a fractional rating here (2.5, 2.8, 5.5). Currently the only theme that supports displaying of fractional ratings is the `fontawesome-stars-o` theme.
+            </p>
+            <p>
+              <strong>allowEmpty: null</strong><br>
+              If set to true, users will be able to submit empty ratings.
+            </p>
+            <p>
+              The default value is `null`, which means that empty ratings will be allowed under the condition that the select field already contains a first option with an empty value.
+            </p>
+            <p>
+              <strong>emptyValue: ''</strong><br>
+              Defines a value that will be considered empty. It is unlikely you will need to modify this setting.
             </p>
             <p>
               <strong>showValues: false</strong><br>
@@ -344,7 +361,10 @@ npm install jquery-bar-rating
             </p>
             <p>
               <strong>deselectable: true</strong><br>
-              If set to true, user can deselect a rating. For this feature to work the select field must contain a first option with an empty value.
+              If set to true, users will be able to deselect ratings.
+            </p>
+            <p>
+              For this feature to work the `allowEmpty` setting needs to be set to `true` or the select field must contain a first option with an empty value.
             </p>
             <p>
               <strong>reverse: false</strong><br>
@@ -378,7 +398,8 @@ npm install jquery-bar-rating
             </p>
             <p>
               <strong>$('select').barrating('set', value);</strong><br>
-              Sets the value of the rating widget.
+              Sets the value of the rating widget.<br>
+              The value needs to exist in the underlying select field.
             </p>
             <p>
               <strong>$('select').barrating('readonly', state);</strong><br>
@@ -401,7 +422,7 @@ npm install jquery-bar-rating
             <p>
               <strong>onSelect:function(value, text, event)</strong><br>
               Fired when a rating is selected.<br>
-              <small>Notice: If the rating was set programmatically by using the `set` method event will be null.</small>
+              If the rating was set programmatically by using the `set` method event will be null.
             </p>
             <p>
               <strong>onClear:function(value, text)</strong><br>
@@ -424,7 +445,7 @@ npm install jquery-bar-rating
               <p>
                 When you initialise the plugin the select field will be wrapped in a div
                 with a `.br-theme-fontawesome-stars` class (or a different class indicating
-                the theme in use). The select field will get hidden and a rating widget
+                the theme currently in use). The select field will get hidden and a rating widget
                 will be appended right after the select field.
               </p>
               <p>Expected result:</p>
@@ -450,8 +471,9 @@ npm install jquery-bar-rating
                 <strong>How do I allow users to select empty ratings?</strong>
               </p>
               <p>
-                To allow users to select empty ratings simply include an empty
-                option in your select field:
+                To allow users to select empty ratings simply set the `allowEmpty`
+                setting to `true` or alternatively include an option with an empty value
+                in your select field:
               </p>
 
 <pre>
