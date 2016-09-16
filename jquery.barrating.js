@@ -53,8 +53,8 @@
                 return $('option[value="' + value  + '"]', self.$elem);
             };
 
-            // find initial option
-            var findInitialOption = function() {
+            // get initial option
+            var getInitialOption = function() {
                 var initialRating = self.options.initialRating;
 
                 if (!initialRating) {
@@ -62,6 +62,19 @@
                 }
 
                 return findOption(initialRating);
+            };
+
+            // get empty option
+            var getEmptyOption = function() {
+                var $emptyOpt = self.$elem.find('option[value="' + self.options.emptyValue + '"]');
+
+                if (!$emptyOpt.length && self.options.allowEmpty) {
+                    $emptyOpt = $('<option />', { 'value': self.options.emptyValue });
+
+                    return $emptyOpt.prependTo(self.$elem);
+                }
+
+                return $emptyOpt;
             };
 
             // get data
@@ -86,10 +99,19 @@
 
             // save data on element
             var saveDataOnElement = function() {
-                var $opt = findInitialOption();
+                var $opt = getInitialOption();
+                var $emptyOpt = getEmptyOption();
 
                 var value = $opt.val();
                 var text = $opt.data('html') ? $opt.data('html') : $opt.text();
+
+                // if the allowEmpty option is not set let's check if empty option exists in the select field
+                var allowEmpty = (self.options.allowEmpty !== null) ?
+                    self.options.allowEmpty :
+                    !!$emptyOpt.length;
+
+                var emptyValue = ($emptyOpt.length) ? $emptyOpt.val() : null;
+                var emptyText = ($emptyOpt.length) ? $emptyOpt.text() : null;
 
                 setData(null, {
                     userOptions: self.options,
@@ -101,6 +123,13 @@
                     // rating will be restored by calling clear method
                     originalRatingValue: value,
                     originalRatingText: text,
+
+                    // allow empty ratings?
+                    allowEmpty: allowEmpty,
+
+                    // rating value and text of the empty OPTION
+                    emptyRatingValue: emptyValue,
+                    emptyRatingText: emptyText,
 
                     // read-only state
                     readOnly: self.options.readonly,
@@ -135,8 +164,8 @@
 
                     val = $(this).val();
 
-                    // create ratings - but only if val is defined
-                    if (val) {
+                    // create ratings - but only if val is not defined as empty
+                    if (val !== getData('emptyRatingValue')) {
                         text = $(this).text();
                         html = $(this).data('html');
                         if (html) { text = html; }
@@ -201,6 +230,11 @@
                 // text undefined?
                 text = text ? text : ratingText();
 
+                // special case when the selected rating is defined as empty
+                if (text == getData('emptyRatingText')) {
+                    text = '';
+                }
+
                 // update .br-current-rating div
                 if (self.options.showSelectedRating) {
                     self.$elem.parent().find('.br-current-rating').text(text);
@@ -252,12 +286,7 @@
 
             // check if the element is deselectable?
             var isDeselectable = function($element) {
-                if (!self.options.deselectable) {
-                    return false;
-                }
-
-                if (self.$elem.find('option:first').val()) {
-                    // empty option not found
+                if (!getData('allowEmpty') || !getData('userOptions').deselectable) {
                     return false;
                 }
 
@@ -279,8 +308,8 @@
 
                     // is current and deselectable?
                     if (isDeselectable($a)) {
-                        value = '';
-                        text = '';
+                        value = getData('emptyRatingValue');
+                        text = getData('emptyRatingText');
                     }
 
                     // remember selected rating
@@ -533,9 +562,11 @@
     $.fn.barrating.defaults = {
         theme:'',
         initialRating:null, // initial rating
+        allowEmpty:null, // allow empty ratings?
+        emptyValue:'', // this is the expected value of the empty rating
         showValues:false, // display rating values on the bars?
         showSelectedRating:true, // append a div with a rating to the widget?
-        deselectable:true, // allow to deselect ratings
+        deselectable:true, // allow to deselect ratings?
         reverse:false, // reverse the rating?
         readonly:false, // make the rating ready-only?
         fastClicks:true, // remove 300ms click delay on touch devices?
