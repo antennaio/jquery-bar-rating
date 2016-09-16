@@ -1,3 +1,16 @@
+HEAD
+____
+
+- new option added: `allowEmpty`
+
+- new option added: `emptyValue`
+
+- bugfix: little CSS fix (@bygiro, [#74](https://github.com/antennaio/jquery-bar-rating/pull/74))
+
+- bugfix: syntax error within example in documentation (@sorter, [#72](https://github.com/antennaio/jquery-bar-rating/pull/72))
+
+- added optimal travis config (@amilajack, [#71](https://github.com/antennaio/jquery-bar-rating/pull/71))
+
 1.2.1
 -----
 
