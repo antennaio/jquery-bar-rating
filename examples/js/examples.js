@@ -21,6 +21,8 @@ $(function() {
             initialRating: 'A',
             showValues: true,
             showSelectedRating: false,
+            allowEmpty: true,
+            emptyValue: '-- no rating selected --',
             onSelect: function(value, text) {
                 alert('Selected rating: ' + value);
             }
