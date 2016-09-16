@@ -29,10 +29,16 @@ describe('bar rating plugin on init with custom options', function () {
         expect(BarRating.options).to.be.a('object');
         expect(BarRating.options.theme).to.equal('');
         expect(BarRating.options.initialRating).to.equal(null);
+        expect(BarRating.options.allowEmpty).to.equal(null);
+        expect(BarRating.options.emptyValue).to.equal('');
         expect(BarRating.options.showValues).to.equal(false);
         expect(BarRating.options.showSelectedRating).to.equal(true);
+        expect(BarRating.options.deselectable).to.equal(true);
         expect(BarRating.options.reverse).to.equal(false);
         expect(BarRating.options.readonly).to.equal(false);
+        expect(BarRating.options.fastClicks).to.equal(true);
+        expect(BarRating.options.hoverState).to.equal(true);
+        expect(BarRating.options.silent).to.equal(false);
     });
 
 });
@@ -200,6 +206,35 @@ describe('bar rating plugin on show and rating selected', function () {
         expect(valuesFromCallback[0]).to.equal('2');
         expect(valuesFromCallback[1]).to.equal('rating-text-2');
         expect(valuesFromCallback[2]).to.be.a('object');
+    });
+
+});
+
+
+describe('bar rating plugin on show and empty ratings are allowed', function () {
+
+    before(function () {
+        createSelect();
+
+        $('#rating').barrating('show', {
+            allowEmpty: true,
+            emptyValue: '-- not defined --'
+        });
+    });
+
+    after(function () {
+        $('#rating').barrating('destroy');
+        destroySelect();
+    });
+
+    it('should update data', function () {
+        expect($('#rating').data('barrating').allowEmpty).to.equal(true);
+        expect($('#rating').data('barrating').emptyRatingValue).to.equal('-- not defined --');
+        expect($('#rating').data('barrating').emptyRatingText).to.equal('');
+    });
+
+    it('should set correct class', function () {
+        expect($('#rating option').first().val()).to.equal('-- not defined --');
     });
 
 });
