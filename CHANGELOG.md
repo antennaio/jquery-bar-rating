@@ -1,5 +1,5 @@
 HEAD
-____
+----
 
 - new option added: `allowEmpty`
 
