@@ -209,11 +209,11 @@
             };
 
             // set the value of the select field
-            var setSelectFieldValue = function(value) {
+            var setSelectFieldValue = function(value, change) {
                 // change selected option
                 findOption(value).prop('selected', true);
 
-                self.$elem.change();
+                if (change) { self.$elem.change(); }
             };
 
             // reset select field
@@ -317,7 +317,7 @@
                     setData('ratingText', text);
                     setData('ratingMade', true);
 
-                    setSelectFieldValue(value);
+                    setSelectFieldValue(value, true);
                     showSelectedRating(text);
 
                     applyStyle();
@@ -450,7 +450,7 @@
                 setData('ratingText', self.$elem.find('option[value="' + value + '"]').text());
                 setData('ratingMade', true);
 
-                setSelectFieldValue(ratingValue());
+                setSelectFieldValue(ratingValue(), !options.silent);
                 showSelectedRating(ratingText());
 
                 applyStyle();
