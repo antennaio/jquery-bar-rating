@@ -39,6 +39,7 @@ describe('bar rating plugin on init with custom options', function () {
         expect(BarRating.options.fastClicks).to.equal(true);
         expect(BarRating.options.hoverState).to.equal(true);
         expect(BarRating.options.silent).to.equal(false);
+        expect(BarRating.options.triggerChange).to.equal(true);
     });
 
 });
@@ -417,9 +418,14 @@ describe('bar rating plugin on destroy', function () {
 describe('bar rating plugin on set value', function () {
 
     var valuesFromCallback = [];
+    var changeCount = 0;
 
     before(function () {
         createSelect();
+
+        $('#rating').change(function () {
+            changeCount++;
+        });
 
         $('#rating').barrating('show', {
             onSelect:function (value, text) {
@@ -446,6 +452,10 @@ describe('bar rating plugin on set value', function () {
     it('should pass correct values to a callback', function () {
         expect(valuesFromCallback[0]).to.equal(3);
         expect(valuesFromCallback[1]).to.equal('rating-text-3');
+    });
+
+    it('should trigger change event on the select field', function () {
+        expect(changeCount).to.equal(1);
     });
 
 });

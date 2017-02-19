@@ -1,3 +1,8 @@
+HEAD
+----
+
+- new option added: `triggerChange`
+
 1.2.2
 -----
 

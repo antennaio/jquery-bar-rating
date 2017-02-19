@@ -213,7 +213,9 @@
                 // change selected option
                 findOption(value).prop('selected', true);
 
-                self.$elem.change();
+                if (getData('userOptions').triggerChange) {
+                    self.$elem.change();
+                }
             };
 
             // reset select field
@@ -222,7 +224,9 @@
                     return this.defaultSelected;
                 });
 
-                self.$elem.change();
+                if (getData('userOptions').triggerChange) {
+                    self.$elem.change();
+                }
             };
 
             // display the currently selected rating
@@ -572,6 +576,7 @@
         fastClicks:true, // remove 300ms click delay on touch devices?
         hoverState:true, // change state on hover?
         silent:false, // supress callbacks when controlling ratings programatically
+        triggerChange:true, // trigger change event when ratings are set or reset
         onSelect:function (value, text, event) {
         }, // callback fired when a rating is selected
         onClear:function (value, text) {
