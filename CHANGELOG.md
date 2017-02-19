@@ -1,9 +1,11 @@
-HEAD
-----
+1.2.2
+-----
 
 - new option added: `allowEmpty`
 
 - new option added: `emptyValue`
+
+- bugfix: accept empty string in set method (@kzmi, [#85](https://github.com/antennaio/jquery-bar-rating/pull/85))
 
 - bugfix: little CSS fix (@bygiro, [#74](https://github.com/antennaio/jquery-bar-rating/pull/74))
 
