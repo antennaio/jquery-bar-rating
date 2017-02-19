@@ -443,7 +443,7 @@
             this.set = function(value) {
                 var options = getData('userOptions');
 
-                if (!self.$elem.find('option[value="' + value + '"]').val()) return;
+                if (self.$elem.find('option[value="' + value + '"]').length === 0) return;
 
                 // set data
                 setData('ratingValue', value);
