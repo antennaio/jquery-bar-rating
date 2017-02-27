@@ -400,7 +400,7 @@
             var setupHandlers = function(readonly) {
                 var $elements = self.$widget.find('a');
 
-                if (fastClicks) {
+                if (getData('userOptions').fastClicks) {
                     fastClicks($elements);
                 }
 

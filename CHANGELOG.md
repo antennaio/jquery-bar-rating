@@ -1,6 +1,8 @@
 HEAD
 ----
 
+- bugfix: `fastClicks` option check fixed
+
 - new option added: `triggerChange`
 
 1.2.2
