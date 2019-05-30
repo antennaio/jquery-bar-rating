@@ -100,7 +100,7 @@ h1 {
   margin: 0;
 }
 a {
-  color: #50e3c2;
+  color: #50E3C2;
   text-decoration: none;
   font-weight: 400;
 }
@@ -238,17 +238,17 @@ p {
 .docs .how-to-use header,
 .docs .callbacks header,
 .docs .download header {
-  background: #4278f5;
+  background: #4278F5;
 }
 .docs .how-to-use strong,
 .docs .callbacks strong,
 .docs .download strong {
-  color: #4278f5;
+  color: #4278F5;
 }
 .docs .how-to-use a,
 .docs .callbacks a,
 .docs .download a {
-  color: #4278f5;
+  color: #4278F5;
 }
 .docs .how-to-use a:hover,
 .docs .callbacks a:hover,
@@ -259,7 +259,7 @@ p {
 .docs .callbacks pre,
 .docs .download pre {
   background: white;
-  border-left: 2px solid #4278f5;
+  border-left: 2px solid #4278F5;
   padding: 0 2em;
 }
 .docs .how-to-use code,
@@ -268,19 +268,19 @@ p {
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.9em;
   /* 18px */
-  color: #4278f5;
+  color: #4278F5;
 }
 .docs .configuration header,
 .docs .faq header {
-  background: #50e3c2;
+  background: #50E3C2;
 }
 .docs .configuration strong,
 .docs .faq strong {
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .docs .configuration a,
 .docs .faq a {
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .docs .configuration a:hover,
 .docs .faq a:hover {
@@ -289,7 +289,7 @@ p {
 .docs .configuration pre,
 .docs .faq pre {
   background: white;
-  border-left: 2px solid #50e3c2;
+  border-left: 2px solid #50E3C2;
   padding: 0 2em;
 }
 .docs .configuration code,
@@ -297,19 +297,19 @@ p {
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.9em;
   /* 18px */
-  color: #50e3c2;
+  color: #50E3C2;
 }
 .docs .license header,
 .docs .methods header {
-  background: #edb867;
+  background: #EDB867;
 }
 .docs .license strong,
 .docs .methods strong {
-  color: #edb867;
+  color: #EDB867;
 }
 .docs .license a,
 .docs .methods a {
-  color: #edb867;
+  color: #EDB867;
 }
 .docs .license a:hover,
 .docs .methods a:hover {
@@ -318,7 +318,7 @@ p {
 .docs .license pre,
 .docs .methods pre {
   background: white;
-  border-left: 2px solid #edb867;
+  border-left: 2px solid #EDB867;
   padding: 0 2em;
 }
 .docs .license code,
@@ -326,7 +326,7 @@ p {
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.9em;
   /* 18px */
-  color: #edb867;
+  color: #EDB867;
 }
 .docs .instructions {
   padding: 2em 3em;
@@ -350,7 +350,7 @@ p {
 .controls a {
   display: block;
   width: 150px;
-  background-color: #50e3c2;
+  background-color: #50E3C2;
   color: white;
   float: left;
   padding: .3em 1em .5em 1em;

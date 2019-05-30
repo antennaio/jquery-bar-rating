@@ -108,7 +108,7 @@
   height: 120px;
 }
 .box-orange .box-header {
-  background-color: #edb867;
+  background-color: #EDB867;
   color: white;
 }
 .box-orange .box-body {
@@ -117,7 +117,7 @@
   border-top: 0;
 }
 .box-green .box-header {
-  background-color: #50e3c2;
+  background-color: #50E3C2;
   color: white;
 }
 .box-green .box-body {
@@ -126,7 +126,7 @@
   border-top: 0;
 }
 .box-blue .box-header {
-  background-color: #4278f5;
+  background-color: #4278F5;
   color: white;
 }
 .box-blue .box-body {

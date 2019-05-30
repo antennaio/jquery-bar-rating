@@ -12,11 +12,11 @@ var path = require('path');
 var srcFile = 'jquery.barrating.js';
 
 var lessFiles = [
-      path.join(__dirname, 'examples', 'less', 'examples.less'),
-      path.join(__dirname, 'examples', 'less', 'main.less'),
+      path.join(__dirname, 'docs', 'less', 'examples.less'),
+      path.join(__dirname, 'docs', 'less', 'main.less'),
     ];
 
-var cssPath = path.join(__dirname, 'examples', 'css'),
+var cssPath = path.join(__dirname, 'docs', 'css'),
     distPath = 'dist';
 
 var themePath = path.join(__dirname, 'dist', 'themes');
