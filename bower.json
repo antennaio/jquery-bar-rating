@@ -1,7 +1,7 @@
 {
   "name": "jquery-bar-rating",
   "version": "1.2.2",
-    "homepage": "http://antenna.io/demo/jquery-bar-rating/examples/",
+    "homepage": "http://antennaio.github.io/jquery-bar-rating/",
     "repository": {
       "type": "git",
       "url": "git://github.com/antennaio/jquery-bar-rating.git"
