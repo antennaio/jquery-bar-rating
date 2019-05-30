@@ -59,8 +59,13 @@ gulp.task('themes', function() {
     .pipe(gulp.dest(themePath));
 });
 
+gulp.task('copy', function() {
+    return gulp.src([distPath + '/**/*'])
+      .pipe(gulp.dest(path.join(__dirname, 'docs', 'dist')));
+});
+
 gulp.task('build', function() {
-  runSequence('jshint', 'test', 'themes', 'uglify');
+  runSequence('jshint', 'test', 'themes', 'uglify', 'copy');
 });
 
 gulp.task('watch', function() {
