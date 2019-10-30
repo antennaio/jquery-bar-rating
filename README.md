@@ -6,7 +6,7 @@ Minimal, light-weight jQuery ratings.
 
 Documentation and examples of use can be found here:
 
-[http://antenna.io/demo/jquery-bar-rating/examples/](http://antenna.io/demo/jquery-bar-rating/examples/)
+[http://antennaio.github.io/jquery-bar-rating/](http://antennaio.github.io/jquery-bar-rating/)
 
 ## How to run tests
 
