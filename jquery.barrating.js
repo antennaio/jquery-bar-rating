@@ -174,7 +174,10 @@
                             'href': '#',
                             'data-rating-value': val,
                             'data-rating-text': text,
-                            'html': (self.options.showValues) ? text : ''
+                            'html': (self.options.showValues) ? $('<span />', {
+                              'html': text,
+                              'class': 'br-widget-option-label'
+                            }) : ''
                         });
 
                         $w.append($a);
