@@ -365,7 +365,9 @@
             // and using a library such as fastclick (https://github.com/ftlabs/fastclick)
             var fastClicks = function($elements) {
                 $elements.on('touchstart.barrating', function(event) {
-                    event.preventDefault();
+                    if (event.cancelable) {
+                        event.preventDefault();
+                    }
                     event.stopPropagation();
 
                     $(this).click();
